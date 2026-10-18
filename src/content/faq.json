@@ -1,0 +1,44 @@
+[
+  {
+    "id": "programar",
+    "question": "¿Necesito saber programar?",
+    "answer": "No. Conectas tus canales, cargas tu catálogo y tus reglas en pantallas simples, y Valthor queda atendiendo en unas 2 horas.",
+    "showOnHome": true
+  },
+  {
+    "id": "api-oficial",
+    "question": "¿Usa la API oficial o un WhatsApp por QR?",
+    "answer": "La API oficial de WhatsApp Business. Somos Meta Business Partner, así que tu número no corre riesgo de bloqueo por usar herramientas no autorizadas.",
+    "showOnHome": true
+  },
+  {
+    "id": "no-sabe",
+    "question": "¿Qué pasa si la IA no sabe responder?",
+    "answer": "Te pasa la conversación. También lo hace si el cliente pide hablar con una persona o se enoja. Tú tomas el chat y luego se lo devuelves a la IA.",
+    "showOnHome": true
+  },
+  {
+    "id": "costo-whatsapp",
+    "question": "¿Cuánto cuesta WhatsApp aparte de Valthor?",
+    "answer": "Meta cobra algunos mensajes directamente a tu cuenta, según su tarifa. Te lo explicamos con tus números en la llamada.",
+    "showOnHome": true
+  },
+  {
+    "id": "audios",
+    "question": "¿Entiende audios?",
+    "answer": "Sí. Tus clientes pueden mandar notas de voz y la IA las entiende y responde.",
+    "showOnHome": true
+  },
+  {
+    "id": "tienda-erp",
+    "question": "¿Se conecta con mi tienda o mi ERP?",
+    "answer": "Sí, con Tienda Nube, Mercado Libre, Magento, Kuad System y ZEUS ERP. El catálogo se actualiza todos los días.",
+    "showOnHome": true
+  },
+  {
+    "id": "prueba",
+    "question": "¿Puedo probarlo antes de pagar?",
+    "answer": "Sí. Tienes 15 días de prueba gratis y un Playground para conversar con tu agente antes de encenderlo.",
+    "showOnHome": true
+  }
+]

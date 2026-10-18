@@ -1,0 +1,85 @@
+---
+import { rich } from '../../lib/text';
+interface Props {
+  industries: any;
+}
+const { industries } = Astro.props;
+---
+
+<section id="rubros" class="section light industries" aria-labelledby="industries-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">{industries.eyebrow}</p>
+      <h2 id="industries-title" class="h2" set:html={rich(industries.title)} />
+    </div>
+    <ul class="grid">
+      {
+        industries.items.map((it: any) => {
+          const Tag = it.href ? 'a' : 'div';
+          return (
+            <li>
+              <Tag class="card" href={it.href}>
+                <h3>{it.title}</h3>
+                <p>{it.text}</p>
+                {it.href && <span class="more">{industries.linkLabel} →</span>}
+              </Tag>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+  }
+  .grid li {
+    display: flex;
+  }
+  .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px 22px;
+    border-radius: 20px;
+    border: 1px solid var(--line-light);
+    background: #fafafe;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  a.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(124, 58, 237, 0.35);
+    box-shadow: 0 18px 40px rgba(124, 58, 237, 0.12);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .card .more {
+    margin-top: auto;
+  }
+</style>

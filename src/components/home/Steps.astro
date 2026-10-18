@@ -1,0 +1,94 @@
+---
+import Cta from '../Cta.astro';
+import { rich } from '../../lib/text';
+interface Props {
+  steps: any;
+}
+const { steps } = Astro.props;
+---
+
+<section class="section steps" aria-labelledby="steps-title">
+  <div class="wrap row">
+    <div class="text">
+      <svg class="bolt" viewBox="0 0 24 24" width="44" height="44" fill="none" aria-hidden="true">
+        <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" fill="url(#bolt-g)"></path>
+        <defs
+          ><linearGradient id="bolt-g" x1="0" y1="0" x2="1" y2="1"
+            ><stop offset="0" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#E879F9"></stop></linearGradient
+          ></defs
+        >
+      </svg>
+      <h2 id="steps-title" class="h2" set:html={rich(steps.title)} />
+      <p class="lead">{steps.text}</p>
+      <div><Cta kind="trial" location="steps" /></div>
+    </div>
+    <ol class="list">
+      {
+        steps.items.map((s: any, i: number) => (
+          <li class="step">
+            <span class="tag">Paso {i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    background:
+      radial-gradient(800px 500px at 20% 20%, rgba(139, 92, 246, 0.16), transparent 60%),
+      var(--bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .text .lead {
+    max-width: 420px;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line-dark);
+    border-radius: 16px;
+    padding: 24px;
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .step:hover {
+    transform: translateX(6px);
+    border-color: rgba(139, 92, 246, 0.45);
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(139, 92, 246, 0.18);
+    color: var(--accent-soft);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 11px;
+    border-radius: 7px;
+    margin-bottom: 12px;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--on-dark-3);
+  }
+</style>

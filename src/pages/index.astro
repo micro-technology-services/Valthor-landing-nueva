@@ -1,0 +1,40 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Clients from '../components/home/Clients.astro';
+import Problem from '../components/home/Problem.astro';
+import Jobs from '../components/home/Jobs.astro';
+import Agent from '../components/home/Agent.astro';
+import Steps from '../components/home/Steps.astro';
+import Roas from '../components/home/Roas.astro';
+import Industries from '../components/home/Industries.astro';
+import Alliances from '../components/home/Alliances.astro';
+import Integrations from '../components/home/Integrations.astro';
+import Faq from '../components/home/Faq.astro';
+import Closing from '../components/home/Closing.astro';
+import { getFaqs } from '../lib/content';
+import { faqPage, softwareApplication } from '../lib/schema';
+
+const home = (await getEntry('home', 'home'))!.data;
+const faqs = await getFaqs((f) => f.showOnHome);
+---
+
+<BaseLayout
+  title={home.seo.title}
+  description={home.seo.description}
+  jsonLd={[softwareApplication(home.seo.description), faqPage(faqs)]}
+>
+  <Hero hero={home.hero} />
+  <Clients clients={home.clients} />
+  <Problem problem={home.problem} />
+  <Jobs jobs={home.jobs} />
+  <Agent agent={home.agent} />
+  <Steps steps={home.steps} />
+  <Roas roas={home.roas} />
+  <Industries industries={home.industries} />
+  <Alliances alliances={home.alliances} />
+  <Integrations integrations={home.integrations} />
+  <Faq faq={home.faq} items={faqs} />
+  <Closing closing={home.closing} />
+</BaseLayout>

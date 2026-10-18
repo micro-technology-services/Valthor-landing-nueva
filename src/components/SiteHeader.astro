@@ -1,0 +1,93 @@
+---
+import Logo from './Logo.astro';
+import Cta from './Cta.astro';
+import { getSite } from '../lib/content';
+const { nav } = await getSite();
+---
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Principal">
+    <a href="/" class="home"><Logo /><span class="sr-only">, inicio</span></a>
+    <ul class="links">
+      {nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+    <div class="actions">
+      <Cta kind="booking" variant="secondary" location="header" class="booking" />
+      <Cta kind="trial" location="header" />
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Sits over the first section of every page, so the hero glow shows behind it. */
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .home {
+    text-decoration: none;
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+  .links {
+    display: flex;
+    gap: 28px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .links a {
+    color: var(--on-dark-2);
+    text-decoration: none;
+    padding: 10px 0;
+  }
+  .links a:hover {
+    color: #fff;
+  }
+  .actions {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .actions :global(.btn) {
+    min-height: 44px;
+    padding: 11px 18px;
+    font-size: 15px;
+    border-radius: 11px;
+  }
+  @media (max-width: 1024px) {
+    .links {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .nav {
+      gap: 12px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .actions :global(.booking) {
+      display: none;
+    }
+    .actions :global(.btn) {
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 380px) {
+    .home :global(.by) {
+      display: none;
+    }
+  }
+</style>
