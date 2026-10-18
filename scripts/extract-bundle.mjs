@@ -4,7 +4,7 @@
 // README listing every file.
 //
 // Usage: node scripts/extract-bundle.mjs [input.html] [outDir]
-import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join, resolve, relative } from 'node:path';
 
@@ -125,8 +125,12 @@ function extract(html, dir, label) {
   }
 }
 
+// Start clean, but keep the hand-written DESIGN.md.
+const designPath = join(outDir, 'DESIGN.md');
+const design = existsSync(designPath) ? readFileSync(designPath) : null;
 rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
+if (design) writeFileSync(designPath, design);
 const html = readFileSync(input, 'utf8');
 extract(html, outDir, 'home');
 copyFileSync(input, join(outDir, 'index.legacy.html'));
