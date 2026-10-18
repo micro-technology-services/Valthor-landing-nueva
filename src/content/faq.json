@@ -1,44 +1,106 @@
 [
   {
+    "id": "que-es",
+    "category": "General",
+    "question": "¿Qué es Valthor?",
+    "answer": "Valthor es una suite de IA para PyMEs creada por MTS Group. Un agente de inteligencia artificial atiende WhatsApp, Instagram y Facebook con tu catálogo y tus reglas, envía links de pago de Mercado Pago, agenda turnos y deriva a una persona cuando hace falta. Todo queda registrado en un CRM con tus contactos y tus ventas."
+  },
+  {
     "id": "programar",
+    "category": "General",
     "question": "¿Necesito saber programar?",
     "answer": "No. Conectas tus canales, cargas tu catálogo y tus reglas en pantallas simples, y Valthor queda atendiendo en unas 2 horas.",
     "showOnHome": true
   },
   {
+    "id": "paises",
+    "category": "General",
+    "question": "¿En qué países funciona?",
+    "answer": "Hoy Valthor tiene clientes en Argentina, Chile, España y Estados Unidos. La plataforma y el agente trabajan en español.",
+    "showOnHome": true
+  },
+  {
     "id": "api-oficial",
+    "category": "WhatsApp y canales",
     "question": "¿Usa la API oficial o un WhatsApp por QR?",
     "answer": "La API oficial de WhatsApp Business. Somos Meta Business Partner, así que tu número no corre riesgo de bloqueo por usar herramientas no autorizadas.",
     "showOnHome": true
   },
   {
-    "id": "no-sabe",
-    "question": "¿Qué pasa si la IA no sabe responder?",
-    "answer": "Te pasa la conversación. También lo hace si el cliente pide hablar con una persona o se enoja. Tú tomas el chat y luego se lo devuelves a la IA.",
-    "showOnHome": true
+    "id": "canales",
+    "category": "WhatsApp y canales",
+    "question": "¿Qué canales atiende la IA?",
+    "answer": "WhatsApp, Instagram y Facebook Messenger. Un solo agente responde en los tres a la vez y todas las conversaciones llegan a una misma bandeja."
   },
   {
-    "id": "costo-whatsapp",
-    "question": "¿Cuánto cuesta WhatsApp aparte de Valthor?",
-    "answer": "Meta cobra algunos mensajes directamente a tu cuenta, según su tarifa. Te lo explicamos con tus números en la llamada.",
-    "showOnHome": true
+    "id": "mismo-numero",
+    "category": "WhatsApp y canales",
+    "question": "¿Puedo usar mi número de WhatsApp actual?",
+    "answer": "Sí. Conectas tu número por la API oficial de Meta y puedes seguir usándolo también en la app de WhatsApp Business."
+  },
+  {
+    "id": "horario",
+    "category": "WhatsApp y canales",
+    "question": "¿La IA atiende las 24 horas?",
+    "answer": "Tú decides. La enciendes por canal para que atienda todo el día o solo en el horario que elijas. Viene apagada hasta que la enciendes."
   },
   {
     "id": "audios",
+    "category": "WhatsApp y canales",
     "question": "¿Entiende audios?",
     "answer": "Sí. Tus clientes pueden mandar notas de voz y la IA las entiende y responde.",
     "showOnHome": true
   },
   {
+    "id": "costo-whatsapp",
+    "category": "WhatsApp y canales",
+    "question": "¿Cuánto cuesta WhatsApp aparte de Valthor?",
+    "answer": "Meta cobra algunos mensajes directamente a tu cuenta, según su tarifa. Te lo explicamos con tus números en la llamada.",
+    "showOnHome": true
+  },
+  {
+    "id": "no-sabe",
+    "category": "Ventas y cobros",
+    "question": "¿Qué pasa si la IA no sabe responder?",
+    "answer": "Te pasa la conversación. También lo hace si el cliente pide hablar con una persona o se enoja. Tú tomas el chat y luego se lo devuelves a la IA.",
+    "showOnHome": true
+  },
+  {
+    "id": "cobro",
+    "category": "Ventas y cobros",
+    "question": "¿Cómo cobra la IA?",
+    "answer": "Envía un link de pago de Mercado Pago desde tu propia cuenta. Cuando el pago se aprueba, la venta queda cerrada en el CRM. Los medios de pago y las cuotas son los que tengas habilitados en Mercado Pago."
+  },
+  {
+    "id": "precios-ia",
+    "category": "Ventas y cobros",
+    "question": "¿La IA puede inventar un precio?",
+    "answer": "No. El monto del link de pago lo calcula el sistema con los precios de tu catálogo; la IA no lo inventa."
+  },
+  {
     "id": "tienda-erp",
+    "category": "Ventas y cobros",
     "question": "¿Se conecta con mi tienda o mi ERP?",
     "answer": "Sí, con Tienda Nube, Mercado Libre, Magento, Kuad System y ZEUS ERP. El catálogo se actualiza todos los días.",
     "showOnHome": true
   },
   {
     "id": "prueba",
+    "category": "Prueba y planes",
     "question": "¿Puedo probarlo antes de pagar?",
     "answer": "Sí. Tienes 15 días de prueba gratis y un Playground para conversar con tu agente antes de encenderlo.",
     "showOnHome": true
+  },
+  {
+    "id": "costo",
+    "category": "Prueba y planes",
+    "question": "¿Cuánto cuesta Valthor?",
+    "answer": "Depende del plan y de cuánto trabaje la IA. Armamos la propuesta con tus números en una llamada, y antes puedes probarlo gratis durante 15 días."
+  },
+  {
+    "id": "celular",
+    "category": "Prueba y planes",
+    "question": "¿Puedo manejarlo desde el celular?",
+    "answer": "Sí. Valthor funciona desde el navegador del celular y puedes instalarlo como app web para tener tus conversaciones a mano."
   }
 ]

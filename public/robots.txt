@@ -1,4 +1,4 @@
-# https://valthor.app/robots.txt
+# https://www.valthor.app/robots.txt
 User-agent: *
 Allow: /
 
@@ -25,4 +25,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://valthor.app/sitemap-index.xml
+Sitemap: https://www.valthor.app/sitemap-index.xml

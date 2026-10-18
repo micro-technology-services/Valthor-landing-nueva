@@ -1,0 +1,147 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { getFaqs } from '../lib/content';
+import { breadcrumbs, faqPage, webPage } from '../lib/schema';
+
+const page = (await getEntry('faqPage', 'page'))!.data;
+const general = await getFaqs();
+const categories = [...new Set(general.map((f) => f.category))];
+const landings = (await getCollection('landings')).sort((a, b) => a.id.localeCompare(b.id));
+const topics = landings.map((l) => ({
+  title: l.data.breadcrumb,
+  href: `/${l.id}`,
+  faqs: l.data.faqs.map((f, i) => ({ id: `${l.id.replace(/\//g, '-')}-${i + 1}`, ...f })),
+}));
+const all = [...general, ...topics.flatMap((t) => t.faqs)];
+const crumbs = [{ name: 'Preguntas frecuentes', path: '/preguntas-frecuentes' }];
+const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-');
+---
+
+<BaseLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  jsonLd={[
+    webPage({ path: '/preguntas-frecuentes', name: page.h1, description: page.seo.description }),
+    breadcrumbs(crumbs),
+    faqPage(all),
+  ]}
+>
+  <PageHero crumbs={crumbs} eyebrow="Preguntas frecuentes" h1={page.h1} intro={page.intro} />
+
+  <section class="section faq-page" aria-label="Preguntas por tema">
+    <div class="wrap layout">
+      <nav class="toc" aria-label="Temas">
+        <p class="toc-title">Temas</p>
+        <ul>
+          {categories.map((c) => <li><a href={`#${slug(c)}`}>{c}</a></li>)}
+          {topics.map((t) => <li><a href={`#${slug(t.title)}`}>{t.title}</a></li>)}
+        </ul>
+      </nav>
+      <div class="groups">
+        {
+          categories.map((c) => (
+            <section class="group" id={slug(c)} aria-labelledby={`h-${slug(c)}`}>
+              <h2 id={`h-${slug(c)}`}>{c}</h2>
+              <FaqList faqs={general.filter((f) => f.category === c)} />
+            </section>
+          ))
+        }
+        {
+          topics.map((t) => (
+            <section class="group" id={slug(t.title)} aria-labelledby={`h-${slug(t.title)}`}>
+              <h2 id={`h-${slug(t.title)}`}>{t.title}</h2>
+              <FaqList faqs={t.faqs} />
+              <a class="topic-link" href={t.href}>
+                Ver la página de {t.title} →
+              </a>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title={page.cta.title} text={page.cta.text} location="faq-final" />
+
+  <RelatedLinks
+    items={[
+      { title: 'Planes', text: 'Qué incluye cada plan de Valthor.', href: '/planes' },
+      { title: 'Agente de IA para WhatsApp', text: 'Cómo atiende, vende y cobra.', href: '/funciones/agente-ia-whatsapp' },
+      { title: 'Alianzas', text: 'Kuad System, GymFlow y ZEUS ERP.', href: '/alianzas' },
+    ]}
+  />
+</BaseLayout>
+
+<style>
+  .faq-page {
+    background: var(--bg);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: 24px;
+  }
+  .toc-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .toc li a {
+    display: block;
+    padding: 6px 0;
+    color: var(--on-dark-2);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .toc li a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    min-width: 0;
+  }
+  .group {
+    scroll-margin-top: 24px;
+  }
+  .group h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+  .topic-link {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--accent-soft);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .topic-link:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .toc {
+      position: static;
+    }
+    .toc ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 18px;
+    }
+  }
+</style>

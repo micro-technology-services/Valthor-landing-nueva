@@ -1,0 +1,30 @@
+# valthor.app
+
+Marketing site for Valthor (MTS Group S.A.S.), built with [Astro](https://astro.build) as a fully static site and deployed on Vercel (`www.valthor.app`; the apex redirects to `www` at the Vercel domain level).
+
+Owner guide in Spanish (edit, preview, publish): [`docs/GUIA.md`](docs/GUIA.md).
+
+## Commands
+
+| Command | What it does |
+| --- | --- |
+| `npm ci` | Install dependencies (Node ≥ 22.22) |
+| `npm run dev` | Local dev server |
+| `npm run build` | Static build into `dist/` |
+| `npm run verify` | Checks every built page: one H1, title 50–60 / description 140–160 chars, canonical, OG/Twitter, JSON-LD shape, `alt` and sizes on images, landmarks, CTA labels, voseo, forbidden claims, prices, broken internal links, robots/sitemap/llms |
+| `node scripts/claims-checklist.mjs` | Regenerates `docs/CLAIMS_CHECKLIST.md` |
+| `node scripts/make-images.mjs` | Regenerates the share image, favicon and logo in `public/` |
+| `node scripts/extract-bundle.mjs` | Re-extracts the old bundled site into `legacy-extract/` |
+
+## Layout
+
+- `src/content/`: all copy (JSON/Markdown), validated by `src/content.config.ts`.
+- `src/pages/`: routes. `[...landing].astro` renders every file in `src/content/landings/` with the 7-block template (`src/components/landing/LandingPage.astro`).
+- `src/components/`, `src/layouts/BaseLayout.astro`: SEO head, JSON-LD, analytics, header, footer, WhatsApp button.
+- `src/pages/llms.txt.ts`, `llms-full.txt.ts`: plain-text summaries for AI assistants.
+- `legacy-extract/`: the decoded old site and `DESIGN.md` (design tokens). Not deployed.
+- `reference/`: inputs for the rebuild (design, audit, screenshots). Not deployed.
+
+## Analytics
+
+Google Ads `AW-18428663865` is always on (loaded on first interaction). GA4 and Meta Pixel load only when `PUBLIC_GA4_ID` / `PUBLIC_META_PIXEL_ID` are set (see `.env.example`). CTA links carry `data-track` = `trial_start_click` | `booking_click` | `whatsapp_click`.

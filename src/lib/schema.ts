@@ -1,5 +1,5 @@
 // JSON-LD builders. Every page gets Organization; pages add their own nodes.
-const SITE = 'https://valthor.app';
+const SITE = 'https://www.valthor.app';
 
 export const organization = {
   '@type': 'Organization',
@@ -9,6 +9,10 @@ export const organization = {
   brand: { '@type': 'Brand', name: 'Valthor' },
   url: SITE,
   logo: `${SITE}/valthor-logo.png`,
+  description:
+    'MTS Group S.A.S. desarrolla Valthor, una suite de IA para PyMEs que atiende y vende por WhatsApp, Instagram y Facebook.',
+  areaServed: ['Argentina', 'Chile', 'España', 'Estados Unidos'].map((name) => ({ '@type': 'Country', name })),
+  knowsAbout: ['Inteligencia artificial', 'WhatsApp Business API', 'CRM', 'Atención al cliente', 'Ventas conversacionales'],
   address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -53,5 +57,28 @@ export function breadcrumbs(items: { name: string; path: string }[]) {
       name: it.name,
       item: `${SITE}${it.path === '/' ? '' : it.path}`,
     })),
+  };
+}
+
+export const website = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  url: SITE,
+  name: 'Valthor',
+  inLanguage: 'es',
+  publisher: { '@id': `${SITE}/#organization` },
+};
+
+export function webPage({ path, name, description }: { path: string; name: string; description: string }) {
+  return {
+    '@type': 'WebPage',
+    '@id': `${SITE}${path}#webpage`,
+    url: `${SITE}${path}`,
+    name,
+    description,
+    inLanguage: 'es',
+    isPartOf: { '@id': `${SITE}/#website` },
+    about: { '@id': `${SITE}/#software` },
+    publisher: { '@id': `${SITE}/#organization` },
   };
 }

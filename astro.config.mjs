@@ -3,12 +3,13 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://valthor.app',
+  site: 'https://www.valthor.app',
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file', inlineStylesheets: 'always' },
   integrations: [
     sitemap({
+      lastmod: new Date(),
       filter: (page) => !page.includes('/404'),
     }),
   ],

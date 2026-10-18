@@ -1,0 +1,83 @@
+---
+interface Props {
+  items: { title: string; text: string; href: string }[];
+  title?: string;
+}
+const { items, title = 'También te puede interesar' } = Astro.props;
+---
+
+<nav class="section light related" aria-labelledby="related-title">
+  <div class="wrap">
+    <h2 id="related-title" class="title">{title}</h2>
+    <ul class="grid">
+      {
+        items.map((r) => (
+          <li>
+            <a href={r.href} class="card">
+              <span class="t">{r.title}</span>
+              <span class="d">{r.text}</span>
+              <span class="more" aria-hidden="true">
+                Ver más →
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .related {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .grid li {
+    display: flex;
+  }
+  .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid var(--line-light);
+    background: #fafafe;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 58, 237, 0.35);
+    box-shadow: 0 14px 34px rgba(124, 58, 237, 0.12);
+  }
+  .t {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .d {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .card .more {
+    margin-top: auto;
+  }
+</style>

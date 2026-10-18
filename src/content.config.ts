@@ -162,10 +162,81 @@ const home = defineCollection({
 const faq = defineCollection({
   loader: file('src/content/faq.json'),
   schema: z.object({
+    category: z.string(),
     question: z.string(),
     answer: z.string(),
     showOnHome: z.boolean().default(false),
   }),
+});
+
+// Function, industry and alliance pages: the 7-block template.
+// `source` on every feature points to the audit row or README override
+// that backs the claim (used to build docs/CLAIMS_CHECKLIST.md).
+const landings = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/landings' }),
+  schema: z.object({
+    kind: z.enum(['funcion', 'rubro', 'alianza']),
+    seo,
+    breadcrumb: z.string(),
+    updated: z.string(),
+    eyebrow: z.string(),
+    h1: z.string(),
+    intro: z.string(),
+    highlights: z.array(z.string()).min(2).max(4),
+    pain: z.object({ title: z.string(), items: z.array(z.string()).min(3).max(5), text: z.string() }),
+    features: z.object({
+      title: z.string(),
+      text: z.string().optional(),
+      items: z
+        .array(
+          z.object({
+            id: z.string().optional(),
+            logo: z.enum(['kuad', 'gymflow', 'zeus']).optional(),
+            title: z.string(),
+            text: z.string(),
+            note: z.string().optional(),
+            source: z.string(),
+          }),
+        )
+        .min(3),
+    }),
+    conversation: z.object({
+      title: z.string(),
+      text: z.string(),
+      business: z.string(),
+      messages: z.array(message).min(3),
+    }),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).min(4).max(6),
+    cta: z.object({ title: z.string(), text: z.string() }),
+    related: z.array(z.object({ title: z.string(), text: z.string(), href: z.string() })).min(2).max(3),
+  }),
+});
+
+const plans = defineCollection({
+  loader: file('src/content/planes.json', { parser: (text) => ({ planes: JSON.parse(text) }) }),
+  schema: z.object({
+    seo,
+    eyebrow: z.string(),
+    h1: z.string(),
+    intro: z.string(),
+    plans: z.array(
+      z.object({
+        name: z.string(),
+        tagline: z.string(),
+        businesses: z.string(),
+        featured: z.boolean().optional(),
+        includes: z.array(z.object({ text: z.string(), source: z.string() })),
+      }),
+    ),
+    allPlans: z.object({ title: z.string(), items: z.array(z.string()) }),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).min(3).max(6),
+    cta: z.object({ title: z.string(), text: z.string() }),
+  }),
+});
+
+const faqPageContent = defineCollection({
+  loader: file('src/content/preguntas-frecuentes.json', { parser: (text) => ({ page: JSON.parse(text) }) }),
+  schema: z.object({ seo, h1: z.string(), intro: z.string(), cta: z.object({ title: z.string(), text: z.string() }) }),
 });
 
 const legal = defineCollection({
@@ -177,4 +248,4 @@ const legal = defineCollection({
   }),
 });
 
-export const collections = { site, home, faq, legal };
+export const collections = { site, home, faq, legal, landings, plans, faqPage: faqPageContent };

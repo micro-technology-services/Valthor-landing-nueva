@@ -89,7 +89,7 @@ for (const file of files) {
   if (desc.length < 140 || desc.length > 160) fail(page, `meta description is ${desc.length} chars (140-160)`);
 
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? '';
-  if (!canonical.startsWith('https://valthor.app')) fail(page, `canonical not on https://valthor.app: "${canonical}"`);
+  if (!canonical.startsWith('https://www.valthor.app')) fail(page, `canonical not on https://www.valthor.app: "${canonical}"`);
 
   for (const [attr, name] of [
     ['property', 'og:title'],
@@ -101,7 +101,7 @@ for (const file of files) {
   ]) {
     if (!meta(html, attr, name)) fail(page, `missing ${name}`);
   }
-  const og = meta(html, 'property', 'og:image').replace('https://valthor.app', '');
+  const og = meta(html, 'property', 'og:image').replace('https://www.valthor.app', '');
   if (og && !existsSync(join(DIST, og))) fail(page, `og:image file not found: ${og}`);
 
   // JSON-LD
@@ -110,7 +110,24 @@ for (const file of files) {
   for (const b of blocks) {
     try {
       const data = JSON.parse(b);
-      for (const node of data['@graph'] ?? [data]) types.push(node['@type']);
+      if (data['@context'] !== 'https://schema.org') fail(page, 'JSON-LD @context must be https://schema.org');
+      for (const node of data['@graph'] ?? [data]) {
+        types.push(node['@type']);
+        if (node['@type'] === 'FAQPage') {
+          if (!node.mainEntity?.length) fail(page, 'FAQPage without mainEntity');
+          for (const q of node.mainEntity ?? [])
+            if (q['@type'] !== 'Question' || !q.name || q.acceptedAnswer?.['@type'] !== 'Answer' || !q.acceptedAnswer.text)
+              fail(page, `FAQPage item malformed: ${q.name}`);
+        }
+        if (node['@type'] === 'BreadcrumbList')
+          node.itemListElement.forEach((it, i) => {
+            if (it['@type'] !== 'ListItem' || it.position !== i + 1 || !it.name || !/^https:\/\/www\.valthor\.app/.test(it.item))
+              fail(page, `BreadcrumbList item ${i + 1} malformed`);
+          });
+        if (node['@type'] === 'Organization' && (!node.name || !node.url || !node.logo)) fail(page, 'Organization missing name/url/logo');
+        if (node['@type'] === 'SoftwareApplication' && (!node.name || !node.applicationCategory || !node.operatingSystem))
+          fail(page, 'SoftwareApplication missing name/applicationCategory/operatingSystem');
+      }
       if (/"offers"|"price"/.test(b)) fail(page, 'JSON-LD contains price/offers');
     } catch (e) {
       fail(page, `invalid JSON-LD: ${e.message}`);
@@ -175,7 +192,20 @@ for (const f of ['robots.txt', 'sitemap-index.xml', 'llms.txt']) if (!existsSync
 const robots = readFileSync(join(DIST, 'robots.txt'), 'utf8');
 for (const bot of ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended'])
   if (!robots.includes(`User-agent: ${bot}`)) fail('robots.txt', `missing ${bot}`);
-if (!robots.includes('Sitemap: https://valthor.app/sitemap-index.xml')) fail('robots.txt', 'missing Sitemap line');
+if (!robots.includes('Sitemap: https://www.valthor.app/sitemap-index.xml')) fail('robots.txt', 'missing Sitemap line');
+
+// Plain-text files for AI assistants follow the same copy rules
+for (const f of ['llms.txt', 'llms-full.txt']) {
+  const t = readFileSync(join(DIST, f), 'utf8');
+  const v = t.match(VOSEO);
+  if (v) fail(f, `voseo/vosotros found: "${v[0]}"`);
+  for (const re of FORBIDDEN) if (re.test(t)) fail(f, `forbidden claim: "${t.match(re)[0]}"`);
+  if (PRICE.test(t)) fail(f, `possible price: "${t.match(PRICE)[0]}"`);
+  for (const m of t.matchAll(/\((https:\/\/www\.valthor\.app[^)]*)\)/g)) {
+    const path = m[1].replace('https://www.valthor.app', '') || '/';
+    if (!existing.has(path) && !existsSync(join(DIST, path))) fail(f, `link to missing page: ${path}`);
+  }
+}
 
 const uniqueWarnings = [...new Set(warnings.map((w) => w.split(': ').slice(1).join(': ')))];
 if (uniqueWarnings.length) console.log(`\nWarnings:\n  ${uniqueWarnings.join('\n  ')}`);

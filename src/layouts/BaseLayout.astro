@@ -12,9 +12,10 @@ interface Props {
   /** Extra JSON-LD nodes for this page (Organization is always added). */
   jsonLd?: object[];
   ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description, jsonLd = [], ogImage = '/og/valthor.png' } = Astro.props;
+const { title, description, jsonLd = [], ogImage = '/og/valthor.png', noindex = false } = Astro.props;
 const site = Astro.site!;
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1');
 const canonical = new URL(path, site).href.replace(/\/$/, path === '/' ? '/' : '');
@@ -30,7 +31,7 @@ const graph = { '@context': 'https://schema.org', '@graph': [organization, ...js
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content="#0E0A1A" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
