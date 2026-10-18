@@ -1,0 +1,135 @@
+---
+import { rich } from '../../lib/text';
+interface Props {
+  problem: any;
+}
+const { problem } = Astro.props;
+---
+
+<section class="section problem" aria-labelledby="problem-title">
+  <div class="wrap row">
+    <div class="text">
+      <p class="eyebrow">{problem.eyebrow}</p>
+      <h2 id="problem-title" class="h2" set:html={rich(problem.title)} />
+      <ul class="pains">
+        {
+          problem.pains.map((p: string) => (
+            <li>
+              <span class="x" aria-hidden="true">
+                ×
+              </span>
+              {p}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="lead">{problem.text}</p>
+    </div>
+    <figure class="wa-card" aria-label={problem.chat.label}>
+      <div class="wa-head">
+        <span class="wa-av" aria-hidden="true"></span>
+        <span>{problem.chat.name}</span>
+      </div>
+      <div class="wa-body">
+        {
+          problem.chat.messages.map((m: any) => (
+            <p class:list={['bubble', m.from === 'ai' ? 'ai' : 'in']}>{m.text}</p>
+          ))
+        }
+      </div>
+      <figcaption>{problem.chat.caption}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background:
+      radial-gradient(800px 500px at 0% 50%, rgba(139, 92, 246, 0.18), transparent 65%),
+      linear-gradient(180deg, var(--bg), var(--bg-2));
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .pains {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .pains li {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 18px;
+    color: var(--on-dark-2);
+  }
+  .x {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.22);
+    color: #f0abfc;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wa-card {
+    max-width: 380px;
+    width: 100%;
+    justify-self: center;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    color: #111;
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.5),
+      0 0 60px rgba(124, 58, 237, 0.25);
+  }
+  .wa-head {
+    background: linear-gradient(135deg, #fef08a, #fde047);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .wa-av {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #25d366;
+  }
+  .wa-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 230px;
+  }
+  .bubble.in {
+    background: #f1f5f9;
+    max-width: 82%;
+  }
+  .bubble.ai {
+    max-width: 82%;
+  }
+  figcaption {
+    padding: 0 16px 14px;
+    font-size: 12px;
+    color: #475569;
+    text-align: center;
+  }
+  @media (max-width: 720px) {
+    .pains li {
+      font-size: 16px;
+    }
+  }
+</style>

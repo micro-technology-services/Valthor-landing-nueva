@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingPage from '../components/landing/LandingPage.astro';
+import { breadcrumbs, faqPage, webPage } from '../lib/schema';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('landings');
+  return entries.map((entry) => ({ params: { landing: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const path = `/${entry.id}`;
+const crumbs = [{ name: entry.data.breadcrumb, path }];
+---
+
+<BaseLayout
+  title={entry.data.seo.title}
+  description={entry.data.seo.description}
+  jsonLd={[
+    webPage({ path, name: entry.data.h1, description: entry.data.seo.description }),
+    breadcrumbs(crumbs),
+    faqPage(entry.data.faqs),
+  ]}
+>
+  <LandingPage entry={entry} crumbs={crumbs}>
+    <Content />
+  </LandingPage>
+</BaseLayout>

@@ -1,0 +1,14 @@
+---
+import Cta from './Cta.astro';
+interface Props {
+  location: string;
+  size?: 'md' | 'lg';
+  center?: boolean;
+}
+const { location, size = 'md', center = false } = Astro.props;
+---
+
+<div class="btn-row" style={center ? 'justify-content:center' : undefined}>
+  <Cta kind="trial" size={size} location={location} />
+  <Cta kind="booking" size={size} location={location} />
+</div>

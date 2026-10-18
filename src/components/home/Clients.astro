@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets';
+import { rich } from '../../lib/text';
+
+interface Props {
+  clients: any;
+}
+const { clients } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('../../assets/clients/*.{png,webp,jpg}', { eager: true });
+const imageFor = (name: string) => {
+  const hit = Object.entries(images).find(([p]) => p.includes(`/clients/${name}.`));
+  if (!hit) throw new Error(`Client logo "${name}" not found in src/assets/clients/`);
+  return hit[1].default;
+};
+const HEIGHT = 42;
+---
+
+<section class="clients light" aria-labelledby="clients-title">
+  <div class="wrap head">
+    <p class="eyebrow">{clients.eyebrow}</p>
+    <h2 id="clients-title" set:html={rich(clients.title)} />
+  </div>
+  <div class="marquee">
+    {
+      [0, 1].map((copy) => (
+        <ul class="track" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {clients.logos.map((c: any) => {
+            if (c.image) {
+              const img = imageFor(c.image);
+              return (
+                <li>
+                  <Image
+                    src={img}
+                    alt={copy === 0 ? `Logo de ${c.name}` : ''}
+                    height={HEIGHT}
+                    width={Math.round((HEIGHT * img.width) / img.height)}
+                    densities={[1, 2]}
+                    class:list={['logo-img', c.invert && 'invert']}
+                    loading="lazy"
+                  />
+                </li>
+              );
+            }
+            return (
+              <li>
+                <span class:list={['wm', c.style]}>{c.name}</span>
+              </li>
+            );
+          })}
+        </ul>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding: 80px 0 84px;
+    border-top: 1px solid var(--line-light);
+    overflow: hidden;
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 46px;
+  }
+  .head .eyebrow {
+    color: #475569;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--accent-ink);
+    text-wrap: balance;
+  }
+  .marquee {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .track {
+    display: flex;
+    align-items: center;
+    gap: 62px;
+    padding-right: 62px;
+    flex: none;
+  }
+  .track li {
+    flex: none;
+  }
+  .logo-img {
+    height: 42px;
+    width: auto;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  .logo-img.invert {
+    filter: grayscale(1) brightness(0);
+    opacity: 0.5;
+  }
+  .wm {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: #4b5563;
+    white-space: nowrap;
+  }
+  .wm.spaced {
+    letter-spacing: 0.16em;
+  }
+  .wm.sans {
+    font-family: var(--font-body);
+    letter-spacing: -0.02em;
+  }
+  .wm.light {
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .wm.italic {
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.08em;
+  }
+  .track li:hover .logo-img {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .track {
+      animation: vmarquee-self 48s linear infinite;
+    }
+    .marquee:hover .track {
+      animation-play-state: paused;
+    }
+  }
+  @keyframes vmarquee-self {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+      justify-content: center;
+    }
+    .track {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px 48px;
+      padding: 0 var(--gutter);
+      flex: 1;
+    }
+    .track[aria-hidden='true'] {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .clients {
+      padding: 56px 0;
+    }
+    h2 {
+      font-size: 26px;
+    }
+    .logo-img {
+      height: 30px;
+    }
+    .wm {
+      font-size: 17px;
+    }
+    .track {
+      gap: 40px;
+      padding-right: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,191 @@
+{
+  "seo": {
+    "title": "Valthor: agente de IA para WhatsApp que vende y cobra",
+    "description": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo, entiende audios, envía el link de Mercado Pago y agenda turnos. Prueba gratis 15 días."
+  },
+  "hero": {
+    "badge": "Suite de IA para PyMEs",
+    "title": "Tu equipo comercial con IA. *Atiende, vende, cobra y agenda* mientras tú supervisas.",
+    "lead": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo y tus precios, entiende audios, envía el link de Mercado Pago, agenda turnos y sigue a cada cliente hasta que compra. Sin programar.",
+    "trust": ["API oficial de WhatsApp", "Meta Business Partner", "Atendiendo en 2 horas"],
+    "mockup": {
+      "label": "Ejemplo de la bandeja de conversaciones de Valthor",
+      "url": "platform.valthor.app / conversaciones",
+      "tag": "Ejemplo",
+      "listTitle": "Conversaciones",
+      "chats": [
+        { "initials": "LF", "name": "Lucía Fernández", "preview": "¡Listo, ya pagué!", "color": "#047857", "status": "Venta", "active": true },
+        { "initials": "MG", "name": "Martín Gómez", "preview": "Audio · 0:12", "color": "#475569" },
+        { "initials": "DS", "name": "Diego Silva", "preview": "¿Tienen turno el jueves?", "color": "#A0480A" },
+        { "initials": "CR", "name": "Carla Romero", "preview": "Quiero hablar con alguien", "color": "#BE123C", "status": "Humano" }
+      ],
+      "thread": {
+        "name": "Lucía Fernández",
+        "initials": "LF",
+        "meta": "Atendida por Agente IA · WhatsApp",
+        "messages": [
+          { "from": "client", "text": "Hola, ¿tienen la campera negra en talle M?" },
+          { "from": "ai", "text": "¡Hola, Lucía! Sí, quedan 3 en talle M y hacemos envíos a Córdoba. ¿Te la reservo?", "meta": "Agente IA · 09:20" },
+          { "from": "client", "text": "Sí, dale. ¿Cómo pago?" },
+          { "from": "ai", "text": "Aquí tienes el link de pago de Mercado Pago. Apenas se acredite, la despachamos.", "meta": "Agente IA · 09:21" }
+        ],
+        "outcome": "Pago aprobado · venta cerrada sola"
+      }
+    }
+  },
+  "clients": {
+    "eyebrow": "Nuestros clientes",
+    "title": "Ya venden con Valthor",
+    "logos": [
+      { "name": "TOYODAIH", "style": "spaced" },
+      { "name": "Calzados 10 Puntos", "image": "calzados-10-puntos" },
+      { "name": "Grupo San Martín", "image": "grupo-san-martin" },
+      { "name": "Jeklo Aceros Inoxidables", "image": "jecklo-aceros" },
+      { "name": "Pampero", "style": "sans" },
+      { "name": "TQe", "style": "grotesk" },
+      { "name": "BDK design", "style": "light" },
+      { "name": "Assistravel", "style": "sans" },
+      { "name": "Frambuesa Design", "image": "frambuesa-design" },
+      { "name": "baika club", "style": "italic" },
+      { "name": "Grupo EyP", "style": "sans" },
+      { "name": "MERCOMAC", "style": "spaced" },
+      { "name": "Grado 42°", "style": "sans" },
+      { "name": "Blühend Crystals", "image": "bluhend", "invert": true }
+    ]
+  },
+  "problem": {
+    "eyebrow": "El problema",
+    "title": "El mejor vendedor de tu equipo *no duerme.*",
+    "pains": [
+      "Respondes WhatsApp a las 23 h.",
+      "Pierdes clientes porque nadie les volvió a escribir.",
+      "Pagas anuncios y no sabes cuál vende."
+    ],
+    "text": "Valthor atiende, asesora y cierra ventas a cualquier hora. Respuesta en segundos y tus ingresos crecen sin sumar costos fijos.",
+    "chat": {
+      "label": "Conversación de ejemplo por WhatsApp",
+      "name": "Sofía Morales",
+      "messages": [
+        { "from": "client", "text": "Hola, vi la campera en su Instagram. ¿Les queda en L? Son las 2 de la mañana, perdón 🙈" },
+        { "from": "ai", "text": "¡Hola, Sofía! No hay problema. Sí, quedan 2 en L. Si la pides hoy, el envío es gratis." },
+        { "from": "client", "text": "Me la llevo. ¿Cómo pago?" },
+        { "from": "ai", "text": "Te paso el link de Mercado Pago. Cualquier duda me escribes." }
+      ],
+      "caption": "Conversación de ejemplo"
+    }
+  },
+  "jobs": {
+    "eyebrow": "El trabajo hecho",
+    "title": "No te damos una herramienta. Te damos *cinco trabajos resueltos.*",
+    "items": [
+      { "title": "Atiende y vende", "text": "Responde en WhatsApp, Instagram y Facebook con tu catálogo, tus precios y tu tono.", "href": "/funciones/agente-ia-whatsapp" },
+      { "title": "Cobra", "text": "Envía el link de Mercado Pago y, cuando se aprueba el pago, cierra la venta sola.", "href": "/funciones/agente-ia-whatsapp" },
+      { "title": "Agenda", "text": "Da turnos, reprograma, cobra la seña y los recuerda. Con Google y Outlook.", "href": "/rubros/turnos" },
+      { "title": "Recupera", "text": "Vuelve a escribirle a quien no respondió, invita a recomprar y reactiva ventas frías." },
+      { "title": "Mide", "text": "Te muestra cuánto vendió tu IA y qué anuncio de Meta trae ventas, no solo mensajes." }
+    ]
+  },
+  "agent": {
+    "eyebrow": "IA de verdad",
+    "title": "No es un chatbot. Es tu mejor *cerrador de ventas.*",
+    "chips": [
+      { "emoji": "🎯", "title": "Objetivo", "text": "Cerrar la venta" },
+      { "emoji": "😊", "title": "Voz de marca", "text": "Cercana y persuasiva" },
+      { "emoji": "☝️", "title": "Estrategia", "text": "Ofrece envío y link" }
+    ],
+    "phone": {
+      "label": "Teléfono con una conversación de ejemplo",
+      "business": "Tu Negocio",
+      "status": "en línea",
+      "messages": [
+        { "from": "client", "text": "¿Les quedó la campera puffer negra en talle L?" },
+        { "from": "ai", "text": "¡Sí! Quedan las últimas dos en negro talle L. Son abrigadas e impermeables." },
+        { "from": "client", "audio": "Audio · 0:06" },
+        { "from": "ai", "text": "¡Claro, enviamos a Rosario! Te dejo el link de Mercado Pago y la despachamos hoy. ¿Te la separo?" }
+      ]
+    },
+    "comparison": [
+      { "before": "Menú de \"1, 2 o 3\"", "after": "Entiende lo que le escriben y los audios" },
+      { "before": "Atención de 9 a 18", "after": "Responde en segundos, a cualquier hora" },
+      { "before": "\"Respondo cuando puedo\"", "after": "Sigue a cada cliente hasta que compra" }
+    ],
+    "text": "¿Quieres saber cuánto te ahorraría en tu negocio? Lo calculamos contigo en una llamada."
+  },
+  "steps": {
+    "title": "Atendiendo en *2 horas.*",
+    "text": "Sin programar y sin cambiar tu número. Lo pruebas antes de encenderlo y tú decides cuándo atiende.",
+    "items": [
+      { "title": "Conectas tus canales", "text": "Tu WhatsApp oficial, Instagram y Facebook, en pocos clics." },
+      { "title": "Le enseñas tu negocio", "text": "Catálogo, precios y reglas. Lo pruebas gratis en el Playground antes de encenderlo." },
+      { "title": "Lo enciendes y supervisas", "text": "Todo el día o por horario. Cuando hace falta una persona, te pasa la conversación." }
+    ]
+  },
+  "roas": {
+    "eyebrow": "Atribución de anuncios",
+    "title": "Descubre qué anuncio te trae *ventas, no solo mensajes.*",
+    "text": "Valthor conecta cada venta con el anuncio de Meta que la originó y te muestra el ROAS real. Y te avisa qué anuncios gastan sin traer a nadie.",
+    "cards": {
+      "label": "Métricas de ejemplo de atribución de anuncios",
+      "sold": { "label": "Vendido por anuncios", "value": "$5.330.200", "note": "65 ventas atribuidas" },
+      "roas": { "label": "ROAS real", "value": "6,4x" },
+      "ads": {
+        "label": "Por anuncio",
+        "rows": [
+          { "name": "Campera invierno · Reel", "value": "9,2x" },
+          { "name": "Promo envío gratis", "value": "4,8x" },
+          { "name": "Carrusel accesorios", "value": "Gasta sin vender", "warn": true }
+        ]
+      },
+      "disclaimer": "Datos de ejemplo"
+    }
+  },
+  "industries": {
+    "eyebrow": "Para tu rubro",
+    "title": "Preparado para *cómo vendes tú.*",
+    "items": [
+      { "title": "Ecommerce", "text": "Stock, talles, envíos y \"¿dónde está mi pedido?\".", "href": "/rubros/ecommerce" },
+      { "title": "Turnos", "text": "Agenda con seña para estética, salud y servicios.", "href": "/rubros/turnos" },
+      { "title": "Gimnasios", "text": "Socios en riesgo, check-in por QR y rutinas con IA.", "href": "/rubros/gimnasios" },
+      { "title": "Cursos y eventos", "text": "Cupos, seña y lista de espera por chat." },
+      { "title": "Mayoristas", "text": "Una lista de precios por cliente, que la IA respeta." }
+    ],
+    "linkLabel": "Ver más"
+  },
+  "alliances": {
+    "eyebrow": "Alianzas",
+    "title": "¿Necesitas una tienda, un sistema para tu gimnasio o un ERP? *Trabajamos con los mejores.*",
+    "text": "Integraciones listas e implementación conjunta: los dos equipos te dejan funcionando.",
+    "items": [
+      { "logo": "kuad", "alt": "Kuad System", "title": "¿Necesitas una tienda online?", "text": "Créala con Kuad System y deja que Valthor venda por WhatsApp con tu catálogo.", "href": "/alianzas#kuad-system" },
+      { "logo": "gymflow", "alt": "GymFlow, software profesional para gimnasios", "title": "¿Tienes un gimnasio?", "text": "Si usas GymFlow, Valthor detecta a los socios en riesgo de irse y te avisa a tiempo.", "href": "/alianzas#gymflow" },
+      { "logo": "zeus", "alt": "ZEUS ERP & POS", "title": "¿Necesitas un ERP?", "text": "ZEUS gestiona tu stock, tus ventas y tus sucursales. Valthor vende por WhatsApp con esos datos.", "href": "/alianzas#zeus-erp" }
+    ],
+    "linkLabel": "Ver la alianza"
+  },
+  "integrations": {
+    "title": "Conectado a tu *catálogo* y tus redes.",
+    "text": "Tu tienda, tu ERP y tus canales en un solo lugar. El catálogo se actualiza todos los días.",
+    "items": [
+      { "name": "WhatsApp", "icon": "whatsapp" },
+      { "name": "Instagram", "icon": "instagram" },
+      { "name": "Facebook", "icon": "facebook" },
+      { "name": "Tienda Nube", "icon": "tienda-nube" },
+      { "name": "Mercado Libre", "icon": "mercado-libre" },
+      { "name": "Magento", "monogram": "M", "color": "#C2410C" },
+      { "name": "Mercado Pago", "icon": "mercado-pago" },
+      { "name": "Kuad System", "icon": "kuad-system" },
+      { "name": "GymFlow", "icon": "gymflow" },
+      { "name": "ZEUS ERP", "icon": "zeus" },
+      { "name": "Google Calendar", "icon": "google-calendar" },
+      { "name": "Outlook", "monogram": "O", "color": "#0067B8" },
+      { "name": "Gmail", "icon": "gmail" }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas *frecuentes*",
+    "moreLabel": "Ver todas las preguntas frecuentes"
+  },
+  "closing": {
+    "title": "Deja de responder mensajes. *Empieza a supervisar ventas.*"
+  }
+}

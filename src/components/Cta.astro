@@ -1,0 +1,24 @@
+---
+// The only two CTA buttons on the site. Labels and URLs come from src/content/site.json.
+import { getSite } from '../lib/content';
+
+interface Props {
+  kind: 'trial' | 'booking';
+  variant?: 'primary' | 'secondary';
+  size?: 'md' | 'lg';
+  location: string;
+  class?: string;
+}
+const { kind, variant = kind === 'trial' ? 'primary' : 'secondary', size = 'md', location, class: extra } = Astro.props;
+const { cta } = await getSite();
+const { label, href } = cta[kind];
+const track = kind === 'trial' ? 'trial_start_click' : 'booking_click';
+---
+
+<a
+  href={href}
+  class:list={['btn', `btn-${variant}`, size === 'lg' && 'btn-lg', extra]}
+  data-track={track}
+  data-track-location={location}
+  rel={kind === 'booking' ? 'noopener' : undefined}>{label}</a
+>

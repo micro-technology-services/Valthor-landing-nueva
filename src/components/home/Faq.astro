@@ -1,0 +1,36 @@
+---
+import FaqList from '../FaqList.astro';
+import { rich } from '../../lib/text';
+interface Props {
+  faq: any;
+  items: { id: string; question: string; answer: string }[];
+}
+const { faq, items } = Astro.props;
+---
+
+<section class="section faq-sec" aria-labelledby="faq-title">
+  <div class="wrap inner">
+    <h2 id="faq-title" class="h2" set:html={rich(faq.title)} />
+    <FaqList faqs={items} />
+    <a class="more" href="/preguntas-frecuentes">{faq.moreLabel} →</a>
+  </div>
+</section>
+
+<style>
+  .faq-sec {
+    background: var(--bg);
+  }
+  .inner {
+    max-width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .h2 {
+    text-align: center;
+  }
+  .more {
+    align-self: center;
+    color: var(--accent-soft);
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import Logo from './Logo.astro';
+import { getSite } from '../lib/content';
+const { footer, tagline } = await getSite();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <a href="/"><Logo size="sm" /><span class="sr-only">, inicio</span></a>
+        <p>{tagline}</p>
+      </div>
+      {
+        footer.columns.map((col) => (
+          <nav class="col" aria-label={col.title}>
+            <p class="col-title">{col.title}</p>
+            <ul>
+              {col.links.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+    <div class="bottom">
+      <p>{footer.copyright}</p>
+      <ul class="legal">
+        {
+          footer.legal.map((l) => (
+            <li>
+              <a href={l.href}>{l.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 56px 0 34px;
+    font-size: 14px;
+  }
+  .top {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 32px;
+  }
+  .brand a {
+    text-decoration: none;
+    display: inline-flex;
+  }
+  .brand p {
+    margin-top: 14px;
+    color: var(--on-dark-3);
+    max-width: 260px;
+  }
+  .col-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .col li + li {
+    margin-top: 4px;
+  }
+  .col a,
+  .legal a {
+    color: var(--on-dark-3);
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 0;
+  }
+  .col a:hover,
+  .legal a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .bottom {
+    margin-top: 40px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: space-between;
+    color: var(--on-dark-3);
+    font-size: 13px;
+  }
+  .legal {
+    display: flex;
+    gap: 20px;
+  }
+  @media (max-width: 860px) {
+    .top {
+      grid-template-columns: 1fr 1fr;
+    }
+    .brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 720px) {
+    .site-footer {
+      padding-bottom: 96px;
+    }
+  }
+</style>

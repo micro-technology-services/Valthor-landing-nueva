@@ -1,0 +1,62 @@
+{
+  "name": "Valthor",
+  "tagline": "Suite de IA para PyMEs, de MTS Group.",
+  "url": "https://www.valthor.app",
+  "organization": {
+    "legalName": "MTS Group S.A.S.",
+    "city": "Buenos Aires",
+    "country": "AR"
+  },
+  "cta": {
+    "trial": {
+      "label": "Probar gratis 15 días",
+      "href": "https://platform.valthor.app/login"
+    },
+    "booking": {
+      "label": "Agendar una llamada",
+      "href": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2nyjulCLYyZpKp8XZG2ulAjS0XRWwMlC0cHgtiAGMtrBRvlwQTwZDZIreAJ6qIpu2de4oR_8_z"
+    },
+    "whatsapp": {
+      "label": "Hablar por WhatsApp con Valthor",
+      "href": "https://wa.me/5491131381205"
+    }
+  },
+  "nav": [
+    { "label": "Funciones", "href": "/#funciones" },
+    { "label": "Rubros", "href": "/#rubros" },
+    { "label": "Alianzas", "href": "/alianzas" },
+    { "label": "Planes", "href": "/planes" }
+  ],
+  "footer": {
+    "columns": [
+      {
+        "title": "Funciones",
+        "links": [
+          { "label": "Agente IA para WhatsApp", "href": "/funciones/agente-ia-whatsapp" },
+          { "label": "CRM para WhatsApp", "href": "/funciones/crm-whatsapp" }
+        ]
+      },
+      {
+        "title": "Rubros",
+        "links": [
+          { "label": "Ecommerce", "href": "/rubros/ecommerce" },
+          { "label": "Turnos", "href": "/rubros/turnos" },
+          { "label": "Gimnasios", "href": "/rubros/gimnasios" }
+        ]
+      },
+      {
+        "title": "Empresa",
+        "links": [
+          { "label": "Planes", "href": "/planes" },
+          { "label": "Alianzas", "href": "/alianzas" },
+          { "label": "Preguntas frecuentes", "href": "/preguntas-frecuentes" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 MTS Group S.A.S. · Buenos Aires, Argentina",
+    "legal": [
+      { "label": "Privacidad", "href": "/privacidad" },
+      { "label": "Términos", "href": "/terminos" }
+    ]
+  }
+}

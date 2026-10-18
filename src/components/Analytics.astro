@@ -1,0 +1,85 @@
+---
+// Google Ads tag: copied verbatim from the previous site (AW-18428663865).
+// GA4 and Meta Pixel only load when their IDs are set as environment variables
+// in Vercel (PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID). See .env.example.
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
+---
+
+<script is:inline>
+// gtag.js loads on the visitor's first interaction (or after 6 s idle) so it
+// does not block the first render. Commands queued in dataLayer before that
+// (config, conversions) are sent as soon as it loads.
+(function () {
+  var loaded = false;
+  var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    events.forEach(function (e) { removeEventListener(e, load, true); });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18428663865';
+    document.head.appendChild(s);
+  }
+  events.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
+  addEventListener('load', function () { setTimeout(load, 6000); });
+})();
+</script>
+<script is:inline>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18428663865');
+</script>
+<script is:inline>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18428663865/ygb_CIXQ2e0cELmwvNNE',
+      'value': 1.0,
+      'currency': 'ARS',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+{ga4Id && <script is:inline define:vars={{ ga4Id }}>gtag('config', ga4Id);</script>}
+{
+  pixelId && (
+    <script is:inline define:vars={{ pixelId }}>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+    </script>
+  )
+}
+<script is:inline>
+// CTA events: every tracked link carries data-track="trial_start_click" |
+// "booking_click" | "whatsapp_click". The Google Ads conversion fires on all
+// of them, as it did on the previous site.
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[data-track]');
+  if (!a) return;
+  var name = a.getAttribute('data-track');
+  var params = { link_url: a.href, cta_location: a.getAttribute('data-track-location') || '' };
+  if (window.gtag) gtag('event', name, params);
+  if (window.fbq) fbq('trackCustom', name, params);
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  if (typeof gtag_report_conversion !== 'function') return;
+  e.preventDefault();
+  var url = a.href, done = false;
+  var go = function () { if (!done) { done = true; window.location = url; } };
+  gtag_report_conversion(url);
+  setTimeout(go, 1200); // still navigate if the tag is blocked or slow
+  window.addEventListener('pagehide', function () { done = true; }, { once: true });
+});
+</script>

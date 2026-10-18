@@ -1,0 +1,297 @@
+---
+import { Image } from 'astro:assets';
+import icon from '../../assets/brand/valthor-icon.png';
+import Cta from '../Cta.astro';
+import { rich } from '../../lib/text';
+interface Props {
+  agent: any;
+}
+const { agent } = Astro.props;
+---
+
+<section class="section agent" aria-labelledby="agent-title">
+  <div class="side-glow" aria-hidden="true"></div>
+  <div class="wrap row">
+    <div class="gfx">
+      <svg class="wires" viewBox="0 0 460 540" fill="none" aria-hidden="true">
+        <path d="M150 130 C220 130 230 200 280 210" stroke="rgba(139,92,246,.45)" stroke-width="2" stroke-dasharray="5 5"
+        ></path>
+        <path d="M150 270 C220 270 240 270 280 270" stroke="rgba(139,92,246,.45)" stroke-width="2" stroke-dasharray="5 5"
+        ></path>
+        <path d="M150 410 C220 410 240 330 280 320" stroke="rgba(139,92,246,.45)" stroke-width="2" stroke-dasharray="5 5"
+        ></path>
+      </svg>
+      <ul class="chips">
+        {
+          agent.chips.map((c: any, i: number) => (
+            <li class:list={['chip', i % 2 ? 'float-2' : 'float']} style={`top:${104 + i * 140}px`}>
+              <span class="emoji" aria-hidden="true">
+                {c.emoji}
+              </span>
+              <strong>{c.title}</strong>
+              <span>{c.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <figure class="phone" aria-label={agent.phone.label}>
+        <span class="island" aria-hidden="true"></span>
+        <div class="screen">
+          <div class="ph-head">
+            <span class="ph-logo"><Image src={icon} alt="" width={16} height={19} /></span>
+            <span class="ph-name">
+              <strong>{agent.phone.business}</strong>
+              <span>{agent.phone.status}</span>
+            </span>
+          </div>
+          <div class="ph-body">
+            {
+              agent.phone.messages.map((m: any) =>
+                m.audio ? (
+                  <p class="pb out audio">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span class="wave" aria-hidden="true" />
+                    {m.audio}
+                  </p>
+                ) : (
+                  <p class:list={['pb', m.from === 'ai' ? 'in' : 'out']}>{m.text}</p>
+                ),
+              )
+            }
+          </div>
+        </div>
+      </figure>
+    </div>
+    <div class="text">
+      <p class="eyebrow">{agent.eyebrow}</p>
+      <h2 id="agent-title" class="h2" set:html={rich(agent.title)} />
+      <ul class="compare">
+        {
+          agent.comparison.map((c: any) => (
+            <li>
+              <span class="before">
+                <span class="sr-only">Antes: </span>
+                {c.before}
+              </span>
+              <span class="arrow" aria-hidden="true">
+                →
+              </span>
+              <span class="after">
+                <span class="sr-only">Con Valthor: </span>
+                {c.after}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="lead">{agent.text}</p>
+      <div><Cta kind="booking" variant="primary" location="agent" /></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agent {
+    background: var(--bg);
+  }
+  .side-glow {
+    position: absolute;
+    right: -100px;
+    top: 40%;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(closest-side, rgba(217, 70, 239, 0.16), transparent);
+    pointer-events: none;
+  }
+  .gfx {
+    position: relative;
+    height: 540px;
+    min-width: 0;
+    max-width: 480px;
+  }
+  .wires {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .chip {
+    position: absolute;
+    left: 14px;
+    width: 140px;
+    background: #fff;
+    color: var(--ink);
+    border-radius: 13px;
+    padding: 13px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .chip .emoji {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .chip strong {
+    font-size: 13px;
+  }
+  .chip span:last-child {
+    color: #475569;
+  }
+  .phone {
+    position: absolute;
+    right: 6px;
+    top: 15px;
+    width: 262px;
+    height: 510px;
+    background: #0b0b0f;
+    border-radius: 38px;
+    padding: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  }
+  .island {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 24px;
+    background: #0b0b0f;
+    border-radius: 14px;
+    z-index: 3;
+  }
+  .screen {
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #e9e2d7;
+    display: flex;
+    flex-direction: column;
+  }
+  .ph-head {
+    background: var(--grad-btn);
+    padding: 40px 14px 12px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .ph-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph-name {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .ph-name span {
+    font-size: 10px;
+    opacity: 0.9;
+  }
+  .ph-body {
+    flex: 1;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .pb {
+    max-width: 84%;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    line-height: 1.38;
+    color: #111;
+  }
+  .pb.out {
+    align-self: flex-end;
+    background: #dcf8c6;
+    border-radius: 10px 10px 2px 10px;
+  }
+  .pb.in {
+    align-self: flex-start;
+    background: #fff;
+    border-radius: 10px 10px 10px 2px;
+  }
+  .audio {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #075e54;
+    font-weight: 600;
+  }
+  .wave {
+    width: 54px;
+    height: 12px;
+    background: repeating-linear-gradient(90deg, #075e54 0 2px, transparent 2px 5px);
+    mask-image: linear-gradient(0deg, #000 30%, transparent 30%, transparent 70%, #000 70%);
+    opacity: 0.7;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .compare {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .compare li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.4fr);
+    gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line-dark);
+    font-size: 15px;
+  }
+  .before {
+    color: var(--on-dark-3);
+    text-decoration: line-through;
+    text-decoration-color: rgba(240, 171, 252, 0.6);
+  }
+  .arrow {
+    color: var(--accent-soft);
+  }
+  .after {
+    color: #fff;
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .gfx {
+      height: auto;
+      display: flex;
+      justify-content: center;
+      max-width: none;
+    }
+    .wires,
+    .chips {
+      display: none;
+    }
+    .phone {
+      position: relative;
+      right: auto;
+      top: auto;
+    }
+    .compare li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .arrow {
+      display: none;
+    }
+  }
+</style>
