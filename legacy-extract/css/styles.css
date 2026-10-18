@@ -1,0 +1,51 @@
+*{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#0E0A1A;-webkit-font-smoothing:antialiased}
+  @keyframes vfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes vfloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  @keyframes vpulse{0%,100%{opacity:.5}50%{opacity:.9}}
+  @keyframes vmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  ::selection{background:rgba(139,92,246,.3)}
+  @keyframes vshine{0%{left:-60%}55%{left:140%}100%{left:140%}}
+  .cta-shine{position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,filter .3s ease}
+  .cta-shine::before{content:"";position:absolute;top:0;left:-60%;width:42%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-22deg);pointer-events:none;z-index:2}
+  .cta-shine:hover{transform:translateY(-3px) scale(1.04) !important;box-shadow:0 16px 42px rgba(139,92,246,.55),0 0 26px rgba(217,70,239,.5) !important;filter:brightness(1.08) saturate(1.18)}
+  .cta-shine:hover::before{animation:vshine .9s ease}
+  /* Responsive — móviles */
+  @media (max-width: 720px){
+    .hero-h1{font-size:34px !important;line-height:1.1 !important}
+    .sec-h2{font-size:28px !important;line-height:1.15 !important}
+    .cta-h2{font-size:30px !important;line-height:1.12 !important}
+    .clients-h2{font-size:24px !important}
+    .pad-96{padding:52px 20px !important}
+    .pad-100{padding:52px 20px 0 !important}
+    .pad-90{padding:50px 20px !important}
+    .pad-clients{padding:52px 0 56px !important}
+    .nav-row{padding:15px 16px !important;gap:10px !important}
+    .nav-row img{height:40px !important}
+    .nav-cta{display:none !important}
+    .nav-login{display:inline-block !important;background:linear-gradient(135deg,var(--accent,#8B5CF6),var(--accent2,#D946EF)) !important;color:#fff !important;padding:11px 20px !important;border-radius:11px !important;font-weight:600 !important;font-size:14px !important;border:none !important;text-decoration:none !important;white-space:nowrap !important}
+    .hero-copy{padding:32px 20px 0 !important}
+    .hero-tags{font-size:11px !important;letter-spacing:.06em !important}
+    .hero-cta-row button{padding:15px 24px !important;font-size:16px !important}
+    .hero-mockup{padding:0 14px !important;margin-top:36px !important}
+    .hero-rail,.hero-list{display:none !important}
+    .marquee-row img{height:28px !important}
+    .marquee-row .wm{font-size:17px !important}
+    .feature-grid{grid-template-columns:1fr !important;gap:18px !important}
+    .demo-iframe{height:70vh !important;min-height:440px !important}
+    .demo-open{padding:7px 11px !important;background:rgba(139,92,246,.18) !important;border-radius:8px}
+    .footer-row{flex-direction:column;align-items:flex-start !important;gap:16px !important}
+    .wa-card{padding:30px 22px !important;gap:20px !important}
+    .card-fixed{width:100% !important;max-width:340px}
+    .row-wrap{gap:28px !important;flex-direction:column !important;align-items:stretch !important}
+    .row-wrap > div{min-width:0 !important;width:auto !important}
+    /* Multicanalidad: gráfico decorativo oculto en móvil */
+    .gfx-multi{display:none !important}
+    /* Agente IA: solo el teléfono, centrado */
+    .gfx-agent{height:auto !important;min-height:0 !important;display:flex !important;justify-content:center !important;padding:4px 0 !important}
+    .agent-wires,.agent-chip{display:none !important}
+    .agent-phone{position:relative !important;right:auto !important;top:auto !important;margin:0 auto !important;flex-shrink:0 !important}
+    /* Reportes: tarjetas de métricas apiladas */
+    .gfx-report{height:auto !important;display:flex !important;flex-direction:column !important;gap:14px !important;align-items:center !important}
+    .report-card{position:relative !important;left:auto !important;right:auto !important;top:auto !important;width:100% !important;max-width:280px !important;animation:none !important}
+  }
