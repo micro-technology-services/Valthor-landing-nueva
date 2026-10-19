@@ -27,4 +27,14 @@ Owner guide in Spanish (edit, preview, publish): [`docs/GUIA.md`](docs/GUIA.md).
 
 ## Analytics
 
-Google Ads `AW-18428663865` is always on (loaded on first interaction). GA4 and Meta Pixel load only when `PUBLIC_GA4_ID` / `PUBLIC_META_PIXEL_ID` are set (see `.env.example`). CTA links carry `data-track` = `trial_start_click` | `booking_click` | `whatsapp_click`.
+Google Ads `AW-18428663865` is always on. GA4 and Meta Pixel are added only when `PUBLIC_GA4_ID` / `PUBLIC_META_PIXEL_ID` are set (see `.env.example`). gtag.js and fbevents.js both load on the first interaction (or after 6 s).
+
+CTA links carry `data-track`:
+
+| `data-track` | GA4 event | Meta Pixel | Google Ads conversion |
+| --- | --- | --- | --- |
+| `whatsapp_click` (WhatsApp demo CTA, floating button) | `whatsapp_click` | `Lead` | yes |
+| `booking_click` (tertiary «o agendá una llamada») | `booking_click` | `Lead` | yes |
+| `trial_start_click` («Probar gratis») | `trial_start_click` | `StartTrial` | yes |
+
+CTA hierarchy: primary = WhatsApp demo, secondary = free trial, tertiary booking link only in the final CTA section. Labels and URLs live in `src/content/site.json`.

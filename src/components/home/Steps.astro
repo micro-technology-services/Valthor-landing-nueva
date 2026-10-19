@@ -1,5 +1,5 @@
 ---
-import Cta from '../Cta.astro';
+import CtaPair from '../CtaPair.astro';
 import { rich } from '../../lib/text';
 interface Props {
   steps: any;
@@ -20,7 +20,7 @@ const { steps } = Astro.props;
       </svg>
       <h2 id="steps-title" class="h2" set:html={rich(steps.title)} />
       <p class="lead">{steps.text}</p>
-      <div><Cta kind="trial" location="steps" /></div>
+      <CtaPair location="steps" />
     </div>
     <ol class="list">
       {

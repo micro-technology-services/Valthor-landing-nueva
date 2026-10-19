@@ -1,14 +1,20 @@
 ---
+// Primary (WhatsApp demo) + secondary (free trial). The final CTA section of
+// each page also shows the tertiary booking link.
 import Cta from './Cta.astro';
 interface Props {
   location: string;
   size?: 'md' | 'lg';
   center?: boolean;
+  withBooking?: boolean;
 }
-const { location, size = 'md', center = false } = Astro.props;
+const { location, size = 'md', center = false, withBooking = false } = Astro.props;
 ---
 
-<div class="btn-row" style={center ? 'justify-content:center' : undefined}>
-  <Cta kind="trial" size={size} location={location} />
-  <Cta kind="booking" size={size} location={location} />
+<div class:list={['cta-group', center && 'center']}>
+  <div class="btn-row">
+    <Cta kind="demo" size={size} location={location} />
+    <Cta kind="trial" size={size} location={location} />
+  </div>
+  {withBooking && <Cta kind="booking" location={location} />}
 </div>

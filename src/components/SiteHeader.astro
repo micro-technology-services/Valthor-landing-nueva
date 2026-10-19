@@ -12,8 +12,7 @@ const { nav } = await getSite();
       {nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
     </ul>
     <div class="actions">
-      <Cta kind="booking" variant="secondary" location="header" class="booking" />
-      <Cta kind="trial" location="header" />
+      <Cta kind="trial" variant="primary" short location="header" />
     </div>
   </nav>
 </header>
@@ -76,9 +75,6 @@ const { nav } = await getSite();
       gap: 12px;
       padding-top: 14px;
       padding-bottom: 14px;
-    }
-    .actions :global(.booking) {
-      display: none;
     }
     .actions :global(.btn) {
       padding: 10px 14px;

@@ -1,20 +1,19 @@
 ---
+// Final CTA section of inner pages: the only place with the booking link.
 import CtaPair from './CtaPair.astro';
-import Cta from './Cta.astro';
 interface Props {
   title: string;
   text: string;
   location: string;
-  bookingOnly?: boolean;
 }
-const { title, text, location, bookingOnly = false } = Astro.props;
+const { title, text, location } = Astro.props;
 ---
 
 <section class="section cta-band" aria-labelledby={`cta-${location}`}>
   <div class="wrap inner">
     <h2 id={`cta-${location}`} class="h2">{title}</h2>
     <p class="lead">{text}</p>
-    {bookingOnly ? <Cta kind="booking" variant="primary" size="lg" location={location} /> : <CtaPair location={location} size="lg" center />}
+    <CtaPair location={location} size="lg" center withBooking />
   </div>
 </section>
 

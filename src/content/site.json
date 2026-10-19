@@ -8,12 +8,17 @@
     "country": "AR"
   },
   "cta": {
+    "demo": {
+      "label": "Hablá con Valthor por WhatsApp",
+      "href": "https://wa.me/5491131381205?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20Valthor"
+    },
     "trial": {
       "label": "Probar gratis 15 días",
+      "shortLabel": "Probar gratis",
       "href": "https://platform.valthor.app/login"
     },
     "booking": {
-      "label": "Agendar una llamada",
+      "label": "o agendá una llamada",
       "href": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2nyjulCLYyZpKp8XZG2ulAjS0XRWwMlC0cHgtiAGMtrBRvlwQTwZDZIreAJ6qIpu2de4oR_8_z"
     },
     "whatsapp": {

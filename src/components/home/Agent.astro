@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import icon from '../../assets/brand/valthor-icon.png';
-import Cta from '../Cta.astro';
+import CtaPair from '../CtaPair.astro';
 import { rich } from '../../lib/text';
 interface Props {
   agent: any;
@@ -87,7 +87,7 @@ const { agent } = Astro.props;
         }
       </ul>
       <p class="lead">{agent.text}</p>
-      <div><Cta kind="booking" variant="primary" location="agent" /></div>
+      <CtaPair location="agent" />
     </div>
   </div>
 </section>

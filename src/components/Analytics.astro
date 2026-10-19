@@ -1,26 +1,32 @@
 ---
 // Google Ads tag: copied verbatim from the previous site (AW-18428663865).
-// GA4 and Meta Pixel only load when their IDs are set as environment variables
-// in Vercel (PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID). See .env.example.
+// GA4 and Meta Pixel are added only when their IDs are set as environment
+// variables in Vercel (PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID). See .env.example.
+// All third-party scripts load lazily, on the first interaction or after 6 s.
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
 ---
 
-<script is:inline>
-// gtag.js loads on the visitor's first interaction (or after 6 s idle) so it
-// does not block the first render. Commands queued in dataLayer before that
-// (config, conversions) are sent as soon as it loads.
+<script is:inline define:vars={{ withPixel: Boolean(pixelId) }}>
+// gtag.js (and fbevents.js when the Pixel is on) load on the visitor's first
+// interaction (or after 6 s idle) so they do not block the first render.
+// Commands queued before that (config, conversions, pixel events) are sent as
+// soon as each script loads.
 (function () {
   var loaded = false;
   var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+  function add(src) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = src;
+    document.head.appendChild(s);
+  }
   function load() {
     if (loaded) return;
     loaded = true;
     events.forEach(function (e) { removeEventListener(e, load, true); });
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18428663865';
-    document.head.appendChild(s);
+    add('https://www.googletagmanager.com/gtag/js?id=AW-18428663865');
+    if (withPixel) add('https://connect.facebook.net/en_US/fbevents.js');
   }
   events.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
   addEventListener('load', function () { setTimeout(load, 6000); });
@@ -52,11 +58,11 @@ function gtag_report_conversion(url) {
 {
   pixelId && (
     <script is:inline define:vars={{ pixelId }}>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      // Meta Pixel base code without the script tag: fbq queues calls until
+      // fbevents.js is added by the lazy loader above.
+      !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
       fbq('init', pixelId);
       fbq('track', 'PageView');
     </script>
@@ -64,21 +70,30 @@ function gtag_report_conversion(url) {
 }
 <script is:inline>
 // CTA events: every tracked link carries data-track="trial_start_click" |
-// "booking_click" | "whatsapp_click". The Google Ads conversion fires on all
-// of them, as it did on the previous site.
+// "booking_click" | "whatsapp_click". GA4 gets the event by that name, the
+// Meta Pixel gets StartTrial (trial) or Lead (WhatsApp and booking), and the
+// Google Ads conversion fires on all of them, as on the previous site.
+var PIXEL_EVENTS = { trial_start_click: 'StartTrial', whatsapp_click: 'Lead', booking_click: 'Lead' };
 document.addEventListener('click', function (e) {
   var a = e.target.closest && e.target.closest('a[data-track]');
   if (!a) return;
   var name = a.getAttribute('data-track');
   var params = { link_url: a.href, cta_location: a.getAttribute('data-track-location') || '' };
-  if (window.gtag) gtag('event', name, params);
-  if (window.fbq) fbq('trackCustom', name, params);
-  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  if (typeof gtag_report_conversion !== 'function') return;
+  if (window.fbq && PIXEL_EVENTS[name]) fbq('track', PIXEL_EVENTS[name], { content_name: params.cta_location });
+  var plainClick = !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+  if (!plainClick || typeof gtag_report_conversion !== 'function') {
+    if (window.gtag) gtag('event', name, params);
+    return;
+  }
+  // Hold the navigation until Google has the click event (GA4 + Ads), at most
+  // 1.2 s, so the hits are not lost when the page changes.
   e.preventDefault();
   var url = a.href, done = false;
   var go = function () { if (!done) { done = true; window.location = url; } };
-  gtag_report_conversion(url);
+  params.event_callback = go;
+  params.event_timeout = 1200;
+  gtag('event', name, params);
+  gtag_report_conversion();
   setTimeout(go, 1200); // still navigate if the tag is blocked or slow
   window.addEventListener('pagehide', function () { done = true; }, { once: true });
 });

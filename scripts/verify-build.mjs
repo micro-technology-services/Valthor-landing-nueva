@@ -61,7 +61,12 @@ const FORBIDDEN = [
   /calendar\.app\.google/i,
 ];
 const PRICE = /(US\$|USD|ARS|\$\s?\d)/;
-const ALLOWED_CTA = new Set(['Probar gratis 15 días', 'Agendar una llamada']);
+// CTA labels come from src/content/site.json. The owner chose the voseo in the
+// WhatsApp and booking labels on purpose, so those exact strings are exempt
+// from the voseo check below.
+const site = JSON.parse(readFileSync('src/content/site.json', 'utf8'));
+const ALLOWED_CTA = new Set([site.cta.demo.label, site.cta.trial.label, site.cta.trial.shortLabel]);
+const CTA_TEXTS = [site.cta.demo.label, site.cta.trial.label, site.cta.trial.shortLabel, site.cta.booking.label];
 
 const files = htmlFiles(DIST);
 const titles = new Map();
@@ -162,7 +167,7 @@ for (const file of files) {
   for (const tag of ['<header', '<main', '<footer', '<nav']) if (!html.includes(tag)) fail(page, `missing landmark ${tag}>`);
 
   // Copy rules
-  const v = text.match(VOSEO);
+  const v = CTA_TEXTS.reduce((t, label) => t.split(label).join(' '), text).match(VOSEO);
   if (v) fail(page, `voseo/vosotros found: "${v[0]}"`);
   for (const re of FORBIDDEN) {
     const m = (text + ' ' + title + ' ' + desc + ' ' + html.match(/href="[^"]*"/g)?.join(' ')).match(re);
@@ -170,11 +175,15 @@ for (const file of files) {
   }
   if (PRICE.test(text) && !text.includes('Datos de ejemplo')) fail(page, `possible price: "${text.match(PRICE)[0]}"`);
 
-  // CTAs: only the two allowed labels on .btn links
+  // CTAs: only the allowed labels on .btn links; the booking link only in the
+  // final CTA section, never in the header or hero.
   for (const m of html.matchAll(/<a [^>]*class="[^"]*\bbtn\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)) {
     const label = textOf(m[1]);
     if (!ALLOWED_CTA.has(label)) fail(page, `CTA label not allowed: "${label}"`);
   }
+  const header = html.match(/<header class="site-header"[\s\S]*?<\/header>/)?.[0] ?? '';
+  const hero = html.match(/<section class="(?:hero|page-hero)"[\s\S]*?<\/section>/)?.[0] ?? '';
+  if (/calendar\.google\.com/.test(header + hero)) fail(page, 'booking link in header or hero');
   if (!html.includes('https://wa.me/5491131381205')) fail(page, 'missing WhatsApp button');
   if (!html.includes("gtag('config', 'AW-18428663865')")) fail(page, 'missing Google Ads tag');
 
