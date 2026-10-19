@@ -13,7 +13,7 @@ const { closing } = Astro.props;
   <div class="wrap inner">
     <Image src={full} alt="" width={340} height={Math.round((340 * full.height) / full.width)} densities={[1, 2]} loading="lazy" class="mark" />
     <h2 id="closing-title" class="h2" set:html={rich(closing.title)} />
-    <CtaPair location="closing" size="lg" center />
+    <CtaPair location="closing" size="lg" center withBooking />
   </div>
 </section>
 

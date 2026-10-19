@@ -28,9 +28,9 @@ ${faqs.map((f) => `- ${f.question} ${f.answer}`).join('\n')}
 
 ## Contacto
 
+- [Ver una demo por WhatsApp](${site.cta.demo.href})
 - [Probar gratis 15 días](${site.cta.trial.href})
 - [Agendar una llamada](${site.cta.booking.href})
-- [WhatsApp](${site.cta.whatsapp.href})
 
 ## Optional
 

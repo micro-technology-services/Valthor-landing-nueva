@@ -302,6 +302,35 @@ ol {
   align-items: center;
 }
 
+/* CTA group: buttons plus the optional tertiary booking link */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.cta-group.center {
+  align-items: center;
+}
+.cta-group.center .btn-row {
+  justify-content: center;
+}
+.cta-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 6px 2px;
+}
+.cta-link:hover {
+  color: #fff;
+}
+.light .cta-link,
+.lavender .cta-link {
+  color: var(--accent-ink);
+}
+
 /* Text link with arrow */
 .more {
   display: inline-flex;
@@ -425,5 +454,9 @@ ol {
   }
   .btn-row > .btn {
     flex: 1 1 100%;
+  }
+  .cta-group,
+  .cta-group .btn-row {
+    width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Valthor: agente de IA para WhatsApp que vende y cobra",
+    "title": "Valthor: IA para WhatsApp que atiende, vende y cobra",
     "description": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo, entiende audios, envía el link de Mercado Pago y agenda turnos. Prueba gratis 15 días."
   },
   "hero": {
@@ -22,12 +22,12 @@
       "thread": {
         "name": "Lucía Fernández",
         "initials": "LF",
-        "meta": "Atendida por Agente IA · WhatsApp",
+        "meta": "Atendida por Valthor · WhatsApp",
         "messages": [
           { "from": "client", "text": "Hola, ¿tienen la campera negra en talle M?" },
-          { "from": "ai", "text": "¡Hola, Lucía! Sí, quedan 3 en talle M y hacemos envíos a Córdoba. ¿Te la reservo?", "meta": "Agente IA · 09:20" },
+          { "from": "ai", "text": "¡Hola, Lucía! Sí, quedan 3 en talle M y hacemos envíos a Córdoba. ¿Te la reservo?", "meta": "Valthor · 09:20" },
           { "from": "client", "text": "Sí, dale. ¿Cómo pago?" },
-          { "from": "ai", "text": "Aquí tienes el link de pago de Mercado Pago. Apenas se acredite, la despachamos.", "meta": "Agente IA · 09:21" }
+          { "from": "ai", "text": "Aquí tienes el link de pago de Mercado Pago. Apenas se acredite, la despachamos.", "meta": "Valthor · 09:21" }
         ],
         "outcome": "Pago aprobado · venta cerrada sola"
       }

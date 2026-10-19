@@ -31,9 +31,9 @@ Todos los textos están en la carpeta `src/content/` del repositorio. Los archiv
 
 - **Resaltado en violeta:** en los títulos, lo que va entre asteriscos se ve resaltado. Ejemplo: `"El mejor vendedor de tu equipo *no duerme.*"`.
 - **Título para Google (`seo.title`):** entre 50 y 60 caracteres. **Descripción (`seo.description`):** entre 140 y 160. Si no se cumple, la vista previa falla y te avisa en qué archivo y campo está el problema.
-- **Español neutro con «tú»:** nada de «vos» (tenés, podés) ni de «vosotros». El control automático lo detecta.
+- **Español neutro con «tú»** en los textos: nada de «vos» (tenés, podés) ni de «vosotros». El control automático lo detecta. La única excepción son los textos de los botones definidos en `src/content/site.json` («Hablá con Valthor por WhatsApp», «o agendá una llamada»).
 - **No publicar:** precios, funciones que no están activas (carritos abandonados, vuelta de stock, comentarios de Instagram, Telegram, TikTok, Shopify, demo interactiva, app en las tiendas) ni métricas sin fuente. El control automático también las detecta.
-- **Botones:** solo «Probar gratis 15 días» y «Agendar una llamada». Sus enlaces se cambian en un solo lugar: `src/content/site.json`.
+- **Botones:** el principal es «Hablá con Valthor por WhatsApp» (abre WhatsApp con un mensaje para pedir una demo); el secundario, «Probar gratis 15 días» («Probar gratis» en el menú de arriba). El enlace «o agendá una llamada» aparece solo en la sección final de cada página. Los textos y enlaces se cambian en un solo lugar: `src/content/site.json` (sección `cta`).
 - Si agregas una función nueva en una página de funciones o rubros, completa el campo `source` con la fila de la auditoría que la respalda.
 
 ## Cómo ver la vista previa
@@ -62,7 +62,15 @@ La etiqueta de Google Ads (AW-18428663865) ya está activa. Para activar GA4 y e
 2. Agrega `PUBLIC_GA4_ID` con tu ID de GA4 (empieza con `G-`) y `PUBLIC_META_PIXEL_ID` con el ID del Pixel.
 3. Marca «Production» y «Preview», guarda y vuelve a desplegar (Deployments → los tres puntos → **Redeploy**).
 
-Los botones envían estos eventos: `trial_start_click` (Probar gratis), `booking_click` (Agendar una llamada) y `whatsapp_click` (botón de WhatsApp). Además, todos disparan la conversión de Google Ads como antes.
+Los botones envían estos eventos:
+
+| Botón | GA4 | Meta Pixel |
+| --- | --- | --- |
+| Hablá con Valthor por WhatsApp y botón flotante de WhatsApp | `whatsapp_click` | `Lead` |
+| o agendá una llamada | `booking_click` | `Lead` |
+| Probar gratis | `trial_start_click` | `StartTrial` |
+
+Además, todos disparan la conversión de Google Ads como antes. Para comprobarlo, usa la vista DebugView de GA4 y el «Probador de eventos» del Administrador de eventos de Meta.
 
 ## Después de publicar: Google y buscadores de IA
 
