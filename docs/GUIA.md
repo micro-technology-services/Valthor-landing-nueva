@@ -56,6 +56,26 @@ Cuando la vista previa está bien:
 
 ## Analítica (Google Analytics 4 y Meta Pixel)
 
+### Cómo conseguir el ID de GA4 (empieza con `G-`)
+
+1. Entra a <https://analytics.google.com> con la cuenta de Google de la empresa (la misma de Google Ads, si puedes).
+2. Si es la primera vez, toca **Empezar a medir**. Si ya tienes Analytics, toca el engranaje **Administrar** (abajo a la izquierda) → **+ Crear** → **Propiedad**.
+3. Nombre de la cuenta: «MTS Group». Nombre de la propiedad: «Valthor web». Zona horaria: Argentina. Moneda: peso argentino.
+4. Completa los datos del negocio y elige los objetivos (por ejemplo, «Generar clientes potenciales»). Acepta las condiciones.
+5. Cuando pregunte la plataforma, elige **Web**. URL: `www.valthor.app`. Nombre del flujo: «Valthor web». Toca **Crear flujo**.
+6. En la pantalla que aparece, copia el **ID de medición**: tiene la forma `G-XXXXXXXXXX`. No hace falta instalar ninguna etiqueta: la web ya está preparada.
+7. Recomendado: en **Administrar** → **Vínculos de Google Ads**, vincula la cuenta de Google Ads para ver las conversiones juntas.
+
+### Cómo conseguir el ID del Meta Pixel (solo números)
+
+1. Entra a <https://business.facebook.com> con la cuenta que administra la página de Valthor.
+2. Abre el **Administrador de eventos** (menú ☰ → «Administrador de eventos»).
+3. Toca **Conectar orígenes de datos** (el botón verde con +) → **Web** → **Conectar**.
+4. Nombre: «Valthor web». Escribe `www.valthor.app` si te lo pide y elige la opción de configurar el código **manualmente** o «Configurar después».
+5. El ID aparece debajo del nombre del conjunto de datos («ID: 123456789012345»). Cópialo: son solo números.
+
+### Cargar los dos IDs en Vercel
+
 La etiqueta de Google Ads (AW-18428663865) ya está activa. Para activar GA4 y el Meta Pixel:
 
 1. En Vercel → proyecto **valthorweb** → **Settings** → **Environment Variables**.
