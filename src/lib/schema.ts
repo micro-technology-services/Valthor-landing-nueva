@@ -13,8 +13,8 @@ export const organization = {
     'MTS Group S.A.S. desarrolla Valthor, una suite de IA para PyMEs que atiende y vende por WhatsApp, Instagram y Facebook.',
   areaServed: ['Argentina', 'Chile', 'España', 'Estados Unidos'].map((name) => ({ '@type': 'Country', name })),
   knowsAbout: ['Inteligencia artificial', 'WhatsApp Business API', 'CRM', 'Atención al cliente', 'Ventas conversacionales'],
-  // TODO: add the official profile URLs (Instagram, LinkedIn, Facebook, YouTube…).
-  sameAs: [] as string[],
+  // Official profiles. TODO: add LinkedIn, Facebook, YouTube… when they exist.
+  sameAs: ['https://www.instagram.com/valthor_crm'],
   address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
   contactPoint: {
     '@type': 'ContactPoint',
