@@ -15,26 +15,26 @@ highlights:
 pain:
   title: "Cuando tu sistema y tu WhatsApp no se hablan"
   items:
-    - "El stock está en tu sistema, pero por WhatsApp respondes de memoria."
-    - "Copias precios a mano y se desactualizan."
+    - "El stock está en tu sistema, pero por WhatsApp respondés de memoria."
+    - "Copiás precios a mano y se desactualizan."
     - "Tus socios o clientes escriben y nadie ve sus datos al responder."
-  text: "Con las alianzas, Valthor atiende por WhatsApp con la información de la herramienta que ya usas."
+  text: "Con las alianzas, Valthor atiende por WhatsApp con la información de la herramienta que ya usás."
 features:
   title: "Nuestros aliados"
   items:
     - id: kuad-system
       logo: kuad
-      title: "Kuad System: ¿necesitas una tienda online?"
-      text: "Crea tu tienda online con Kuad System y deja que Valthor venda por WhatsApp con tu catálogo."
+      title: "Kuad System: ¿necesitás una tienda online?"
+      text: "Creá tu tienda online con Kuad System y dejá que Valthor venda por WhatsApp con tu catálogo."
       source: "README · Owner-confirmed facts: integración Kuad System en producción"
     - id: gymflow
       logo: gymflow
-      title: "GymFlow: ¿tienes un gimnasio?"
-      text: "Si usas GymFlow, Valthor sincroniza los datos todos los días, detecta a los socios en riesgo de irse y te avisa a tiempo."
+      title: "GymFlow: ¿tenés un gimnasio?"
+      text: "Si usás GymFlow, Valthor sincroniza los datos todos los días, detecta a los socios en riesgo de irse y te avisa a tiempo."
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+) y README · integración GymFlow en producción"
     - id: zeus-erp
       logo: zeus
-      title: "ZEUS ERP & POS: ¿necesitas un ERP?"
+      title: "ZEUS ERP & POS: ¿necesitás un ERP?"
       text: "ZEUS gestiona tu stock, tus ventas y tus sucursales. Valthor vende por WhatsApp con esos datos."
       source: "README · Owner-confirmed facts: integración ZEUS ERP en producción"
 conversation:
@@ -45,7 +45,7 @@ conversation:
     - from: client
       text: "Hola, ¿tienen la mochila azul en stock?"
     - from: ai
-      text: "¡Hola! Sí, nos quedan 2. ¿Quieres retirarla o prefieres envío?"
+      text: "¡Hola! Sí, nos quedan 2. ¿Querés retirarla o preferís envío?"
     - from: client
       text: "Envío, por favor."
     - from: ai
@@ -54,13 +54,13 @@ faqs:
   - question: "¿Qué significa que Valthor tenga una alianza?"
     answer: "Que la integración con ese sistema está lista y que la implementación se hace en conjunto: el equipo del aliado y el de Valthor te dejan funcionando."
   - question: "¿Tengo que usar uno de estos sistemas para usar Valthor?"
-    answer: "No. Valthor también se conecta con Tienda Nube, Mercado Libre y Magento, y puedes cargar tu catálogo a mano o por Excel."
+    answer: "No. Valthor también se conecta con Tienda Nube, Mercado Libre y Magento, y podés cargar tu catálogo a mano o por Excel."
   - question: "¿Cada cuánto se actualizan los datos?"
     answer: "El catálogo se actualiza todos los días, y la sincronización con GymFlow también es diaria."
   - question: "¿Cómo empiezo con una alianza?"
-    answer: "Agenda una llamada: revisamos qué sistema usas y coordinamos la implementación con el aliado."
+    answer: "Agendá una llamada: revisamos qué sistema usás y coordinamos la implementación con el aliado."
 cta:
-  title: "Conecta tu sistema con WhatsApp"
+  title: "Conectá tu sistema con WhatsApp"
   text: "Te ayudamos a elegir la integración y la implementamos en conjunto con el aliado."
 related:
   - title: "Ecommerce"

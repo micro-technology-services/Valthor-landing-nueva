@@ -1,11 +1,11 @@
 {
   "seo": {
     "title": "Valthor: IA para WhatsApp que atiende, vende y cobra",
-    "description": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo, entiende audios, envía el link de Mercado Pago y agenda turnos. Prueba gratis 15 días."
+    "description": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo, entiende audios, envía el link de Mercado Pago y agenda turnos. Probá gratis 15 días."
   },
   "hero": {
     "badge": "Suite de IA para PyMEs",
-    "title": "Tu equipo comercial con IA. *Atiende, vende, cobra y agenda* mientras tú supervisas.",
+    "title": "Tu equipo comercial con IA. *Atiende, vende, cobra y agenda* mientras vos supervisás.",
     "lead": "Valthor responde en WhatsApp, Instagram y Facebook con tu catálogo y tus precios, entiende audios, envía el link de Mercado Pago, agenda turnos y sigue a cada cliente hasta que compra. Sin programar.",
     "trust": ["API oficial de WhatsApp", "Meta Business Partner", "Atendiendo en 2 horas"],
     "mockup": {
@@ -27,7 +27,7 @@
           { "from": "client", "text": "Hola, ¿tienen la campera negra en talle M?" },
           { "from": "ai", "text": "¡Hola, Lucía! Sí, quedan 3 en talle M y hacemos envíos a Córdoba. ¿Te la reservo?", "meta": "Valthor · 09:20" },
           { "from": "client", "text": "Sí, dale. ¿Cómo pago?" },
-          { "from": "ai", "text": "Aquí tienes el link de pago de Mercado Pago. Apenas se acredite, la despachamos.", "meta": "Valthor · 09:21" }
+          { "from": "ai", "text": "Acá tenés el link de pago de Mercado Pago. Apenas se acredite, la despachamos.", "meta": "Valthor · 09:21" }
         ],
         "outcome": "Pago aprobado · venta cerrada sola"
       }
@@ -57,9 +57,9 @@
     "eyebrow": "El problema",
     "title": "El mejor vendedor de tu equipo *no duerme.*",
     "pains": [
-      "Respondes WhatsApp a las 23 h.",
-      "Pierdes clientes porque nadie les volvió a escribir.",
-      "Pagas anuncios y no sabes cuál vende."
+      "Respondés WhatsApp a las 23 h.",
+      "Perdés clientes porque nadie les volvió a escribir.",
+      "Pagás anuncios y no sabés cuál vende."
     ],
     "text": "Valthor atiende, asesora y cierra ventas a cualquier hora. Respuesta en segundos y tus ingresos crecen sin sumar costos fijos.",
     "chat": {
@@ -67,9 +67,9 @@
       "name": "Sofía Morales",
       "messages": [
         { "from": "client", "text": "Hola, vi la campera en su Instagram. ¿Les queda en L? Son las 2 de la mañana, perdón 🙈" },
-        { "from": "ai", "text": "¡Hola, Sofía! No hay problema. Sí, quedan 2 en L. Si la pides hoy, el envío es gratis." },
+        { "from": "ai", "text": "¡Hola, Sofía! No hay problema. Sí, quedan 2 en L. Si la pedís hoy, el envío es gratis." },
         { "from": "client", "text": "Me la llevo. ¿Cómo pago?" },
-        { "from": "ai", "text": "Te paso el link de Mercado Pago. Cualquier duda me escribes." }
+        { "from": "ai", "text": "Te paso el link de Mercado Pago. Cualquier duda me escribís." }
       ],
       "caption": "Conversación de ejemplo"
     }
@@ -109,20 +109,20 @@
       { "before": "Atención de 9 a 18", "after": "Responde en segundos, a cualquier hora" },
       { "before": "\"Respondo cuando puedo\"", "after": "Sigue a cada cliente hasta que compra" }
     ],
-    "text": "¿Quieres saber cuánto te ahorraría en tu negocio? Lo calculamos contigo en una llamada."
+    "text": "¿Querés saber cuánto te ahorraría en tu negocio? Lo calculamos con vos en una llamada."
   },
   "steps": {
     "title": "Atendiendo en *2 horas.*",
-    "text": "Sin programar y sin cambiar tu número. Lo pruebas antes de encenderlo y tú decides cuándo atiende.",
+    "text": "Sin programar y sin cambiar tu número. Lo probás antes de encenderlo y vos decidís cuándo atiende.",
     "items": [
-      { "title": "Conectas tus canales", "text": "Tu WhatsApp oficial, Instagram y Facebook, en pocos clics." },
-      { "title": "Le enseñas tu negocio", "text": "Catálogo, precios y reglas. Lo pruebas gratis en el Playground antes de encenderlo." },
-      { "title": "Lo enciendes y supervisas", "text": "Todo el día o por horario. Cuando hace falta una persona, te pasa la conversación." }
+      { "title": "Conectás tus canales", "text": "Tu WhatsApp oficial, Instagram y Facebook, en pocos clics." },
+      { "title": "Le enseñás tu negocio", "text": "Catálogo, precios y reglas. Lo probás gratis en el Playground antes de encenderlo." },
+      { "title": "Lo encendés y supervisás", "text": "Todo el día o por horario. Cuando hace falta una persona, te pasa la conversación." }
     ]
   },
   "roas": {
     "eyebrow": "Atribución de anuncios",
-    "title": "Descubre qué anuncio te trae *ventas, no solo mensajes.*",
+    "title": "Descubrí qué anuncio te trae *ventas, no solo mensajes.*",
     "text": "Valthor conecta cada venta con el anuncio de Meta que la originó y te muestra el ROAS real. Y te avisa qué anuncios gastan sin traer a nadie.",
     "cards": {
       "label": "Métricas de ejemplo de atribución de anuncios",
@@ -141,7 +141,7 @@
   },
   "industries": {
     "eyebrow": "Para tu rubro",
-    "title": "Preparado para *cómo vendes tú.*",
+    "title": "Preparado para *cómo vendés vos.*",
     "items": [
       { "title": "Ecommerce", "text": "Stock, talles, envíos y \"¿dónde está mi pedido?\".", "href": "/rubros/ecommerce" },
       { "title": "Turnos", "text": "Agenda con seña para estética, salud y servicios.", "href": "/rubros/turnos" },
@@ -153,12 +153,12 @@
   },
   "alliances": {
     "eyebrow": "Alianzas",
-    "title": "¿Necesitas una tienda, un sistema para tu gimnasio o un ERP? *Trabajamos con los mejores.*",
+    "title": "¿Necesitás una tienda, un sistema para tu gimnasio o un ERP? *Trabajamos con los mejores.*",
     "text": "Integraciones listas e implementación conjunta: los dos equipos te dejan funcionando.",
     "items": [
-      { "logo": "kuad", "alt": "Kuad System", "title": "¿Necesitas una tienda online?", "text": "Créala con Kuad System y deja que Valthor venda por WhatsApp con tu catálogo.", "href": "/alianzas#kuad-system" },
-      { "logo": "gymflow", "alt": "GymFlow, software profesional para gimnasios", "title": "¿Tienes un gimnasio?", "text": "Si usas GymFlow, Valthor detecta a los socios en riesgo de irse y te avisa a tiempo.", "href": "/alianzas#gymflow" },
-      { "logo": "zeus", "alt": "ZEUS ERP & POS", "title": "¿Necesitas un ERP?", "text": "ZEUS gestiona tu stock, tus ventas y tus sucursales. Valthor vende por WhatsApp con esos datos.", "href": "/alianzas#zeus-erp" }
+      { "logo": "kuad", "alt": "Kuad System", "title": "¿Necesitás una tienda online?", "text": "Creala con Kuad System y dejá que Valthor venda por WhatsApp con tu catálogo.", "href": "/alianzas#kuad-system" },
+      { "logo": "gymflow", "alt": "GymFlow, software profesional para gimnasios", "title": "¿Tenés un gimnasio?", "text": "Si usás GymFlow, Valthor detecta a los socios en riesgo de irse y te avisa a tiempo.", "href": "/alianzas#gymflow" },
+      { "logo": "zeus", "alt": "ZEUS ERP & POS", "title": "¿Necesitás un ERP?", "text": "ZEUS gestiona tu stock, tus ventas y tus sucursales. Valthor vende por WhatsApp con esos datos.", "href": "/alianzas#zeus-erp" }
     ],
     "linkLabel": "Ver la alianza"
   },
@@ -186,6 +186,6 @@
     "moreLabel": "Ver todas las preguntas frecuentes"
   },
   "closing": {
-    "title": "Deja de responder mensajes. *Empieza a supervisar ventas.*"
+    "title": "Dejá de responder mensajes. *Empezá a supervisar ventas.*"
   }
 }

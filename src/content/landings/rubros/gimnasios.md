@@ -7,7 +7,7 @@ breadcrumb: Gimnasios
 updated: octubre de 2026
 eyebrow: Para tu rubro
 h1: "Software para gimnasios con IA que atiende por WhatsApp"
-intro: "Valthor es un software para gimnasios con inteligencia artificial: atiende las consultas por WhatsApp, Instagram y Facebook, detecta a los socios en riesgo de dejar el gimnasio, registra la asistencia con check-in por QR y arma rutinas con IA que revisa tu entrenador. Si usas GymFlow, se sincroniza todos los días."
+intro: "Valthor es un software para gimnasios con inteligencia artificial: atiende las consultas por WhatsApp, Instagram y Facebook, detecta a los socios en riesgo de dejar el gimnasio, registra la asistencia con check-in por QR y arma rutinas con IA que revisa tu entrenador. Si usás GymFlow, se sincroniza todos los días."
 highlights:
   - "Socios en riesgo de abandonar"
   - "Check-in por QR y registro de asistencia"
@@ -15,11 +15,11 @@ highlights:
 pain:
   title: "Lo que le cuesta socios a un gimnasio"
   items:
-    - "Te enteras de que un socio se fue cuando ya no paga la cuota."
+    - "Te enterás de que un socio se fue cuando ya no paga la cuota."
     - "Las consultas por WhatsApp llegan cuando el staff está en sala."
     - "Armar rutinas a mano para cada socio lleva horas."
-    - "No sabes quién vino esta semana y quién dejó de venir."
-  text: "Valthor te avisa a tiempo, responde por ti y ordena la asistencia."
+    - "No sabés quién vino esta semana y quién dejó de venir."
+  text: "Valthor te avisa a tiempo, responde por vos y ordena la asistencia."
 features:
   title: "Qué hace Valthor en tu gimnasio"
   text: "La vertical de Gimnasios está disponible en el plan Pro o superior."
@@ -28,16 +28,16 @@ features:
       text: "Valthor marca a los socios en riesgo de abandonar para que les escribas antes de que se vayan."
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+)"
     - title: "Asistencia y check-in por QR"
-      text: "Registras la asistencia y los socios hacen su propio check-in con un código QR."
+      text: "Registrás la asistencia y los socios hacen su propio check-in con un código QR."
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+)"
     - title: "Rutinas con IA"
       text: "La IA arma la rutina y el entrenador la revisa antes de entregarla."
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+)"
     - title: "Sedes y gamificación"
-      text: "Manejas varias sedes y usas la gamificación para motivar a los socios a volver."
+      text: "Manejás varias sedes y usás la gamificación para motivar a los socios a volver."
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+)"
     - title: "Integración con GymFlow"
-      text: "Si usas GymFlow, Valthor sincroniza los datos todos los días."
+      text: "Si usás GymFlow, Valthor sincroniza los datos todos los días."
       source: "Auditoría §2.7 (sincronización diaria con GymFlow) y README · integración GymFlow en producción"
     - title: "Atención por WhatsApp"
       text: "El agente de IA responde horarios, planes y consultas por WhatsApp, Instagram y Facebook, y te pasa el chat cuando hace falta."
@@ -50,11 +50,11 @@ conversation:
     - from: client
       text: "Hola, ¿a qué hora abren los sábados?"
     - from: ai
-      text: "¡Hola! Los sábados abrimos de 9 a 14 h. ¿Quieres que te cuente los planes disponibles?"
+      text: "¡Hola! Los sábados abrimos de 9 a 14 h. ¿Querés que te cuente los planes disponibles?"
     - from: client
       text: "Sí, me interesa entrenar tres veces por semana."
     - from: ai
-      text: "Te paso las opciones para tres días. Si quieres, te comunico con un profesor para que te arme la primera rutina."
+      text: "Te paso las opciones para tres días. Si querés, te comunico con un profesor para que te arme la primera rutina."
 faqs:
   - question: "¿Valthor funciona con GymFlow?"
     answer: "Sí. Valthor se integra con GymFlow y sincroniza los datos todos los días."
@@ -68,7 +68,7 @@ faqs:
     answer: "En el plan Pro o superior. Te contamos los detalles en una llamada."
 cta:
   title: "Que ningún socio se vaya sin que te enteres"
-  text: "Atención por WhatsApp, socios en riesgo y rutinas con IA. Pruébalo gratis 15 días."
+  text: "Atención por WhatsApp, socios en riesgo y rutinas con IA. Probalo gratis 15 días."
 related:
   - title: "Alianza con GymFlow"
     text: "Cómo trabajan juntos Valthor y GymFlow."
@@ -77,6 +77,6 @@ related:
     text: "Clases y turnos con seña por WhatsApp."
     href: /rubros/turnos
   - title: "Agente de IA para WhatsApp"
-    text: "El vendedor que responde por ti."
+    text: "El vendedor que responde por vos."
     href: /funciones/agente-ia-whatsapp
 ---

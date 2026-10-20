@@ -18,13 +18,13 @@ pain:
     - "Te preguntan lo mismo todo el día: ¿hay stock?, ¿qué talle?, ¿cuánto sale el envío?"
     - "Los clientes escriben de noche y a la mañana ya compraron en otro lado."
     - "«¿Dónde está mi pedido?» te ocupa la mitad del día."
-    - "Pagas anuncios y no sabes cuál trae ventas."
+    - "Pagás anuncios y no sabés cuál trae ventas."
   text: "Valthor responde con los datos de tu tienda y deja a tu equipo para lo que de verdad necesita una persona."
 features:
   title: "Qué hace Valthor en tu tienda online"
   items:
     - title: "Responde con tu catálogo real"
-      text: "Importas tus productos desde Tienda Nube, Mercado Libre o Magento, o los cargas por Excel. Los precios y el stock se actualizan cada noche y cuando tocas «Actualizar»."
+      text: "Importás tus productos desde Tienda Nube, Mercado Libre o Magento, o los cargás por Excel. Los precios y el stock se actualizan cada noche y cuando tocás «Actualizar»."
       source: "Auditoría §2.2 · Catálogo de productos (PARCIAL: actualización diaria, no instantánea)"
     - title: "También con Kuad System y ZEUS ERP"
       text: "Si tu tienda está en Kuad System o tu stock en ZEUS ERP, Valthor vende por WhatsApp con esos datos."
@@ -33,7 +33,7 @@ features:
       text: "Envía el link de pago desde tu cuenta, con los medios y cuotas que tengas habilitados. Cuando se aprueba, la venta queda cerrada."
       source: "Auditoría §2.2 · Links de pago con Mercado Pago (ACTIVA, con configuración)"
     - title: "Pedidos y envíos"
-      text: "Ves los pedidos pagados de Tienda Nube y Mercado Libre, cargas el transportista y el seguimiento, y la IA responde «¿dónde está mi pedido?»."
+      text: "Ves los pedidos pagados de Tienda Nube y Mercado Libre, cargás el transportista y el seguimiento, y la IA responde «¿dónde está mi pedido?»."
       source: "Auditoría §2.2 · Pedidos y envíos (ACTIVA)"
     - title: "Preguntas de Mercado Libre"
       text: "Las preguntas de tus publicaciones llegan con la respuesta redactada por la IA. Una persona la revisa y la publica."
@@ -54,25 +54,25 @@ conversation:
     - from: client
       text: "Hola, ¿tienen las zapatillas blancas en 39?"
     - from: ai
-      text: "¡Hola! Sí, quedan 2 pares en talle 39. ¿Te las envío o prefieres retirarlas?"
+      text: "¡Hola! Sí, quedan 2 pares en talle 39. ¿Te las envío o preferís retirarlas?"
     - from: client
       text: "Envío a Rosario. ¿Cómo pago?"
     - from: ai
       text: "Te dejo el link de Mercado Pago con el envío incluido. Apenas se acredite, te paso el número de seguimiento."
 faqs:
   - question: "¿Con qué plataformas de ecommerce se conecta?"
-    answer: "Con Tienda Nube, Mercado Libre y Magento para importar el catálogo, y con Kuad System y ZEUS ERP. También puedes cargar productos a mano o por Excel."
+    answer: "Con Tienda Nube, Mercado Libre y Magento para importar el catálogo, y con Kuad System y ZEUS ERP. También podés cargar productos a mano o por Excel."
   - question: "¿Cada cuánto se actualizan el precio y el stock?"
     answer: "Todas las noches de forma automática, y cuando quieras con el botón «Actualizar precios y stock»."
   - question: "¿La IA responde dónde está el pedido?"
-    answer: "Sí. Con los pedidos de Tienda Nube o Mercado Libre y el seguimiento que cargas, la IA responde el estado del envío."
+    answer: "Sí. Con los pedidos de Tienda Nube o Mercado Libre y el seguimiento que cargás, la IA responde el estado del envío."
   - question: "¿Responde las preguntas de Mercado Libre?"
     answer: "Redacta la respuesta y una persona la aprueba antes de publicarla, para cuidar tu reputación en Mercado Libre."
   - question: "¿Cómo cobra?"
     answer: "Con un link de pago de Mercado Pago desde tu cuenta. El monto lo calcula el sistema con tu catálogo; la IA no lo inventa."
 cta:
-  title: "Haz que tu tienda venda también por WhatsApp"
-  text: "Conecta tu catálogo y prueba Valthor gratis durante 15 días."
+  title: "Hacé que tu tienda venda también por WhatsApp"
+  text: "Conectá tu catálogo y probá Valthor gratis durante 15 días."
 related:
   - title: "Agente de IA para WhatsApp"
     text: "Cómo responde, cobra y te pasa el chat."

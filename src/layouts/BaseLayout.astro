@@ -21,6 +21,9 @@ const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').
 const canonical = new URL(path, site).href.replace(/\/$/, path === '/' ? '/' : '');
 const ogUrl = new URL(ogImage, site).href;
 const graph = { '@context': 'https://schema.org', '@graph': [organization, ...jsonLd] };
+// Google Search Console verification code (Vercel env var). Nothing is
+// rendered when it is empty.
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION?.trim();
 ---
 
 <!doctype html>
@@ -47,7 +50,8 @@ const graph = { '@context': 'https://schema.org', '@graph': [organization, ...js
     <meta property="og:image" content={ogUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Valthor, agente de IA para WhatsApp de MTS Group" />
+    <meta property="og:image:alt" content="Valthor, suite de IA para WhatsApp de MTS Group" />
+    {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
