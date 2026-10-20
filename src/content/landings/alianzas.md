@@ -26,16 +26,19 @@ features:
       logo: kuad
       title: "Kuad System: ¿necesitás una tienda online?"
       text: "Creá tu tienda online con Kuad System y dejá que Valthor venda por WhatsApp con tu catálogo."
+      website: "https://kuadsystem.com/"
       source: "README · Owner-confirmed facts: integración Kuad System en producción"
     - id: gymflow
       logo: gymflow
       title: "GymFlow: ¿tenés un gimnasio?"
       text: "Si usás GymFlow, Valthor sincroniza los datos todos los días, detecta a los socios en riesgo de irse y te avisa a tiempo."
+      website: "https://www.gymflow.com.ar/"
       source: "Auditoría §2.7 · Vertical Gimnasios + GymFlow (ACTIVA, Pro+) y README · integración GymFlow en producción"
     - id: zeus-erp
       logo: zeus
       title: "ZEUS ERP & POS: ¿necesitás un ERP?"
       text: "ZEUS gestiona tu stock, tus ventas y tus sucursales. Valthor vende por WhatsApp con esos datos."
+      website: "https://zeuserp.tech/"
       source: "README · Owner-confirmed facts: integración ZEUS ERP en producción"
 conversation:
   title: "Una venta con el stock de tu sistema"

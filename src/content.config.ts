@@ -195,6 +195,7 @@ const landings = defineCollection({
             title: z.string(),
             text: z.string(),
             note: z.string().optional(),
+            website: z.string().url().optional(),
             source: z.string(),
           }),
         )

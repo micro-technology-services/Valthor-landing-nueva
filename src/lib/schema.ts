@@ -74,7 +74,18 @@ export const website = {
   publisher: { '@id': `${SITE}/#organization` },
 };
 
-export function webPage({ path, name, description }: { path: string; name: string; description: string }) {
+export function webPage({
+  path,
+  name,
+  description,
+  mentions = [],
+}: {
+  path: string;
+  name: string;
+  description: string;
+  /** Other organizations named on the page, e.g. alliance partners. */
+  mentions?: { name: string; url: string }[];
+}) {
   return {
     '@type': 'WebPage',
     '@id': `${SITE}${path}#webpage`,
@@ -85,5 +96,6 @@ export function webPage({ path, name, description }: { path: string; name: strin
     isPartOf: { '@id': `${SITE}/#website` },
     about: { '@id': `${SITE}/#software` },
     publisher: { '@id': `${SITE}/#organization` },
+    ...(mentions.length ? { mentions: mentions.map((m) => ({ '@type': 'Organization', ...m })) } : {}),
   };
 }
