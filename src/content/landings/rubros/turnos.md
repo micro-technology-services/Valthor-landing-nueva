@@ -15,7 +15,7 @@ highlights:
 pain:
   title: "Lo que cuesta dar turnos a mano"
   items:
-    - "Pasas el día respondiendo «¿tienes turno el jueves?»."
+    - "Pasás el día respondiendo «¿tenés turno el jueves?»."
     - "Los clientes faltan y el horario queda vacío."
     - "Reprogramar un turno lleva diez mensajes."
     - "La agenda del local y la de cada profesional no coinciden."
@@ -24,16 +24,16 @@ features:
   title: "Qué hace Valthor con tus turnos"
   items:
     - title: "Da turnos según tu disponibilidad"
-      text: "Configuras prestadores, servicios y horarios, y la IA ofrece los turnos libres por chat."
+      text: "Configurás prestadores, servicios y horarios, y la IA ofrece los turnos libres por chat."
       source: "Auditoría §2.6 · Agenda y turnos con seña (ACTIVA)"
     - title: "Cobra la seña con Mercado Pago"
-      text: "Defines el porcentaje de seña y la IA envía el link de pago para confirmar el turno."
+      text: "Definís el porcentaje de seña y la IA envía el link de pago para confirmar el turno."
       source: "Auditoría §2.6 · Agenda y turnos con seña (ACTIVA) y §2.2 · Links de pago (seña o saldo)"
     - title: "Reprograma y recuerda"
-      text: "La IA recuerda el turno y, si lo habilitas, también lo reprograma cuando el cliente lo pide."
+      text: "La IA recuerda el turno y, si lo habilitás, también lo reprograma cuando el cliente lo pide."
       source: "Auditoría §2.6 · Agenda y turnos con seña (ACTIVA; reprogramación por IA se habilita a mano)"
     - title: "Sincronizado con Google y Outlook"
-      text: "Conectas Google Calendar u Outlook y los turnos aparecen en tu calendario."
+      text: "Conectás Google Calendar u Outlook y los turnos aparecen en tu calendario."
       source: "Auditoría §1 fila 13 (VERDADERO) y §2.6"
     - title: "Comisiones por profesional"
       text: "Valthor calcula la comisión de cada prestador sobre los turnos atendidos."
@@ -49,7 +49,7 @@ conversation:
     - from: client
       text: "Hola, ¿tienen turno para limpieza facial el jueves a la tarde?"
     - from: ai
-      text: "¡Hola! El jueves tengo 16:00 o 17:30 con Carla. ¿Cuál prefieres?"
+      text: "¡Hola! El jueves tengo 16:00 o 17:30 con Carla. ¿Cuál preferís?"
     - from: client
       text: "17:30 me queda bien."
     - from: ai
@@ -58,19 +58,19 @@ faqs:
   - question: "¿Se conecta con Google Calendar?"
     answer: "Sí, con Google Calendar y con Outlook. Los turnos que agenda Valthor aparecen en tu calendario."
   - question: "¿Puede cobrar una seña?"
-    answer: "Sí. Defines el porcentaje y la IA envía el link de pago de Mercado Pago para confirmar el turno."
+    answer: "Sí. Definís el porcentaje y la IA envía el link de pago de Mercado Pago para confirmar el turno."
   - question: "¿La IA puede reprogramar turnos?"
     answer: "Sí. La reprogramación por IA se activa en la configuración de la agenda."
   - question: "¿Sirve para varios profesionales?"
-    answer: "Sí. Cargas cada prestador con sus servicios y horarios, y Valthor calcula la comisión de cada uno."
+    answer: "Sí. Cargás cada prestador con sus servicios y horarios, y Valthor calcula la comisión de cada uno."
   - question: "¿Para qué rubros sirve?"
     answer: "Para cualquier negocio que trabaje con turnos: estética, salud, peluquerías, consultorios y servicios profesionales."
 cta:
-  title: "Llena tu agenda sin atender el teléfono"
-  text: "Turnos, señas y recordatorios por WhatsApp. Pruébalo gratis 15 días."
+  title: "Llená tu agenda sin atender el teléfono"
+  text: "Turnos, señas y recordatorios por WhatsApp. Probalo gratis 15 días."
 related:
   - title: "Agente de IA para WhatsApp"
-    text: "El vendedor que responde y cobra por ti."
+    text: "El vendedor que responde y cobra por vos."
     href: /funciones/agente-ia-whatsapp
   - title: "Gimnasios"
     text: "Socios en riesgo, check-in y rutinas con IA."

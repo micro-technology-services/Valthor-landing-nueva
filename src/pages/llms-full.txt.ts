@@ -27,7 +27,7 @@ ${d.pain.text}
 
 ## ${d.features.title}
 ${d.features.text ? `\n${d.features.text}\n` : ''}
-${d.features.items.map((f) => `- **${f.title}${f.note ? ` (${f.note})` : ''}:** ${f.text}`).join('\n')}
+${d.features.items.map((f) => `- **${f.title}${f.note ? ` (${f.note})` : ''}:** ${f.text}${f.website ? ` Sitio: ${f.website}` : ''}`).join('\n')}
 ${l.body?.trim() ? `\n${strip(l.body.trim())}\n` : ''}
 ## Preguntas frecuentes
 

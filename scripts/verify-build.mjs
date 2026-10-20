@@ -36,9 +36,11 @@ const textOf = (html) =>
 const meta = (html, attr, name) =>
   decode(html.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`))?.[1] ?? '');
 
-// Voseo (Argentine "vos" forms) and vosotros. Neutral Spanish uses tú.
-const VOSEO =
-  /\b(tenés|querés|podés|sabés|usás|cargás|conectás|solicitás|agendás|escribinos|escribí|contactanos|probá|agendá|conocé|mirá|elegí|sos|hacé|decí|olvidate|configurá|transformá|enviá|evitá|conectá|reducí|dejá|medí|accedé|integrá|convertí|monitoreá|pausá|vosotros|vuestro|vuestra|tenéis|podéis|queréis)\b/i;
+// The copy is in Argentine voseo (vos tenés, podés). Tuteo forms and
+// vosotros are flagged on every page except the legal ones.
+const TUTEO =
+  /(?<![\p{L}])(tú|ti|contigo|tienes|quieres|puedes|necesitas|sabes|usas|conectas|cargas|enseñas|enciendes|supervisas|respondes|pierdes|pagas|pides|escribes|pruebas|decides|prefieres|encuentras|eliges|manejas|asignas|creas|envías|importas|tocas|defines|configuras|registras|habilitas|conversas|devuelves|tomas|descubre|empieza|escríbenos|pruébalo|créala|aquí tienes|deja que|haz que|conoce qué|vosotros|vuestro|vuestra|tenéis|podéis|queréis)(?![\p{L}])/iu;
+const LEGAL_PAGES = new Set(['/privacidad', '/terminos']);
 // Claims the README says must never appear (not live today).
 const FORBIDDEN = [
   /carritos? abandonados?/i,
@@ -61,12 +63,9 @@ const FORBIDDEN = [
   /calendar\.app\.google/i,
 ];
 const PRICE = /(US\$|USD|ARS|\$\s?\d)/;
-// CTA labels come from src/content/site.json. The owner chose the voseo in the
-// WhatsApp and booking labels on purpose, so those exact strings are exempt
-// from the voseo check below.
+// CTA labels come from src/content/site.json.
 const site = JSON.parse(readFileSync('src/content/site.json', 'utf8'));
 const ALLOWED_CTA = new Set([site.cta.demo.label, site.cta.trial.label, site.cta.trial.shortLabel]);
-const CTA_TEXTS = [site.cta.demo.label, site.cta.trial.label, site.cta.trial.shortLabel, site.cta.booking.label];
 
 const files = htmlFiles(DIST);
 const titles = new Map();
@@ -167,8 +166,10 @@ for (const file of files) {
   for (const tag of ['<header', '<main', '<footer', '<nav']) if (!html.includes(tag)) fail(page, `missing landmark ${tag}>`);
 
   // Copy rules
-  const v = CTA_TEXTS.reduce((t, label) => t.split(label).join(' '), text).match(VOSEO);
-  if (v) fail(page, `voseo/vosotros found: "${v[0]}"`);
+  // Visible text plus JSON-LD (FAQ answers) and the meta description
+  const ld = (html.match(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g) ?? []).join(' ');
+  const v = !LEGAL_PAGES.has(page) && (text + ' ' + desc + ' ' + ld).match(TUTEO);
+  if (v) fail(page, `tuteo/vosotros found (use voseo): "${v[0]}"`);
   for (const re of FORBIDDEN) {
     const m = (text + ' ' + title + ' ' + desc + ' ' + html.match(/href="[^"]*"/g)?.join(' ')).match(re);
     if (m && !(page === '/privacidad' && /tiempo real/.test(m[0]))) fail(page, `forbidden claim: "${m[0]}"`);
@@ -206,8 +207,8 @@ if (!robots.includes('Sitemap: https://www.valthor.app/sitemap-index.xml')) fail
 // Plain-text files for AI assistants follow the same copy rules
 for (const f of ['llms.txt', 'llms-full.txt']) {
   const t = readFileSync(join(DIST, f), 'utf8');
-  const v = t.match(VOSEO);
-  if (v) fail(f, `voseo/vosotros found: "${v[0]}"`);
+  const v = t.match(TUTEO);
+  if (v) fail(f, `tuteo/vosotros found (use voseo): "${v[0]}"`);
   for (const re of FORBIDDEN) if (re.test(t)) fail(f, `forbidden claim: "${t.match(re)[0]}"`);
   if (PRICE.test(t)) fail(f, `possible price: "${t.match(PRICE)[0]}"`);
   for (const m of t.matchAll(/\((https:\/\/www\.valthor\.app[^)]*)\)/g)) {

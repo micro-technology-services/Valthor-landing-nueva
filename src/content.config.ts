@@ -26,7 +26,7 @@ const site = defineCollection({
     tagline: z.string(),
     url: z.string().url(),
     organization: z.object({ legalName: z.string(), city: z.string(), country: z.string() }),
-    cta: z.object({ demo: link, trial: link.extend({ shortLabel: z.string() }), booking: link, whatsapp: link }),
+    cta: z.object({ demo: link, trial: link.extend({ shortLabel: z.string() }), booking: link, login: link, whatsapp: link }),
     nav: z.array(link),
     footer: z.object({
       columns: z.array(z.object({ title: z.string(), links: z.array(link) })),
@@ -195,6 +195,7 @@ const landings = defineCollection({
             title: z.string(),
             text: z.string(),
             note: z.string().optional(),
+            website: z.string().url().optional(),
             source: z.string(),
           }),
         )

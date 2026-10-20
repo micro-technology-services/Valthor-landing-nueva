@@ -19,7 +19,12 @@ const crumbs = [{ name: entry.data.breadcrumb, path }];
   title={entry.data.seo.title}
   description={entry.data.seo.description}
   jsonLd={[
-    webPage({ path, name: entry.data.h1, description: entry.data.seo.description }),
+    webPage({
+      path,
+      name: entry.data.h1,
+      description: entry.data.seo.description,
+      mentions: entry.data.features.items.flatMap((f) => (f.website ? [{ name: f.title.split(':')[0], url: f.website }] : [])),
+    }),
     breadcrumbs(crumbs),
     faqPage(entry.data.faqs),
   ]}

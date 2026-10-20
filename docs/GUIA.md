@@ -31,8 +31,9 @@ Todos los textos están en la carpeta `src/content/` del repositorio. Los archiv
 
 - **Resaltado en violeta:** en los títulos, lo que va entre asteriscos se ve resaltado. Ejemplo: `"El mejor vendedor de tu equipo *no duerme.*"`.
 - **Título para Google (`seo.title`):** entre 50 y 60 caracteres. **Descripción (`seo.description`):** entre 140 y 160. Si no se cumple, la vista previa falla y te avisa en qué archivo y campo está el problema.
-- **Español neutro con «tú»** en los textos: nada de «vos» (tenés, podés) ni de «vosotros». El control automático lo detecta. La única excepción son los textos de los botones definidos en `src/content/site.json` («Hablá con Valthor por WhatsApp», «o agendá una llamada»).
+- **Español rioplatense con «vos»** en todos los textos (vos tenés, podés, probá, agendá): nada de «tú» (tienes, puedes, prueba) ni de «vosotros». El control automático lo detecta en todas las páginas menos Privacidad y Términos, que no se tocan.
 - **No publicar:** precios, funciones que no están activas (carritos abandonados, vuelta de stock, comentarios de Instagram, Telegram, TikTok, Shopify, demo interactiva, app en las tiendas) ni métricas sin fuente. El control automático también las detecta.
+- **Iniciar sesión:** el menú de arriba tiene un enlace «Iniciar sesión» junto a «Probar gratis», con el mismo destino (la plataforma). Se cambia en `src/content/site.json` (`cta.login`).
 - **Botones:** el principal es «Hablá con Valthor por WhatsApp» (abre WhatsApp con un mensaje para pedir una demo); el secundario, «Probar gratis 15 días» («Probar gratis» en el menú de arriba). El enlace «o agendá una llamada» aparece solo en la sección final de cada página. Los textos y enlaces se cambian en un solo lugar: `src/content/site.json` (sección `cta`).
 - Si agregas una función nueva en una página de funciones o rubros, completa el campo `source` con la fila de la auditoría que la respalda.
 
@@ -82,18 +83,26 @@ La etiqueta de Google Ads (AW-18428663865) ya está activa. Para activar GA4 y e
 2. Agrega `PUBLIC_GA4_ID` con tu ID de GA4 (empieza con `G-`) y `PUBLIC_META_PIXEL_ID` con el ID del Pixel.
 3. Marca «Production» y «Preview», guarda y vuelve a desplegar (Deployments → los tres puntos → **Redeploy**).
 
+### Visitantes de Europa (aviso de cookies)
+
+A quien entra desde Europa (se detecta por la zona horaria del navegador) le aparece un aviso de cookies. Hasta que toca **Aceptar** no se carga Google ni Meta, y sus clics no se miden; si toca **Rechazar**, no se mide nada. Puede cambiar la decisión desde «Configurar cookies», al pie de la página (solo visible en Europa). El resto de los países se mide como siempre. El texto del aviso está en `src/components/CookieBanner.astro` y la explicación legal en la sección 9 de Privacidad.
+
 Los botones envían estos eventos:
 
 | Botón | GA4 | Meta Pixel |
 | --- | --- | --- |
-| Hablá con Valthor por WhatsApp y botón flotante de WhatsApp | `whatsapp_click` | `Lead` |
-| o agendá una llamada | `booking_click` | `Lead` |
-| Probar gratis | `trial_start_click` | `StartTrial` |
+| Hablá con Valthor por WhatsApp y botón flotante de WhatsApp | `whatsapp_click` y `generate_lead` | `Lead` |
+| o agendá una llamada | `booking_click` y `generate_lead` | `Lead` |
+| Probar gratis | `trial_start_click` y `sign_up` | `StartTrial` |
 
-Además, todos disparan la conversión de Google Ads como antes. Para comprobarlo, usa la vista DebugView de GA4 y el «Probador de eventos» del Administrador de eventos de Meta.
+`generate_lead` y `sign_up` son los eventos recomendados de GA4: en GA4 → **Administrar** → **Eventos**, márcalos como **evento clave** para verlos como conversiones. Además, todos disparan la conversión de Google Ads como antes. Para comprobarlo, usa la vista DebugView de GA4 y el «Probador de eventos» del Administrador de eventos de Meta.
+
+### Redes sociales oficiales (`PUBLIC_SAME_AS`)
+
+Los perfiles oficiales que Google y los asistentes de IA asocian a MTS Group salen de la variable `PUBLIC_SAME_AS` en Vercel: las URLs separadas por comas, por ejemplo `https://www.instagram.com/valthor_crm,https://www.linkedin.com/company/…`. Si está vacía, no se publica ningún perfil.
 
 ## Después de publicar: Google y buscadores de IA
 
-- **Google Search Console:** agrega la propiedad `https://www.valthor.app`, envía el sitemap `https://www.valthor.app/sitemap-index.xml` y pide la indexación de la portada.
+- **Google Search Console:** agrega la propiedad `https://www.valthor.app` y elige verificar con **Etiqueta HTML**. Copia solo el código que va dentro de `content="…"` y cárgalo en Vercel como `PUBLIC_GSC_VERIFICATION` (Production y Preview), vuelve a desplegar y toca **Verificar**. Después envía el sitemap `https://www.valthor.app/sitemap-index.xml` y pide la indexación de la portada.
 - **Bing Webmaster Tools:** importa la propiedad desde Search Console (sirve también para ChatGPT y Copilot, que usan el índice de Bing).
 - Los asistentes de IA tienen un resumen del sitio en `https://www.valthor.app/llms.txt` y el texto completo en `/llms-full.txt`. Se actualizan solos cuando cambias los textos.

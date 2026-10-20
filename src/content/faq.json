@@ -9,7 +9,7 @@
     "id": "programar",
     "category": "General",
     "question": "¿Necesito saber programar?",
-    "answer": "No. Conectas tus canales, cargas tu catálogo y tus reglas en pantallas simples, y Valthor queda atendiendo en unas 2 horas.",
+    "answer": "No. Conectás tus canales, cargás tu catálogo y tus reglas en pantallas simples, y Valthor queda atendiendo en unas 2 horas.",
     "showOnHome": true
   },
   {
@@ -36,13 +36,13 @@
     "id": "mismo-numero",
     "category": "WhatsApp y canales",
     "question": "¿Puedo usar mi número de WhatsApp actual?",
-    "answer": "Sí. Conectas tu número por la API oficial de Meta y puedes seguir usándolo también en la app de WhatsApp Business."
+    "answer": "Sí. Conectás tu número por la API oficial de Meta y podés seguir usándolo también en la app de WhatsApp Business."
   },
   {
     "id": "horario",
     "category": "WhatsApp y canales",
     "question": "¿La IA atiende las 24 horas?",
-    "answer": "Tú decides. La enciendes por canal para que atienda todo el día o solo en el horario que elijas. Viene apagada hasta que la enciendes."
+    "answer": "Vos decidís. La encendés por canal para que atienda todo el día o solo en el horario que elijas. Viene apagada hasta que la encendés."
   },
   {
     "id": "audios",
@@ -62,7 +62,7 @@
     "id": "no-sabe",
     "category": "Ventas y cobros",
     "question": "¿Qué pasa si la IA no sabe responder?",
-    "answer": "Te pasa la conversación. También lo hace si el cliente pide hablar con una persona o se enoja. Tú tomas el chat y luego se lo devuelves a la IA.",
+    "answer": "Te pasa la conversación. También lo hace si el cliente pide hablar con una persona o se enoja. Vos tomás el chat y luego se lo devolvés a la IA.",
     "showOnHome": true
   },
   {
@@ -88,19 +88,19 @@
     "id": "prueba",
     "category": "Prueba y planes",
     "question": "¿Puedo probarlo antes de pagar?",
-    "answer": "Sí. Tienes 15 días de prueba gratis y un Playground para conversar con tu agente antes de encenderlo.",
+    "answer": "Sí. Tenés 15 días de prueba gratis y un Playground para conversar con tu agente antes de encenderlo.",
     "showOnHome": true
   },
   {
     "id": "costo",
     "category": "Prueba y planes",
     "question": "¿Cuánto cuesta Valthor?",
-    "answer": "Depende del plan y de cuánto trabaje la IA. Armamos la propuesta con tus números en una llamada, y antes puedes probarlo gratis durante 15 días."
+    "answer": "Depende del plan y de cuánto trabaje la IA. Armamos la propuesta con tus números en una llamada, y antes podés probarlo gratis durante 15 días."
   },
   {
     "id": "celular",
     "category": "Prueba y planes",
     "question": "¿Puedo manejarlo desde el celular?",
-    "answer": "Sí. Valthor funciona desde el navegador del celular y puedes instalarlo como app web para tener tus conversaciones a mano."
+    "answer": "Sí. Valthor funciona desde el navegador del celular y podés instalarlo como app web para tener tus conversaciones a mano."
   }
 ]

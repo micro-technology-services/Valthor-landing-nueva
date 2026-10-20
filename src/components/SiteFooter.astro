@@ -36,6 +36,9 @@ const { footer, tagline } = await getSite();
             </li>
           ))
         }
+        <li>
+          <button type="button" id="cookie-settings" class="cookie-settings" hidden>Configurar cookies</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -97,6 +100,22 @@ const { footer, tagline } = await getSite();
   .legal {
     display: flex;
     gap: 20px;
+  }
+  /* Shown only to visitors from Europe (CookieBanner.astro). */
+  .cookie-settings {
+    background: none;
+    border: 0;
+    padding: 4px 0;
+    color: var(--on-dark-3);
+    font: inherit;
+    cursor: pointer;
+  }
+  .cookie-settings[hidden] {
+    display: none;
+  }
+  .cookie-settings:hover {
+    color: #fff;
+    text-decoration: underline;
   }
   @media (max-width: 860px) {
     .top {

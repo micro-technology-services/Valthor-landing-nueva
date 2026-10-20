@@ -3,10 +3,32 @@
 // GA4 and Meta Pixel are added only when their IDs are set as environment
 // variables in Vercel (PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID). See .env.example.
 // All third-party scripts load lazily, on the first interaction or after 6 s.
+// Visitors from Europe (by time zone) get no tracking until they accept the
+// cookie banner (CookieBanner.astro); everyone else is measured as before.
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
 ---
 
+<script is:inline>
+// Consent: Europe (EEA, UK, Switzerland) is detected from the browser's time
+// zone. There, consent starts denied until the visitor accepts; the choice is
+// kept in localStorage. Elsewhere tracking is granted, as before.
+(function () {
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var eu = /^Europe\//.test(tz) || /^Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)$/.test(tz);
+  var stored = null;
+  try { stored = localStorage.getItem('valthor_consent'); } catch (e) {}
+  var state = eu ? (stored === 'granted' || stored === 'denied' ? stored : 'pending') : 'granted';
+  window.__vConsent = { eu: eu, state: state };
+  window.dataLayer = window.dataLayer || [];
+  function g() { dataLayer.push(arguments); }
+  if (eu) {
+    var v = state === 'granted' ? 'granted' : 'denied';
+    g('consent', 'default', { ad_storage: v, analytics_storage: v, ad_user_data: v, ad_personalization: v });
+  }
+})();
+</script>
 <script is:inline define:vars={{ withPixel: Boolean(pixelId) }}>
 // gtag.js (and fbevents.js when the Pixel is on) load on the visitor's first
 // interaction (or after 6 s idle) so they do not block the first render.
@@ -22,12 +44,13 @@ const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
     document.head.appendChild(s);
   }
   function load() {
-    if (loaded) return;
+    if (loaded || window.__vConsent.state !== 'granted') return;
     loaded = true;
     events.forEach(function (e) { removeEventListener(e, load, true); });
     add('https://www.googletagmanager.com/gtag/js?id=AW-18428663865');
     if (withPixel) add('https://connect.facebook.net/en_US/fbevents.js');
   }
+  window.__vLoadTags = load; // called by the cookie banner on accept
   events.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
   addEventListener('load', function () { setTimeout(load, 6000); });
 })();
@@ -63,6 +86,7 @@ function gtag_report_conversion(url) {
       !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
+      if (window.__vConsent.state !== 'granted') fbq('consent', 'revoke');
       fbq('init', pixelId);
       fbq('track', 'PageView');
     </script>
@@ -70,19 +94,26 @@ function gtag_report_conversion(url) {
 }
 <script is:inline>
 // CTA events: every tracked link carries data-track="trial_start_click" |
-// "booking_click" | "whatsapp_click". GA4 gets the event by that name, the
-// Meta Pixel gets StartTrial (trial) or Lead (WhatsApp and booking), and the
-// Google Ads conversion fires on all of them, as on the previous site.
+// "booking_click" | "whatsapp_click". GA4 gets the event by that name plus the
+// recommended event (sign_up for the trial, generate_lead for WhatsApp and
+// booking), the Meta Pixel gets StartTrial (trial) or Lead (WhatsApp and
+// booking), and the Google Ads conversion fires on all of them.
 var PIXEL_EVENTS = { trial_start_click: 'StartTrial', whatsapp_click: 'Lead', booking_click: 'Lead' };
+var GA4_EVENTS = { trial_start_click: 'sign_up', whatsapp_click: 'generate_lead', booking_click: 'generate_lead' };
 document.addEventListener('click', function (e) {
   var a = e.target.closest && e.target.closest('a[data-track]');
-  if (!a) return;
+  if (!a || window.__vConsent.state !== 'granted') return; // no consent: plain link
   var name = a.getAttribute('data-track');
   var params = { link_url: a.href, cta_location: a.getAttribute('data-track-location') || '' };
   if (window.fbq && PIXEL_EVENTS[name]) fbq('track', PIXEL_EVENTS[name], { content_name: params.cta_location });
+  var ga4Name = GA4_EVENTS[name];
+  var ga4Params = { method: name, link_url: params.link_url, cta_location: params.cta_location };
   var plainClick = !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
   if (!plainClick || typeof gtag_report_conversion !== 'function') {
-    if (window.gtag) gtag('event', name, params);
+    if (window.gtag) {
+      gtag('event', name, params);
+      if (ga4Name) gtag('event', ga4Name, ga4Params);
+    }
     return;
   }
   // Hold the navigation until Google has the click event (GA4 + Ads), at most
@@ -92,6 +123,7 @@ document.addEventListener('click', function (e) {
   var go = function () { if (!done) { done = true; window.location = url; } };
   params.event_callback = go;
   params.event_timeout = 1200;
+  if (ga4Name) gtag('event', ga4Name, ga4Params);
   gtag('event', name, params);
   gtag_report_conversion();
   setTimeout(go, 1200); // still navigate if the tag is blocked or slow

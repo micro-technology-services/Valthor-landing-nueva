@@ -13,8 +13,11 @@ export const organization = {
     'MTS Group S.A.S. desarrolla Valthor, una suite de IA para PyMEs que atiende y vende por WhatsApp, Instagram y Facebook.',
   areaServed: ['Argentina', 'Chile', 'España', 'Estados Unidos'].map((name) => ({ '@type': 'Country', name })),
   knowsAbout: ['Inteligencia artificial', 'WhatsApp Business API', 'CRM', 'Atención al cliente', 'Ventas conversacionales'],
-  // Official profiles. TODO: add LinkedIn, Facebook, YouTube… when they exist.
-  sameAs: ['https://www.instagram.com/valthor_crm'],
+  // Official profiles, from the PUBLIC_SAME_AS env var (comma-separated URLs).
+  sameAs: (import.meta.env.PUBLIC_SAME_AS ?? '')
+    .split(',')
+    .map((u: string) => u.trim())
+    .filter(Boolean),
   address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -30,7 +33,7 @@ export function softwareApplication(description: string) {
     '@id': `${SITE}/#software`,
     name: 'Valthor',
     applicationCategory: 'BusinessApplication',
-    applicationSubCategory: 'CRM y agente de IA para WhatsApp',
+    applicationSubCategory: 'Suite de IA y CRM para WhatsApp',
     operatingSystem: 'Web',
     inLanguage: 'es',
     url: SITE,
@@ -71,7 +74,18 @@ export const website = {
   publisher: { '@id': `${SITE}/#organization` },
 };
 
-export function webPage({ path, name, description }: { path: string; name: string; description: string }) {
+export function webPage({
+  path,
+  name,
+  description,
+  mentions = [],
+}: {
+  path: string;
+  name: string;
+  description: string;
+  /** Other organizations named on the page, e.g. alliance partners. */
+  mentions?: { name: string; url: string }[];
+}) {
   return {
     '@type': 'WebPage',
     '@id': `${SITE}${path}#webpage`,
@@ -82,5 +96,6 @@ export function webPage({ path, name, description }: { path: string; name: strin
     isPartOf: { '@id': `${SITE}/#website` },
     about: { '@id': `${SITE}/#software` },
     publisher: { '@id': `${SITE}/#organization` },
+    ...(mentions.length ? { mentions: mentions.map((m) => ({ '@type': 'Organization', ...m })) } : {}),
   };
 }
