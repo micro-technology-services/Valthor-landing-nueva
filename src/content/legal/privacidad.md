@@ -1,6 +1,6 @@
 ---
 title: Política de Privacidad
-updated: 25 de julio de 2026
+updated: 19 de octubre de 2026
 seo:
   title: "Política de privacidad de Valthor | MTS Group S.A.S."
   description: "Qué datos recopila Valthor, cómo los usa y protege, cómo cumple el Uso Limitado de las APIs de Google y qué derechos tienes sobre tu información personal."
@@ -49,3 +49,9 @@ Puedes acceder, rectificar o eliminar tus datos, revocar el acceso a tu calendar
 ## 8. Contacto
 
 Ante cualquier consulta sobre esta política o sobre el tratamiento de tus datos, escríbenos a [sistemas@mtsclub.org](mailto:sistemas@mtsclub.org). MTSGroup SAS opera bajo las leyes de Buenos Aires, Argentina.
+
+<h2 id="cookies">9. Cookies y medición del sitio web</h2>
+
+En www.valthor.app usamos herramientas de Google (Google Analytics y Google Ads) y de Meta (Píxel de Meta) que guardan cookies en tu navegador para medir las visitas, saber qué anuncios generan contactos y mejorar nuestras campañas. No las usamos para vender tus datos.
+
+Si visitas el sitio desde Europa, solo activamos estas cookies si las aceptas en el aviso de cookies, y puedes cambiar tu decisión cuando quieras desde «Configurar cookies», al pie de la página. En cualquier caso, también puedes borrarlas o bloquearlas desde la configuración de tu navegador.

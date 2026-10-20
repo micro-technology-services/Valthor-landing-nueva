@@ -1,0 +1,93 @@
+---
+// Cookie notice for visitors from Europe only (see the consent block in
+// Analytics.astro). Hidden by default; shown by the script when the visitor's
+// time zone is European and they have not chosen yet.
+---
+
+<div class="cookie-banner" id="cookie-banner" role="region" aria-labelledby="cookie-title" hidden>
+  <p id="cookie-title" class="title">Cookies</p>
+  <p class="text">
+    Usamos cookies de Google y Meta para medir las visitas y mejorar nuestros anuncios. Solo las activamos si aceptás.{' '}
+    <a href="/privacidad#cookies">Más información</a>
+  </p>
+  <div class="actions">
+    <button type="button" class="choice" data-consent="denied">Rechazar</button>
+    <button type="button" class="choice" data-consent="granted">Aceptar</button>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  var c = window.__vConsent;
+  var banner = document.getElementById('cookie-banner');
+  if (!c || !c.eu || !banner) return;
+  var settings = document.getElementById('cookie-settings');
+  if (settings) {
+    settings.hidden = false;
+    settings.addEventListener('click', function () { banner.hidden = false; });
+  }
+  if (c.state === 'pending') banner.hidden = false;
+  banner.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]');
+    if (!b) return;
+    var v = b.getAttribute('data-consent');
+    c.state = v;
+    try { localStorage.setItem('valthor_consent', v); } catch (err) {}
+    if (window.gtag) gtag('consent', 'update', { ad_storage: v, analytics_storage: v, ad_user_data: v, ad_personalization: v });
+    if (window.fbq) fbq('consent', v === 'granted' ? 'grant' : 'revoke');
+    if (v === 'granted' && window.__vLoadTags) window.__vLoadTags();
+    banner.hidden = true;
+  });
+})();
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 10000;
+    width: min(440px, calc(100% - 32px));
+    background: #161026;
+    color: #fff;
+    border: 1px solid rgba(167, 139, 250, 0.45);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .cookie-banner[hidden] {
+    display: none;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .text {
+    color: var(--on-dark-2);
+  }
+  .text a {
+    color: var(--accent-soft);
+  }
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .choice {
+    flex: 1;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: 600 15px var(--font-body);
+    cursor: pointer;
+  }
+  .choice:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+</style>

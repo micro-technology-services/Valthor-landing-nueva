@@ -21,6 +21,10 @@
       "label": "o agendá una llamada",
       "href": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2nyjulCLYyZpKp8XZG2ulAjS0XRWwMlC0cHgtiAGMtrBRvlwQTwZDZIreAJ6qIpu2de4oR_8_z"
     },
+    "login": {
+      "label": "Iniciar sesión",
+      "href": "https://platform.valthor.app/login"
+    },
     "whatsapp": {
       "label": "Hablar por WhatsApp con Valthor",
       "href": "https://wa.me/5491131381205"

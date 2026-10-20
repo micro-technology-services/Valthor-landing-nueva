@@ -29,6 +29,8 @@ Owner guide in Spanish (edit, preview, publish): [`docs/GUIA.md`](docs/GUIA.md).
 
 Google Ads `AW-18428663865` is always on. GA4 and Meta Pixel are added only when `PUBLIC_GA4_ID` / `PUBLIC_META_PIXEL_ID` are set (see `.env.example`). `PUBLIC_GSC_VERIFICATION` adds the Search Console meta tag; `PUBLIC_SAME_AS` (comma-separated URLs) fills Organization `sameAs`. gtag.js and fbevents.js both load on the first interaction (or after 6 s).
 
+Visitors in a European time zone get an opt-in cookie banner (`src/components/CookieBanner.astro`): Google Consent Mode defaults to denied, gtag.js/fbevents.js are not loaded and CTA clicks are not tracked until they accept. Other visitors are unaffected.
+
 CTA links carry `data-track`:
 
 | `data-track` | GA4 event | Meta Pixel | Google Ads conversion |

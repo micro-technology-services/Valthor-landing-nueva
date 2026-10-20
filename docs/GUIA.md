@@ -33,6 +33,7 @@ Todos los textos están en la carpeta `src/content/` del repositorio. Los archiv
 - **Título para Google (`seo.title`):** entre 50 y 60 caracteres. **Descripción (`seo.description`):** entre 140 y 160. Si no se cumple, la vista previa falla y te avisa en qué archivo y campo está el problema.
 - **Español rioplatense con «vos»** en todos los textos (vos tenés, podés, probá, agendá): nada de «tú» (tienes, puedes, prueba) ni de «vosotros». El control automático lo detecta en todas las páginas menos Privacidad y Términos, que no se tocan.
 - **No publicar:** precios, funciones que no están activas (carritos abandonados, vuelta de stock, comentarios de Instagram, Telegram, TikTok, Shopify, demo interactiva, app en las tiendas) ni métricas sin fuente. El control automático también las detecta.
+- **Iniciar sesión:** el menú de arriba tiene un enlace «Iniciar sesión» junto a «Probar gratis», con el mismo destino (la plataforma). Se cambia en `src/content/site.json` (`cta.login`).
 - **Botones:** el principal es «Hablá con Valthor por WhatsApp» (abre WhatsApp con un mensaje para pedir una demo); el secundario, «Probar gratis 15 días» («Probar gratis» en el menú de arriba). El enlace «o agendá una llamada» aparece solo en la sección final de cada página. Los textos y enlaces se cambian en un solo lugar: `src/content/site.json` (sección `cta`).
 - Si agregas una función nueva en una página de funciones o rubros, completa el campo `source` con la fila de la auditoría que la respalda.
 
@@ -81,6 +82,10 @@ La etiqueta de Google Ads (AW-18428663865) ya está activa. Para activar GA4 y e
 1. En Vercel → proyecto **valthorweb** → **Settings** → **Environment Variables**.
 2. Agrega `PUBLIC_GA4_ID` con tu ID de GA4 (empieza con `G-`) y `PUBLIC_META_PIXEL_ID` con el ID del Pixel.
 3. Marca «Production» y «Preview», guarda y vuelve a desplegar (Deployments → los tres puntos → **Redeploy**).
+
+### Visitantes de Europa (aviso de cookies)
+
+A quien entra desde Europa (se detecta por la zona horaria del navegador) le aparece un aviso de cookies. Hasta que toca **Aceptar** no se carga Google ni Meta, y sus clics no se miden; si toca **Rechazar**, no se mide nada. Puede cambiar la decisión desde «Configurar cookies», al pie de la página (solo visible en Europa). El resto de los países se mide como siempre. El texto del aviso está en `src/components/CookieBanner.astro` y la explicación legal en la sección 9 de Privacidad.
 
 Los botones envían estos eventos:
 
