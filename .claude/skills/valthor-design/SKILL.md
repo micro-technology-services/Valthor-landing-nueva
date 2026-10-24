@@ -1,6 +1,6 @@
 ---
 name: valthor-design
-description: Valthor's own design system ("Turno noche") for any UI work on Valthor — the app (valthor-crm-v2, platform.valthor.app, web and mobile) and the website (valthor.app). Use it whenever you build, change, review or migrate a screen, component, page, email layout or UI copy for Valthor, even for a small tweak like a button, an empty state or a color, and whenever someone says the UI looks generic, "made with AI", old, or inconsistent. It replaces shadcn/Tailwind defaults and the old violet-to-fuchsia kit with Valthor's tokens, components, voice and banned-pattern list.
+description: "Valthor's own design system ('Turno noche') for UI work on the Valthor app (valthor-crm-v2, platform.valthor.app, web and mobile). Use it whenever you build, change, review or migrate a screen, component, email layout or UI copy in the app, even for a small tweak like a button, an empty state or a color, and whenever someone says the app looks generic, 'made with AI', old, or inconsistent. It replaces shadcn/Tailwind defaults and the old violet-to-fuchsia kit with Valthor's tokens, components, voice and banned-pattern list. For the marketing website (valthor.app) it only sets the shared brand rules (logo, positioning, voice) because the website keeps its own design."
 ---
 
 # Valthor design system — Turno noche
@@ -17,7 +17,7 @@ The approved visual reference is "versión 2" of the Conversaciones mockup (Oct 
 2. If the repo doesn't have the tokens yet, install `references/tokens.css` into the global stylesheet first (see `references/migration.md` → "Step 0"). Never hardcode the hex values in components.
 3. Find the closest component in `references/components.md` and build from its spec instead of from the shadcn default.
 4. Write the copy following `references/voice.md` (Rioplatense Spanish with voseo).
-5. Website work (valthor.app): also read `references/web.md`.
+5. Website work (valthor.app): read `references/web.md` **first and only**. The website keeps its current design; Turno noche does not apply there beyond logo, positioning and voice. Skip the rest of this file.
 6. Migrating an existing screen: follow `references/migration.md`.
 
 ## The three questions for every screen
@@ -53,7 +53,7 @@ Ask them before you finish. They catch most mistakes.
 
 **Icons** — Lucide line icons, stroke 1.6–1.75, 18–22 px, colored like their text. No filled icons, no icons in colored boxes, **no `Sparkles` to mean "AI"** (the AI is identified by `ia` + "Tu IA").
 
-**Logo** — SVGs in `assets/logos/`. In the app: white version on `noche` (`valthor-logo-blanco.svg`, `valthor-isotipo-blanco.svg` when collapsed). The gradient color version is for the website and sales material only; it is the only gradient allowed anywhere. Never write "CRM" next to the logo.
+**Logo** — SVGs in `assets/logos/`. In the app: white version on `noche` (`valthor-logo-blanco.svg`, `valthor-isotipo-blanco.svg` when collapsed). The gradient color version is for the website and sales material; in the app it is the only gradient allowed. Never write "CRM" next to the logo.
 
 ## Banned (these make Valthor look AI-generated)
 
