@@ -52,6 +52,6 @@ Ante cualquier consulta sobre esta política o sobre el tratamiento de tus datos
 
 <h2 id="cookies">9. Cookies y medición del sitio web</h2>
 
-En www.valthor.app usamos herramientas de Google (Google Analytics y Google Ads) y de Meta (Píxel de Meta) que guardan cookies en tu navegador para medir las visitas, saber qué anuncios generan contactos y mejorar nuestras campañas. No las usamos para vender tus datos.
+En [www.valthor.app](https://www.valthor.app) usamos herramientas de Google (Google Analytics y Google Ads) y de Meta (Píxel de Meta) que guardan cookies en tu navegador para medir las visitas, saber qué anuncios generan contactos y mejorar nuestras campañas. No las usamos para vender tus datos.
 
 Si visitas el sitio desde Europa, solo activamos estas cookies si las aceptas en el aviso de cookies, y puedes cambiar tu decisión cuando quieras desde «Configurar cookies», al pie de la página. En cualquier caso, también puedes borrarlas o bloquearlas desde la configuración de tu navegador.

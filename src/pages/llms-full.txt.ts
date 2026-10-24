@@ -3,6 +3,7 @@
 import type { APIRoute } from 'astro';
 import { getSite } from '../lib/content';
 import { getPageIndex } from '../lib/pages';
+import { DEFINITION, FACTS } from '../lib/schema';
 
 export const GET: APIRoute = async () => {
   const site = await getSite();
@@ -50,6 +51,6 @@ ${plans.allPlans.items.map((i) => `- ${i}`).join('\n')}
 ${plans.faqs.map((f) => `### ${f.question}\n\n${f.answer}`).join('\n\n')}
 `;
 
-  const text = [`# Valthor: contenido completo\n\nFuente: ${site.url}. Resumen en ${url('/llms.txt')}.`, ...pages, planText].join('\n\n---\n\n');
+  const text = [`# Valthor: contenido completo\n\n> ${DEFINITION}\n\n${FACTS}\n\nFuente: ${site.url}. Resumen en ${url('/llms.txt')}.`, ...pages, planText].join('\n\n---\n\n');
   return new Response(text, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

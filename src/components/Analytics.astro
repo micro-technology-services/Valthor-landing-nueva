@@ -2,7 +2,7 @@
 // Google Ads tag: copied verbatim from the previous site (AW-18428663865).
 // GA4 and Meta Pixel are added only when their IDs are set as environment
 // variables in Vercel (PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID). See .env.example.
-// All third-party scripts load lazily, on the first interaction or after 6 s.
+// All third-party scripts load lazily, on the first interaction or after 3 s.
 // Visitors from Europe (by time zone) get no tracking until they accept the
 // cookie banner (CookieBanner.astro); everyone else is measured as before.
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
@@ -31,7 +31,7 @@ const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
 </script>
 <script is:inline define:vars={{ withPixel: Boolean(pixelId) }}>
 // gtag.js (and fbevents.js when the Pixel is on) load on the visitor's first
-// interaction (or after 6 s idle) so they do not block the first render.
+// interaction (or after 3 s idle) so they do not block the first render.
 // Commands queued before that (config, conversions, pixel events) are sent as
 // soon as each script loads.
 (function () {
@@ -52,7 +52,7 @@ const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
   }
   window.__vLoadTags = load; // called by the cookie banner on accept
   events.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
-  addEventListener('load', function () { setTimeout(load, 6000); });
+  addEventListener('load', function () { setTimeout(load, 3000); });
 })();
 </script>
 <script is:inline>

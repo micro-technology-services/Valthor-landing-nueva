@@ -47,6 +47,7 @@ const faqSources = {
   'no-sabe': `${A} §2.1 Derivación a humano (ACTIVA)`,
   cobro: `${A} §2.2 Links de pago con Mercado Pago (ACTIVA): cuotas y tarjetas según Mercado Pago`,
   'precios-ia': `${A} §2.2 Links de pago: «el monto lo calcula el sistema (la IA no lo inventa)»`,
+  integraciones: `${A} §2.2 Catálogo (Tienda Nube, Mercado Libre, Magento) y Links de pago (Mercado Pago), §2.6 Agenda (Google/Outlook), §2.5 Correo con IA (Gmail/Outlook), §2.7 GymFlow, §1 fila 1 (WhatsApp, Instagram y Facebook); ${R}: Kuad System, GymFlow y ZEUS ERP`,
   'tienda-erp': `${A} §2.2 Catálogo (Tienda Nube, Mercado Libre, Magento); ${R}: Kuad System y ZEUS ERP`,
   prueba: `${A} §1 fila 15: prueba gratis de 15 días y Playground`,
   costo: 'Sin precio publicado (regla del README)',

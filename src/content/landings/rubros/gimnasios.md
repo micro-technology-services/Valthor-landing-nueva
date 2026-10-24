@@ -7,7 +7,7 @@ breadcrumb: Gimnasios
 updated: octubre de 2026
 eyebrow: Para tu rubro
 h1: "Software para gimnasios con IA que atiende por WhatsApp"
-intro: "Valthor es un software para gimnasios con inteligencia artificial: atiende las consultas por WhatsApp, Instagram y Facebook, detecta a los socios en riesgo de dejar el gimnasio, registra la asistencia con check-in por QR y arma rutinas con IA que revisa tu entrenador. Si usás GymFlow, se sincroniza todos los días."
+intro: "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Para tu gimnasio es un software con inteligencia artificial: responde las consultas por la API oficial de WhatsApp Business de Meta, detecta a los socios en riesgo de dejar el gimnasio, registra la asistencia con check-in por QR y arma rutinas con IA que revisa tu entrenador. Si usás GymFlow, se sincroniza todos los días."
 highlights:
   - "Socios en riesgo de abandonar"
   - "Check-in por QR y registro de asistencia"

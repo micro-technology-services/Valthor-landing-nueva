@@ -3,7 +3,7 @@
     "id": "que-es",
     "category": "General",
     "question": "¿Qué es Valthor?",
-    "answer": "Valthor es una suite de IA para PyMEs creada por MTS Group. Un agente de inteligencia artificial atiende WhatsApp, Instagram y Facebook con tu catálogo y tus reglas, envía links de pago de Mercado Pago, agenda turnos y deriva a una persona cuando hace falta. Todo queda registrado en un CRM con tus contactos y tus ventas."
+    "answer": "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Responde con tu catálogo y tus reglas, envía links de pago de Mercado Pago y deriva a una persona cuando hace falta. Todo queda registrado con tus contactos y tus ventas."
   },
   {
     "id": "programar",
@@ -78,11 +78,17 @@
     "answer": "No. El monto del link de pago lo calcula el sistema con los precios de tu catálogo; la IA no lo inventa."
   },
   {
+    "id": "integraciones",
+    "category": "Ventas y cobros",
+    "question": "¿Con qué se integra Valthor?",
+    "answer": "Valthor se integra con Tienda Nube, Mercado Libre, Magento, Mercado Pago, Kuad System, ZEUS ERP & POS, GymFlow, Google Calendar, Outlook, Gmail, WhatsApp, Instagram y Facebook. El catálogo de tu tienda o tu ERP se actualiza todos los días.",
+    "showOnHome": true
+  },
+  {
     "id": "tienda-erp",
     "category": "Ventas y cobros",
     "question": "¿Se conecta con mi tienda o mi ERP?",
-    "answer": "Sí, con Tienda Nube, Mercado Libre, Magento, Kuad System y ZEUS ERP. El catálogo se actualiza todos los días.",
-    "showOnHome": true
+    "answer": "Sí, con Tienda Nube, Mercado Libre, Magento, Kuad System y ZEUS ERP & POS. El catálogo se actualiza todos los días."
   },
   {
     "id": "prueba",

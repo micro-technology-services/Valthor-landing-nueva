@@ -4,6 +4,7 @@ import type { APIRoute } from 'astro';
 import { getEntry } from 'astro:content';
 import { getSite, getFaqs } from '../lib/content';
 import { getPageIndex } from '../lib/pages';
+import { DEFINITION, FACTS } from '../lib/schema';
 
 export const GET: APIRoute = async () => {
   const site = await getSite();
@@ -14,9 +15,13 @@ export const GET: APIRoute = async () => {
 
   const text = `# Valthor
 
-> ${home.hero.lead}
+> ${DEFINITION}
 
-Valthor es una suite de IA para PyMEs de ${site.organization.legalName} (${site.organization.city}, Argentina), con clientes en Argentina, Chile, España y Estados Unidos. La IA de Valthor atiende WhatsApp (API oficial de Meta), Instagram y Facebook con el catálogo y las reglas del negocio, entiende audios, envía links de pago de Mercado Pago, agenda turnos con seña, deriva a una persona cuando hace falta y mide qué anuncio de Meta trae ventas. Incluye un CRM con contactos, pipeline de ventas y calificación de clientes. MTS Group es Meta Business Partner. Prueba gratis de 15 días; el precio se define en una llamada según el plan y el uso.
+${FACTS}
+
+${home.hero.lead}
+
+La IA de Valthor atiende WhatsApp (API oficial de Meta), Instagram y Facebook con el catálogo y las reglas del negocio, entiende audios, envía links de pago de Mercado Pago, agenda turnos con seña, deriva a una persona cuando hace falta y mide qué anuncio de Meta trae ventas. Incluye un CRM con contactos, pipeline de ventas y calificación de clientes. MTS Group es Meta Business Partner.
 
 ## Páginas
 

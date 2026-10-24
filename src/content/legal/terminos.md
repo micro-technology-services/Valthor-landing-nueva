@@ -3,7 +3,7 @@ title: Términos del Servicio
 updated: 25 de julio de 2026
 seo:
   title: "Términos del servicio de Valthor | MTS Group S.A.S."
-  description: "Condiciones de uso de Valthor, el CRM con IA de MTS Group: tu cuenta y tu contenido, integraciones de terceros, responsabilidad, baja y ley aplicable."
+  description: "Condiciones de uso de Valthor, la suite de IA para PyMEs de MTS Group: tu cuenta y tu contenido, integraciones, responsabilidad, baja y ley aplicable."
 ---
 
 ## 1. Aceptación

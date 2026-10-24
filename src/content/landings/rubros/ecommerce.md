@@ -7,7 +7,7 @@ breadcrumb: Ecommerce
 updated: octubre de 2026
 eyebrow: Para tu rubro
 h1: "Chatbot con IA para ecommerce: vende por WhatsApp con tu catálogo"
-intro: "Un chatbot con IA para ecommerce responde las consultas de tu tienda online por chat y ayuda a cerrar la venta. Valthor va más allá de un chatbot: conecta tu catálogo de Tienda Nube, Mercado Libre, Magento, Kuad System o ZEUS ERP, responde stock, talles y envíos por WhatsApp, Instagram y Facebook, y cobra con un link de Mercado Pago."
+intro: "Un chatbot con IA para ecommerce responde las consultas de tu tienda online por chat y ayuda a cerrar la venta. Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Va más allá de un chatbot: usa la API oficial de WhatsApp Business de Meta, conecta tu catálogo de Tienda Nube, Mercado Libre, Magento, Kuad System o ZEUS ERP, responde stock, talles y envíos, y cobra con un link de Mercado Pago."
 highlights:
   - "Catálogo conectado y actualizado todos los días"
   - "Responde «¿dónde está mi pedido?»"

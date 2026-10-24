@@ -132,7 +132,12 @@ for (const file of files) {
         if (node['@type'] === 'SoftwareApplication' && (!node.name || !node.applicationCategory || !node.operatingSystem))
           fail(page, 'SoftwareApplication missing name/applicationCategory/operatingSystem');
       }
-      if (/"offers"|"price"/.test(b)) fail(page, 'JSON-LD contains price/offers');
+      // No prices in JSON-LD. The only offer allowed is the free trial.
+      if (/"(price|lowPrice|highPrice|priceCurrency|priceSpecification)"/.test(b)) fail(page, 'JSON-LD contains a price');
+      for (const m of b.matchAll(/"offers":\{"@type":"Offer","name":"([^"]*)"/g))
+        if (m[1] !== 'Prueba gratis de 15 días') fail(page, `JSON-LD offer other than the free trial: ${m[1]}`);
+      if ((b.match(/"offers"/g) ?? []).length !== (b.match(/"offers":\{"@type":"Offer","name":"Prueba gratis de 15 días"/g) ?? []).length)
+        fail(page, 'JSON-LD contains offers other than the free trial');
     } catch (e) {
       fail(page, `invalid JSON-LD: ${e.message}`);
     }
