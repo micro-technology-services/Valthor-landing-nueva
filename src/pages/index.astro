@@ -14,7 +14,7 @@ import Integrations from '../components/home/Integrations.astro';
 import Faq from '../components/home/Faq.astro';
 import Closing from '../components/home/Closing.astro';
 import { getFaqs } from '../lib/content';
-import { faqPage, softwareApplication, website } from '../lib/schema';
+import { faqPage } from '../lib/schema';
 
 const home = (await getEntry('home', 'home'))!.data;
 const faqs = await getFaqs((f) => f.showOnHome);
@@ -23,7 +23,7 @@ const faqs = await getFaqs((f) => f.showOnHome);
 <BaseLayout
   title={home.seo.title}
   description={home.seo.description}
-  jsonLd={[website, softwareApplication(home.seo.description), faqPage(faqs)]}
+  jsonLd={[faqPage(faqs)]}
 >
   <Hero hero={home.hero} />
   <Clients clients={home.clients} />

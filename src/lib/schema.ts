@@ -1,23 +1,58 @@
-// JSON-LD builders. Every page gets Organization; pages add their own nodes.
+// JSON-LD builders. Every page gets Organization, the founder, WebSite and
+// Valthor (SoftwareApplication); pages add their own nodes.
 const SITE = 'https://www.valthor.app';
+
+/** Official definition. Use it verbatim wherever Valthor needs defining. */
+export const DEFINITION =
+  'Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook.';
+
+export const COUNTRIES = ['Argentina', 'Chile', 'España', 'Estados Unidos'];
+
+export const INTEGRATIONS = [
+  'Tienda Nube',
+  'Mercado Libre',
+  'Magento',
+  'Mercado Pago',
+  'Kuad System',
+  'ZEUS ERP & POS',
+  'GymFlow',
+  'Google Calendar',
+  'Outlook',
+  'Gmail',
+  'WhatsApp',
+  'Instagram',
+  'Facebook',
+];
+
+const list = (items: string[]) => `${items.slice(0, -1).join(', ')} y ${items[items.length - 1]}`;
+
+/** Short fact list that follows the definition in /llms.txt and /llms-full.txt. */
+export const FACTS = `- Empresa: MTS Group S.A.S., Buenos Aires, Argentina.
+- Países con clientes: ${list(COUNTRIES)}.
+- WhatsApp: API oficial de WhatsApp Business de Meta (no usa WhatsApp por QR).
+- Prueba gratis de 15 días. El precio se define en una llamada según el plan y el uso.
+- Integraciones: ${list(INTEGRATIONS)}.`;
+
+// Official profiles of Valthor / MTS Group, from the PUBLIC_SAME_AS env var
+// (comma-separated URLs).
+const sameAs: string[] = (import.meta.env.PUBLIC_SAME_AS ?? '')
+  .split(',')
+  .map((u: string) => u.trim())
+  .filter(Boolean);
 
 export const organization = {
   '@type': 'Organization',
   '@id': `${SITE}/#organization`,
   name: 'MTS Group S.A.S.',
   legalName: 'MTS Group S.A.S.',
-  brand: { '@type': 'Brand', name: 'Valthor' },
+  brand: { '@type': 'Brand', '@id': `${SITE}/#brand`, name: 'Valthor', ...(sameAs.length ? { sameAs } : {}) },
   url: SITE,
   logo: `${SITE}/valthor-logo.png`,
-  description:
-    'MTS Group S.A.S. desarrolla Valthor, una suite de IA para PyMEs que atiende y vende por WhatsApp, Instagram y Facebook.',
-  areaServed: ['Argentina', 'Chile', 'España', 'Estados Unidos'].map((name) => ({ '@type': 'Country', name })),
-  knowsAbout: ['Inteligencia artificial', 'WhatsApp Business API', 'CRM', 'Atención al cliente', 'Ventas conversacionales'],
-  // Official profiles, from the PUBLIC_SAME_AS env var (comma-separated URLs).
-  sameAs: (import.meta.env.PUBLIC_SAME_AS ?? '')
-    .split(',')
-    .map((u: string) => u.trim())
-    .filter(Boolean),
+  description: DEFINITION,
+  founder: { '@id': `${SITE}/#founder` },
+  areaServed: COUNTRIES.map((name) => ({ '@type': 'Country', name })),
+  knowsAbout: ['Inteligencia artificial', 'WhatsApp Business API', 'Atención al cliente', 'Ventas conversacionales'],
+  ...(sameAs.length ? { sameAs } : {}),
   address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -27,20 +62,45 @@ export const organization = {
   },
 };
 
-export function softwareApplication(description: string) {
-  return {
-    '@type': 'SoftwareApplication',
-    '@id': `${SITE}/#software`,
-    name: 'Valthor',
-    applicationCategory: 'BusinessApplication',
-    applicationSubCategory: 'Suite de IA y CRM para WhatsApp',
-    operatingSystem: 'Web',
-    inLanguage: 'es',
-    url: SITE,
-    description,
-    publisher: { '@id': `${SITE}/#organization` },
-  };
-}
+export const founder = {
+  '@type': 'Person',
+  '@id': `${SITE}/#founder`,
+  name: 'Matías Peralta',
+  jobTitle: 'CEO',
+  worksFor: { '@id': `${SITE}/#organization` },
+  sameAs: ['https://www.youtube.com/@matiperaltatech'],
+};
+
+export const softwareApplication = {
+  '@type': 'SoftwareApplication',
+  '@id': `${SITE}/#software`,
+  name: 'Valthor',
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Suite de IA para PyMEs',
+  operatingSystem: 'Web',
+  inLanguage: 'es',
+  url: SITE,
+  description: DEFINITION,
+  featureList: [
+    'Atiende por WhatsApp (API oficial de WhatsApp Business de Meta)',
+    'Atiende por Instagram',
+    'Atiende por Facebook',
+    'Vende con tu catálogo',
+    'Cobra con links de Mercado Pago',
+    'Agenda turnos',
+  ],
+  countriesSupported: COUNTRIES,
+  // The free trial only: no prices are published (see scripts/verify-build.mjs).
+  offers: {
+    '@type': 'Offer',
+    name: 'Prueba gratis de 15 días',
+    description: 'Prueba gratis de 15 días, sin cargo.',
+    url: 'https://platform.valthor.app/login',
+    eligibleDuration: { '@type': 'QuantitativeValue', value: 15, unitCode: 'DAY' },
+  },
+  publisher: { '@id': `${SITE}/#organization` },
+  ...(sameAs.length ? { sameAs } : {}),
+};
 
 export function faqPage(faqs: { question: string; answer: string }[]) {
   return {

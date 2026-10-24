@@ -7,7 +7,7 @@ breadcrumb: Agente de IA para WhatsApp
 updated: octubre de 2026
 eyebrow: Función
 h1: "Agente de IA para WhatsApp que atiende, vende y cobra"
-intro: "Un agente de IA para WhatsApp es un vendedor virtual que responde a tus clientes con tu catálogo, tus precios y el tono de tu marca. El agente de Valthor atiende WhatsApp, Instagram y Facebook a la vez, entiende audios, envía el link de pago de Mercado Pago y te pasa la conversación cuando hace falta una persona."
+intro: "Un agente de IA para WhatsApp es un vendedor virtual que responde a tus clientes con tu catálogo, tus precios y el tono de tu marca. Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Su agente se conecta a la API oficial de WhatsApp Business de Meta, atiende los tres canales a la vez, entiende audios, envía el link de pago de Mercado Pago y te pasa la conversación cuando hace falta una persona."
 highlights:
   - "API oficial de WhatsApp Business (Meta Business Partner)"
   - "Responde en segundos, todo el día o en tu horario"

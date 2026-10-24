@@ -99,7 +99,7 @@ Los botones envían estos eventos:
 
 ### Redes sociales oficiales (`PUBLIC_SAME_AS`)
 
-Los perfiles oficiales que Google y los asistentes de IA asocian a MTS Group salen de la variable `PUBLIC_SAME_AS` en Vercel: las URLs separadas por comas, por ejemplo `https://www.instagram.com/valthor_crm,https://www.linkedin.com/company/…`. Si está vacía, no se publica ningún perfil.
+Los perfiles oficiales que Google y los asistentes de IA asocian a MTS Group salen de la variable `PUBLIC_SAME_AS` en Vercel: las URLs separadas por comas, hoy `https://www.instagram.com/valthor_ia,https://www.facebook.com/profile.php?id=61594883491922`. Si está vacía, no se publica ningún perfil.
 
 ## Después de publicar: Google y buscadores de IA
 
