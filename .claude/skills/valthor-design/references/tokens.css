@@ -1,0 +1,184 @@
+/* Valthor — Turno noche. Generated from the design system tokens.json (v2).
+   Paste into globals.css. Light is the default; dark applies with .dark (next-themes) or [data-theme="dark"]. */
+:root {
+  --noche: #1b1530;
+  --noche-2: #2f2650;
+  --noche-linea: #3a3160;
+  --noche-texto: #ffffff;
+  --noche-texto-2: #c9c2dc;
+  --fondo: #f4f2f8;
+  --papel: #ffffff;
+  --tinta: #1b1530;
+  --tinta-2: #4a4360;
+  --tinta-3: #625a78;
+  --linea: #e0dbec;
+  --violeta: #4c2a9e;
+  --violeta-hover: #3b1f80;
+  --sobre-violeta: #ffffff;
+  --violeta-luz: #b9a4ff;
+  --ia: #ece8f6;
+  --ia-firma: #4c2a9e;
+  --alerta: #ff7a93;
+  --sobre-alerta: #1b1530;
+  --alerta-texto: #b4234a;
+  --exito: #1f7a4d;
+  --exito-suave: #e3f4ea;
+  --aviso: #8a5a00;
+  --aviso-suave: #fff3d6;
+  --error: #b42318;
+  --error-suave: #fdecea;
+  --foco: #7c5cff;
+  --canal-whatsapp: #25d366;
+  --canal-instagram: #e1306c;
+  --canal-facebook: #1877f2;
+  --canal-mercadolibre: #ffe600;
+  --avatar-rosa: #ffd9e0;
+  --avatar-azul: #d9ecff;
+  --avatar-verde: #dff3e4;
+  --avatar-amarillo: #ffe9c7;
+  --avatar-lila: #ece8f6;
+  --sombra-flotante: 0 8px 24px rgba(27, 21, 48, 0.16);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 96px;
+  /* Named radii on purpose: they do NOT override Tailwind's rounded-sm/md/lg/xl, so existing screens
+     don't change until they are migrated. Use rounded-imagen, rounded-fila, rounded-burbuja, rounded-panel, rounded-hoja, rounded-full. */
+  --radius-imagen: 8px;
+  --radius-fila: 14px;
+  --radius-burbuja: 20px;
+  --radius-panel: 24px;
+  --radius-hoja: 28px;
+  --radius-full: 999px;
+  --control-celular: 44px;
+  --control-escritorio: 40px;
+  --control-compacto: 32px;
+  --font-sans: "Onest", system-ui, sans-serif;
+}
+.dark, [data-theme="dark"] {
+  --noche: #120e22;
+  --noche-2: #2a2245;
+  --noche-linea: #352c58;
+  --noche-texto-2: #b8b0ce;
+  --fondo: #17132a;
+  --papel: #1e1933;
+  --tinta: #f2effa;
+  --tinta-2: #cfc8e2;
+  --tinta-3: #a59dbd;
+  --linea: #322a4d;
+  --violeta: #b9a4ff;
+  --violeta-hover: #cbbbff;
+  --sobre-violeta: #1b1530;
+  --ia: #2a2346;
+  --ia-firma: #cbbbff;
+  --alerta-texto: #ff9aae;
+  --exito: #5fd39a;
+  --exito-suave: #173527;
+  --aviso: #f2c46b;
+  --aviso-suave: #3a2e12;
+  --error: #ff8a80;
+  --error-suave: #3d1a1a;
+  --foco: #b9a4ff;
+  --avatar-rosa: #4a2531;
+  --avatar-azul: #1f3550;
+  --avatar-verde: #1c3a28;
+  --avatar-amarillo: #45361a;
+  --avatar-lila: #2a2346;
+  --sombra-flotante: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* shadcn variable mapping — keep shadcn components working on Valthor tokens */
+:root, .dark, [data-theme="dark"] {
+  --background: var(--fondo);
+  --foreground: var(--tinta);
+  --card: var(--papel);
+  --card-foreground: var(--tinta);
+  --popover: var(--papel);
+  --popover-foreground: var(--tinta);
+  --primary: var(--violeta);
+  --primary-foreground: var(--sobre-violeta);
+  --secondary: var(--fondo);
+  --secondary-foreground: var(--tinta);
+  --muted: var(--fondo);
+  --muted-foreground: var(--tinta-3);
+  --accent: var(--ia);
+  --accent-foreground: var(--tinta);
+  --destructive: var(--error);
+  --border: var(--linea);
+  --input: var(--fondo);
+  --ring: var(--foco);
+  --sidebar: var(--noche);
+  --sidebar-foreground: var(--noche-texto);
+  --sidebar-primary: var(--violeta-luz);
+  --sidebar-primary-foreground: var(--tinta);
+  --sidebar-accent: var(--papel);
+  --sidebar-accent-foreground: var(--tinta);
+  --sidebar-border: var(--noche-linea);
+  --sidebar-ring: var(--violeta-luz);
+}
+
+/* Tailwind v4: expose the tokens as utilities (bg-noche, text-ia-firma, rounded-panel, shadow-flotante...).
+   If the repo is on Tailwind v3, add the same names under theme.extend in tailwind.config instead. */
+@theme inline {
+  --color-noche: var(--noche);
+  --color-noche-2: var(--noche-2);
+  --color-noche-linea: var(--noche-linea);
+  --color-noche-texto: var(--noche-texto);
+  --color-noche-texto-2: var(--noche-texto-2);
+  --color-fondo: var(--fondo);
+  --color-papel: var(--papel);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-tinta-3: var(--tinta-3);
+  --color-linea: var(--linea);
+  --color-violeta: var(--violeta);
+  --color-violeta-hover: var(--violeta-hover);
+  --color-sobre-violeta: var(--sobre-violeta);
+  --color-violeta-luz: var(--violeta-luz);
+  --color-ia: var(--ia);
+  --color-ia-firma: var(--ia-firma);
+  --color-alerta: var(--alerta);
+  --color-sobre-alerta: var(--sobre-alerta);
+  --color-alerta-texto: var(--alerta-texto);
+  --color-exito: var(--exito);
+  --color-exito-suave: var(--exito-suave);
+  --color-aviso: var(--aviso);
+  --color-aviso-suave: var(--aviso-suave);
+  --color-error: var(--error);
+  --color-error-suave: var(--error-suave);
+  --color-foco: var(--foco);
+  --color-canal-whatsapp: var(--canal-whatsapp);
+  --color-canal-instagram: var(--canal-instagram);
+  --color-canal-facebook: var(--canal-facebook);
+  --color-canal-mercadolibre: var(--canal-mercadolibre);
+  --color-avatar-rosa: var(--avatar-rosa);
+  --color-avatar-azul: var(--avatar-azul);
+  --color-avatar-verde: var(--avatar-verde);
+  --color-avatar-amarillo: var(--avatar-amarillo);
+  --color-avatar-lila: var(--avatar-lila);
+  /* Named radii on purpose: they do NOT override Tailwind's rounded-sm/md/lg/xl, so existing screens
+     don't change until they are migrated. Use rounded-imagen, rounded-fila, rounded-burbuja, rounded-panel, rounded-hoja, rounded-full. */
+  --radius-imagen: 8px;
+  --radius-fila: 14px;
+  --radius-burbuja: 20px;
+  --radius-panel: 24px;
+  --radius-hoja: 28px;
+  --shadow-flotante: var(--sombra-flotante);
+  --font-sans: "Onest", system-ui, sans-serif;
+}
+
+/* Type styles as utilities (Tailwind v4). Use these names instead of text-[..px]. */
+@utility web-display { font-size: 56px; line-height: 58px; font-weight: 800; letter-spacing: -0.025em; @media (max-width: 767px) { font-size: 36px; line-height: 40px; } }
+@utility web-titulo { font-size: 36px; line-height: 40px; font-weight: 800; letter-spacing: -0.02em; }
+@utility titulo { font-size: 32px; line-height: 36px; font-weight: 800; letter-spacing: -0.03em; @media (max-width: 767px) { font-size: 34px; line-height: 38px; } }
+@utility subtitulo { font-size: 18px; line-height: 24px; font-weight: 700; letter-spacing: -0.01em; }
+@utility numero { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+@utility cuerpo { font-size: 15px; line-height: 22px; font-weight: 400; }
+@utility cuerpo-fuerte { font-size: 15px; line-height: 22px; font-weight: 600; }
+@utility destacado { font-size: 17px; line-height: 22px; font-weight: 700; letter-spacing: -0.01em; }
+@utility chico { font-size: 13px; line-height: 18px; font-weight: 500; }
+@utility micro { font-size: 12px; line-height: 16px; font-weight: 500; }
