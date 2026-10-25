@@ -75,7 +75,7 @@ related:
   - title: "Gimnasios"
     text: "Socios en riesgo, check-in y rutinas con IA."
     href: /rubros/gimnasios
-  - title: "CRM para WhatsApp"
+  - title: "Contactos y ventas por WhatsApp"
     text: "Cada cliente y su historial en un solo lugar."
     href: /funciones/crm-whatsapp
 ---

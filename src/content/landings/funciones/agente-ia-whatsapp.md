@@ -72,7 +72,7 @@ cta:
   title: "Poné a tu agente de IA a vender por WhatsApp"
   text: "Atendiendo en unas 2 horas, sin programar y sin cambiar tu número."
 related:
-  - title: "CRM para WhatsApp"
+  - title: "Contactos y ventas por WhatsApp"
     text: "Contactos, ventas y seguimiento de cada conversación."
     href: /funciones/crm-whatsapp
   - title: "Ecommerce"
