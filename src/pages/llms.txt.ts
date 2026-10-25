@@ -21,7 +21,7 @@ ${FACTS}
 
 ${home.hero.lead}
 
-La IA de Valthor atiende WhatsApp (API oficial de Meta), Instagram y Facebook con el catálogo y las reglas del negocio, entiende audios, envía links de pago de Mercado Pago, agenda turnos con seña, deriva a una persona cuando hace falta y mide qué anuncio de Meta trae ventas. Incluye un CRM con contactos, pipeline de ventas y calificación de clientes. MTS Group es Meta Business Partner.
+La IA de Valthor atiende WhatsApp (API oficial de Meta), Instagram y Facebook con el catálogo y las reglas del negocio, entiende audios, envía links de pago de Mercado Pago, agenda turnos con seña, deriva a una persona cuando hace falta y mide qué anuncio de Meta trae ventas. Incluye contactos, pipeline de ventas y calificación de clientes. MTS Group es Meta Business Partner.
 
 ## Páginas
 

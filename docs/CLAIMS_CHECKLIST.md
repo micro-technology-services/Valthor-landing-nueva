@@ -72,7 +72,7 @@ Las métricas de la sección de atribución ($5.330.200, ROAS 6,4x) llevan la et
 | /rubros/turnos | **Cursos y eventos con cupo**: Si das clases o talleres, la IA ofrece fechas, llena cupos, cobra la seña y maneja la lista de espera. | Auditoría §2.6 · Cursos y eventos con cupo (ACTIVA) |
 | /planes | Plan Inicial: Agente de IA en WhatsApp, Instagram y Facebook | Auditoría §2.1 · Agente de IA (ACTIVA) |
 | /planes | Plan Inicial: Bandeja unificada y derivación a una persona | Auditoría §2.1 · Bandeja unificada y Derivación a humano (ACTIVAS) |
-| /planes | Plan Inicial: CRM: contactos, pipeline y calificación de clientes | Auditoría §2.2 Pipeline y Calificación, §2.5 Contactos (ACTIVAS) |
+| /planes | Plan Inicial: Contactos, pipeline de ventas y calificación de clientes | Auditoría §2.2 Pipeline y Calificación, §2.5 Contactos (ACTIVAS) |
 | /planes | Plan Inicial: Links de pago de Mercado Pago | Auditoría §2.2 · Links de pago (ACTIVA) |
 | /planes | Plan Inicial: Agenda de turnos con seña | Auditoría §2.6 · Agenda y turnos con seña (ACTIVA) |
 | /planes | Plan Inicial: Catálogo, pedidos y envíos | Auditoría §2.2 · Catálogo (PARCIAL) y Pedidos y envíos (ACTIVA) |

@@ -7,7 +7,7 @@ breadcrumb: Turnos
 updated: octubre de 2026
 eyebrow: Para tu rubro
 h1: "Agenda de turnos por WhatsApp con IA y cobro de seña"
-intro: "Una agenda de turnos por WhatsApp con IA permite que tus clientes reserven chateando, a cualquier hora, sin que nadie atienda el teléfono. Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Por la API oficial de WhatsApp Business de Meta da el turno según tus horarios, cobra la seña con Mercado Pago, lo recuerda y lo sincroniza con Google Calendar u Outlook. Sirve para estética, salud y servicios."
+intro: "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Con su agenda de turnos por WhatsApp, tus clientes reservan chateando a cualquier hora: da el turno, cobra la seña con Mercado Pago y lo recuerda."
 highlights:
   - "Turnos por WhatsApp, Instagram y Facebook"
   - "Seña cobrada con Mercado Pago"
@@ -19,7 +19,7 @@ pain:
     - "Los clientes faltan y el horario queda vacío."
     - "Reprogramar un turno lleva diez mensajes."
     - "La agenda del local y la de cada profesional no coinciden."
-  text: "Valthor responde, agenda y cobra la seña en la misma conversación, con tu disponibilidad real."
+  text: "Valthor responde, agenda y cobra la seña en la misma conversación, con tu disponibilidad real y la API oficial de WhatsApp Business de Meta."
 features:
   title: "Qué hace Valthor con tus turnos"
   items:
@@ -75,7 +75,7 @@ related:
   - title: "Gimnasios"
     text: "Socios en riesgo, check-in y rutinas con IA."
     href: /rubros/gimnasios
-  - title: "CRM para WhatsApp"
+  - title: "Contactos y ventas por WhatsApp"
     text: "Cada cliente y su historial en un solo lugar."
     href: /funciones/crm-whatsapp
 ---

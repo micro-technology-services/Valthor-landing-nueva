@@ -7,7 +7,7 @@ breadcrumb: Ecommerce
 updated: octubre de 2026
 eyebrow: Para tu rubro
 h1: "Chatbot con IA para ecommerce: vende por WhatsApp con tu catálogo"
-intro: "Un chatbot con IA para ecommerce responde las consultas de tu tienda online por chat y ayuda a cerrar la venta. Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Va más allá de un chatbot: usa la API oficial de WhatsApp Business de Meta, conecta tu catálogo de Tienda Nube, Mercado Libre, Magento, Kuad System o ZEUS ERP, responde stock, talles y envíos, y cobra con un link de Mercado Pago."
+intro: "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Como chatbot con IA para ecommerce, responde stock, talles y envíos con tu catálogo de Tienda Nube, Mercado Libre, Magento, Kuad System o ZEUS ERP, y cobra con Mercado Pago."
 highlights:
   - "Catálogo conectado y actualizado todos los días"
   - "Responde «¿dónde está mi pedido?»"
@@ -19,7 +19,7 @@ pain:
     - "Los clientes escriben de noche y a la mañana ya compraron en otro lado."
     - "«¿Dónde está mi pedido?» te ocupa la mitad del día."
     - "Pagás anuncios y no sabés cuál trae ventas."
-  text: "Valthor responde con los datos de tu tienda y deja a tu equipo para lo que de verdad necesita una persona."
+  text: "Valthor responde con los datos de tu tienda por la API oficial de WhatsApp Business de Meta y deja a tu equipo para lo que de verdad necesita una persona."
 features:
   title: "Qué hace Valthor en tu tienda online"
   items:
@@ -80,7 +80,7 @@ related:
   - title: "Alianzas"
     text: "Kuad System, GymFlow y ZEUS ERP."
     href: /alianzas
-  - title: "CRM para WhatsApp"
+  - title: "Contactos y ventas por WhatsApp"
     text: "Contactos, ventas y seguimiento."
     href: /funciones/crm-whatsapp
 ---

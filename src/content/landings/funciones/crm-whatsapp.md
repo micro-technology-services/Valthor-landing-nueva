@@ -6,8 +6,8 @@ seo:
 breadcrumb: CRM para WhatsApp
 updated: octubre de 2026
 eyebrow: Función
-h1: "CRM para WhatsApp con IA: contactos, ventas y seguimiento en un solo lugar"
-intro: "Un CRM para WhatsApp guarda cada conversación junto con el contacto y la venta que generó. En Valthor, cada chat de WhatsApp, Instagram o Facebook crea el contacto solo, la IA mueve la oportunidad por las etapas de venta y te muestra quién está listo para comprar."
+h1: "CRM para WhatsApp incluido en Valthor, la suite de IA para PyMEs"
+intro: "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Su CRM para WhatsApp viene incluido: cada chat crea el contacto solo, la IA mueve la venta por etapas y te muestra quién está listo para comprar."
 highlights:
   - "Bandeja única para WhatsApp, Instagram y Facebook"
   - "Contactos y pipeline armados automáticamente"

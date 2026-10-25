@@ -7,7 +7,7 @@ breadcrumb: Agente de IA para WhatsApp
 updated: octubre de 2026
 eyebrow: Función
 h1: "Agente de IA para WhatsApp que atiende, vende y cobra"
-intro: "Un agente de IA para WhatsApp es un vendedor virtual que responde a tus clientes con tu catálogo, tus precios y el tono de tu marca. Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Su agente se conecta a la API oficial de WhatsApp Business de Meta, atiende los tres canales a la vez, entiende audios, envía el link de pago de Mercado Pago y te pasa la conversación cuando hace falta una persona."
+intro: "Valthor es la suite de IA para PyMEs de MTS Group: atiende, vende, cobra y agenda por WhatsApp, Instagram y Facebook. Su agente de IA para WhatsApp responde con tu catálogo y tus precios, como un vendedor más."
 highlights:
   - "API oficial de WhatsApp Business (Meta Business Partner)"
   - "Responde en segundos, todo el día o en tu horario"
@@ -19,7 +19,7 @@ pain:
     - "Respondés lo mismo todo el día: stock, talles, envíos y medios de pago."
     - "Los audios se acumulan y nadie los escucha a tiempo."
     - "Los chatbots de menú (1, 2 o 3) frustran a quien quiere comprar."
-  text: "Cada mensaje sin respuesta es una venta que se enfría. El agente de Valthor contesta en segundos y sigue la conversación hasta el cobro."
+  text: "Cada mensaje sin respuesta es una venta que se enfría. El agente de Valthor, conectado a la API oficial de WhatsApp Business de Meta, contesta en segundos y sigue la conversación hasta el cobro."
 features:
   title: "Qué hace el agente de IA de Valthor"
   items:
@@ -72,7 +72,7 @@ cta:
   title: "Poné a tu agente de IA a vender por WhatsApp"
   text: "Atendiendo en unas 2 horas, sin programar y sin cambiar tu número."
 related:
-  - title: "CRM para WhatsApp"
+  - title: "Contactos y ventas por WhatsApp"
     text: "Contactos, ventas y seguimiento de cada conversación."
     href: /funciones/crm-whatsapp
   - title: "Ecommerce"

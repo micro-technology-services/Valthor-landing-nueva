@@ -5,7 +5,7 @@
   },
   "eyebrow": "Planes",
   "h1": "Planes de Valthor para atender y vender por WhatsApp con IA",
-  "intro": "Valthor tiene tres planes que crecen con tu negocio. Todos incluyen el agente de IA para WhatsApp, Instagram y Facebook, el CRM y el cobro con Mercado Pago. El precio depende del plan y de cuánto trabaje la IA, así que armamos la propuesta con tus números en una llamada.",
+  "intro": "Valthor tiene tres planes que crecen con tu negocio. Todos incluyen el agente de IA para WhatsApp, Instagram y Facebook, los contactos y el pipeline de ventas, y el cobro con Mercado Pago. El precio depende del plan y de cuánto trabaje la IA, así que armamos la propuesta con tus números en una llamada.",
   "plans": [
     {
       "name": "Inicial",
@@ -14,7 +14,7 @@
       "includes": [
         { "text": "Agente de IA en WhatsApp, Instagram y Facebook", "source": "Auditoría §2.1 · Agente de IA (ACTIVA)" },
         { "text": "Bandeja unificada y derivación a una persona", "source": "Auditoría §2.1 · Bandeja unificada y Derivación a humano (ACTIVAS)" },
-        { "text": "CRM: contactos, pipeline y calificación de clientes", "source": "Auditoría §2.2 Pipeline y Calificación, §2.5 Contactos (ACTIVAS)" },
+        { "text": "Contactos, pipeline de ventas y calificación de clientes", "source": "Auditoría §2.2 Pipeline y Calificación, §2.5 Contactos (ACTIVAS)" },
         { "text": "Links de pago de Mercado Pago", "source": "Auditoría §2.2 · Links de pago (ACTIVA)" },
         { "text": "Agenda de turnos con seña", "source": "Auditoría §2.6 · Agenda y turnos con seña (ACTIVA)" },
         { "text": "Catálogo, pedidos y envíos", "source": "Auditoría §2.2 · Catálogo (PARCIAL) y Pedidos y envíos (ACTIVA)" }
