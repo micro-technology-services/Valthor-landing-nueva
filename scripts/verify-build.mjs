@@ -41,6 +41,14 @@ const meta = (html, attr, name) =>
 const TUTEO =
   /(?<![\p{L}])(tú|ti|contigo|tienes|quieres|puedes|necesitas|sabes|usas|conectas|cargas|enseñas|enciendes|supervisas|respondes|pierdes|pagas|pides|escribes|pruebas|decides|prefieres|encuentras|eliges|manejas|asignas|creas|envías|importas|tocas|defines|configuras|registras|habilitas|conversas|devuelves|tomas|descubre|empieza|escríbenos|pruébalo|créala|aquí tienes|deja que|haz que|conoce qué|vosotros|vuestro|vuestra|tenéis|podéis|queréis)(?![\p{L}])/iu;
 const LEGAL_PAGES = new Set(['/privacidad', '/terminos']);
+// /tutoriales is written in neutral Spanish with «tú» (owner decision for this
+// section), so it is exempt from the voseo rule. The rest of the rules apply.
+const isTutorial = (page) => page === '/tutoriales' || page.startsWith('/tutoriales/');
+// A tutorial's <title> is "{title} | Tutoriales Valthor" and its description is
+// the tutorial's one-line summary, so their lengths are reported as warnings.
+const isTutorialArticle = (page) => page.startsWith('/tutoriales/');
+// Extra button labels allowed only on /tutoriales (same demo link and tracking).
+const TUTORIAL_CTA = new Set(['Agendar demo', 'Recíbela por WhatsApp']);
 // Claims the README says must never appear (not live today).
 const FORBIDDEN = [
   /carritos? abandonados?/i,
@@ -85,12 +93,13 @@ for (const file of files) {
   if (h1s.length !== 1) fail(page, `expected exactly one <h1>, found ${h1s.length}`);
 
   const title = decode(html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '');
-  if (title.length < 50 || title.length > 60) fail(page, `title is ${title.length} chars (50-60): "${title}"`);
+  const lengthIssue = isTutorialArticle(page) ? warn : fail;
+  if (title.length < 50 || title.length > 60) lengthIssue(page, `title is ${title.length} chars (50-60): "${title}"`);
   if (titles.has(title)) fail(page, `title duplicated with ${titles.get(title)}`);
   titles.set(title, page);
 
   const desc = meta(html, 'name', 'description');
-  if (desc.length < 140 || desc.length > 160) fail(page, `meta description is ${desc.length} chars (140-160)`);
+  if (desc.length < 140 || desc.length > 160) lengthIssue(page, `meta description is ${desc.length} chars (140-160)`);
 
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? '';
   if (!canonical.startsWith('https://www.valthor.app')) fail(page, `canonical not on https://www.valthor.app: "${canonical}"`);
@@ -173,7 +182,7 @@ for (const file of files) {
   // Copy rules
   // Visible text plus JSON-LD (FAQ answers) and the meta description
   const ld = (html.match(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g) ?? []).join(' ');
-  const v = !LEGAL_PAGES.has(page) && (text + ' ' + desc + ' ' + ld).match(TUTEO);
+  const v = !LEGAL_PAGES.has(page) && !isTutorial(page) && (text + ' ' + desc + ' ' + ld).match(TUTEO);
   if (v) fail(page, `tuteo/vosotros found (use voseo): "${v[0]}"`);
   for (const re of FORBIDDEN) {
     const m = (text + ' ' + title + ' ' + desc + ' ' + html.match(/href="[^"]*"/g)?.join(' ')).match(re);
@@ -185,7 +194,7 @@ for (const file of files) {
   // final CTA section, never in the header or hero.
   for (const m of html.matchAll(/<a [^>]*class="[^"]*\bbtn\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)) {
     const label = textOf(m[1]);
-    if (!ALLOWED_CTA.has(label)) fail(page, `CTA label not allowed: "${label}"`);
+    if (!ALLOWED_CTA.has(label) && !(isTutorial(page) && TUTORIAL_CTA.has(label))) fail(page, `CTA label not allowed: "${label}"`);
   }
   const header = html.match(/<header class="site-header"[\s\S]*?<\/header>/)?.[0] ?? '';
   const hero = html.match(/<section class="(?:hero|page-hero)"[\s\S]*?<\/section>/)?.[0] ?? '';

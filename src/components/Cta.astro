@@ -12,12 +12,14 @@ interface Props {
   short?: boolean;
   location: string;
   class?: string;
+  /** Overrides the label from site.json (same link and tracking). Used by /tutoriales. */
+  label?: string;
 }
 const defaults = { demo: 'primary', trial: 'secondary', booking: 'link' } as const;
-const { kind, variant = defaults[kind], size = 'md', short = false, location, class: extra } = Astro.props;
+const { kind, variant = defaults[kind], size = 'md', short = false, location, class: extra, label: labelOverride } = Astro.props;
 const { cta } = await getSite();
 const { href } = cta[kind];
-const label = kind === 'trial' && short ? cta.trial.shortLabel : cta[kind].label;
+const label = labelOverride ?? (kind === 'trial' && short ? cta.trial.shortLabel : cta[kind].label);
 const track = { demo: 'whatsapp_click', trial: 'trial_start_click', booking: 'booking_click' }[kind];
 ---
 

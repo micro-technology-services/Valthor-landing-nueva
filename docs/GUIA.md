@@ -18,6 +18,7 @@ Todos los textos están en la carpeta `src/content/` del repositorio. Los archiv
 | Introducción de /preguntas-frecuentes | `src/content/preguntas-frecuentes.json` |
 | Menú, pie de página, botones y WhatsApp | `src/content/site.json` |
 | Privacidad y Términos | `src/content/legal/privacidad.md` y `terminos.md` |
+| Tutoriales (uno por archivo) | `src/content/tutoriales/` — cómo escribirlos en `src/content/tutoriales/README.md` |
 
 ## Cómo editar un texto (desde el navegador)
 

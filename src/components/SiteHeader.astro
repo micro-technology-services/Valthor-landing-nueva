@@ -14,9 +14,44 @@ const { nav, cta } = await getSite();
     <div class="actions">
       <a class="login" href={cta.login.href}>{cta.login.label}</a>
       <Cta kind="trial" variant="primary" short location="header" />
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" data-menu-btn>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path class="bars" d="M4 7h16M4 12h16M4 17h16" />
+          <path class="close" d="M6 6l12 12M18 6 6 18" />
+        </svg>
+        <span class="sr-only">Menú</span>
+      </button>
     </div>
   </nav>
+  <div id="mobile-menu" class="mobile-menu" data-menu hidden>
+    <ul class="wrap">
+      {nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </div>
 </header>
+
+<script>
+  // Mobile menu (below 1024 px the nav links are hidden from the bar).
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  if (btn && menu) {
+    const set = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      menu.hidden = !open;
+    };
+    btn.addEventListener('click', () => set(menu.hidden));
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) set(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        set(false);
+        btn.focus();
+      }
+    });
+    matchMedia('(min-width: 1025px)').addEventListener('change', (e) => e.matches && set(false));
+  }
+</script>
 
 <style>
   /* Sits over the first section of every page, so the hero glow shows behind it. */
@@ -86,9 +121,59 @@ const { nav, cta } = await getSite();
     font-size: 15px;
     border-radius: 11px;
   }
+  .menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(20, 14, 38, 0.6);
+    color: #fff;
+    cursor: pointer;
+  }
+  .menu-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .menu-btn .close,
+  .menu-btn[aria-expanded='true'] .bars {
+    display: none;
+  }
+  .menu-btn[aria-expanded='true'] .close {
+    display: inline;
+  }
+  .mobile-menu {
+    background: rgba(14, 10, 26, 0.97);
+    border-top: 1px solid var(--line-dark);
+    border-bottom: 1px solid var(--line-dark);
+    padding: 8px 0 14px;
+  }
+  .mobile-menu[hidden] {
+    display: none;
+  }
+  .mobile-menu a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    color: var(--on-dark);
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .mobile-menu li:last-child a {
+    border-bottom: 0;
+  }
+  .mobile-menu a:hover {
+    color: var(--accent-soft);
+  }
   @media (max-width: 1024px) {
     .links {
       display: none;
+    }
+    .menu-btn {
+      display: inline-flex;
     }
   }
   @media (max-width: 720px) {
