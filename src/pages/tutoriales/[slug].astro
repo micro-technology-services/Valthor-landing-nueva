@@ -217,6 +217,24 @@ const isoDate = d.date.toISOString().slice(0, 10);
                       <label for="gate-email">Correo electrónico</label>
                       <input id="gate-email" name="email" type="email" autocomplete="email" inputmode="email" required />
                     </div>
+                    <div class="field">
+                      <label for="gate-phone">
+                        WhatsApp <span class="optional">(opcional)</span>
+                      </label>
+                      <input
+                        id="gate-phone"
+                        name="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        inputmode="tel"
+                        aria-describedby="gate-phone-hint"
+                      />
+                      <p id="gate-phone-hint" class="hint">Con código de país, por ejemplo +54 9 11 1234 5678.</p>
+                    </div>
+                    <label class="consent" for="gate-consent">
+                      <input id="gate-consent" name="consent" type="checkbox" value="1" />
+                      <span>Acepto que me contacten por WhatsApp</span>
+                    </label>
                     <button type="submit" class="gate-submit">
                       Ver la guía completa
                     </button>
@@ -386,10 +404,17 @@ const isoDate = d.date.toISOString().slice(0, 10);
       const data = new FormData(form);
       const name = String(data.get('name') ?? '').trim();
       const email = String(data.get('email') ?? '').trim();
+      // Keep the leading + and the digits; spaces, dashes and parentheses go.
+      const phone = String(data.get('phone') ?? '')
+        .trim()
+        .replace(/(?!^\+)[^\d]/g, '');
+      const consent = data.get('consent') === '1';
       const nameInput = form.elements.namedItem('name') as HTMLInputElement;
       const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+      const phoneInput = form.elements.namedItem('phone') as HTMLInputElement;
       nameInput.removeAttribute('aria-invalid');
       emailInput.removeAttribute('aria-invalid');
+      phoneInput.removeAttribute('aria-invalid');
       if (!name) {
         nameInput.setAttribute('aria-invalid', 'true');
         status.textContent = 'Escribe tu nombre.';
@@ -400,6 +425,15 @@ const isoDate = d.date.toISOString().slice(0, 10);
         emailInput.setAttribute('aria-invalid', 'true');
         status.textContent = 'Revisa tu correo electrónico.';
         emailInput.focus();
+        return;
+      }
+      const digits = phone.replace(/\D/g, '').length;
+      if ((phone && (digits < 8 || digits > 15)) || (consent && !phone)) {
+        phoneInput.setAttribute('aria-invalid', 'true');
+        status.textContent = phone
+          ? 'Revisa tu WhatsApp: escríbelo con código de país.'
+          : 'Escribe tu WhatsApp para que podamos contactarte por ahí.';
+        phoneInput.focus();
         return;
       }
 
@@ -421,12 +455,16 @@ const isoDate = d.date.toISOString().slice(0, 10);
         const res = await fetch(webhook, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          // `mensaje` and `utm_campaign` are the field names Valthor's own web
-          // forms read (/api/public/forms/{token}), so the contact shows which
-          // guide was requested and where it came from.
+          // `telefono`, `consent`, `mensaje` and `utm_campaign` are the field
+          // names Valthor's own web forms read (/api/public/forms/{token}): the
+          // contact gets the WhatsApp number, the WhatsApp consent (without it
+          // Valthor never enrolls the contact in WhatsApp automations), the
+          // guide requested and where it came from.
           body: JSON.stringify({
             name,
             email,
+            ...(phone ? { telefono: phone } : {}),
+            consent,
             tutorialSlug: slug,
             source: 'tutoriales',
             mensaje: `Pidió la guía: ${title}`,
@@ -1121,6 +1159,33 @@ const isoDate = d.date.toISOString().slice(0, 10);
     outline: 3px solid var(--accent-ink);
     outline-offset: 1px;
     border-radius: 10px;
+  }
+  .optional {
+    font-weight: 400;
+    color: var(--muted-light);
+  }
+  .hint {
+    font-size: 13px;
+    color: var(--muted-light);
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 44px;
+    padding: 4px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .consent input {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    accent-color: var(--accent-ink);
+    cursor: pointer;
   }
   .field input[aria-invalid='true'] {
     border-color: #b42318;
