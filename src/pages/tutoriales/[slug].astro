@@ -181,6 +181,7 @@ const isoDate = d.date.toISOString().slice(0, 10);
                 class="gate is-locked"
                 data-gate
                 data-slug={d.slug}
+                data-title={d.title}
                 data-webhook={LEAD_WEBHOOK_URL}
                 data-dev={import.meta.env.DEV ? 'true' : 'false'}
               >
@@ -347,6 +348,7 @@ const isoDate = d.date.toISOString().slice(0, 10);
   const gate = document.querySelector<HTMLElement>('[data-gate]');
   if (gate) {
     const slug = gate.dataset.slug ?? '';
+    const title = gate.dataset.title ?? slug;
     const webhook = gate.dataset.webhook ?? '';
     const isDev = gate.dataset.dev === 'true';
     const key = `valthor:tutoriales:desbloqueado:${slug}`;
@@ -419,7 +421,17 @@ const isoDate = d.date.toISOString().slice(0, 10);
         const res = await fetch(webhook, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, tutorialSlug: slug, source: 'tutoriales' }),
+          // `mensaje` and `utm_campaign` are the field names Valthor's own web
+          // forms read (/api/public/forms/{token}), so the contact shows which
+          // guide was requested and where it came from.
+          body: JSON.stringify({
+            name,
+            email,
+            tutorialSlug: slug,
+            source: 'tutoriales',
+            mensaje: `Pidió la guía: ${title}`,
+            utm_campaign: 'tutoriales',
+          }),
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         status.textContent = '';

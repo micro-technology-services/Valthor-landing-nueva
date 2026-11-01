@@ -158,7 +158,9 @@ Con `gated: true`, escribe esta línea donde quieres cortar:
 Lo que está arriba se ve completo. Lo de abajo se ve borroso, con la tarjeta «Desbloquea la guía completa»:
 
 - **Recíbela por WhatsApp:** abre WhatsApp con el mensaje «Hola, quiero la guía: {título}». El número se configura en la variable `VALTHOR_WHATSAPP_NUMBER` (solo dígitos, con código de país).
-- **Nombre y correo:** se envían a la variable `LEAD_WEBHOOK_URL` como `{ name, email, tutorialSlug, source: "tutoriales" }`. Si el envío sale bien, la guía se desbloquea y queda desbloqueada en ese navegador. El servicio que recibe los datos (Zapier, Make, n8n…) tiene que aceptar pedidos desde `www.valthor.app` (CORS).
+- **Nombre y correo:** se envían a la variable `LEAD_WEBHOOK_URL` como `{ name, email, tutorialSlug, source: "tutoriales", mensaje: "Pidió la guía: {título}", utm_campaign: "tutoriales" }`. Si el envío sale bien, la guía se desbloquea y queda desbloqueada en ese navegador.
+  - **Recomendado:** un formulario web de Valthor (Campañas → Formularios), con la dirección `https://platform.valthor.app/api/public/forms/<token>`. Cada persona entra como contacto, y la guía que pidió queda en la consulta y en la campaña «tutoriales».
+  - Si usas otro servicio (Zapier, Make, n8n…), tiene que aceptar pedidos desde `www.valthor.app` (CORS).
 
 El texto completo queda igual en la página, para que Google y los asistentes de IA lo lean: el desenfoque solo pide los datos, no protege el contenido. No pongas detrás del corte nada que no pueda ser público.
 
