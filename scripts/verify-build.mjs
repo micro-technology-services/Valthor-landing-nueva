@@ -205,6 +205,11 @@ for (const file of files) {
   // Internal links must point to built pages
   for (const m of html.matchAll(/href="(\/[^"#?]*)/g)) {
     const path = m[1].replace(/\/$/, '') || '/';
+    // Downloadable files (tutorial PDFs and guides for AI) must exist in dist.
+    if (/\.(pdf|md)$/.test(path)) {
+      if (!existsSync(join(DIST, decodeURI(path)))) fail(page, `download not found: ${path}`);
+      continue;
+    }
     if (/\.(png|xml|txt|webp|svg|woff2|ico)$/.test(path) || path.startsWith('/_astro')) continue;
     if (!existing.has(path)) warn(page, `link to a page that does not exist yet: ${path}`);
   }
