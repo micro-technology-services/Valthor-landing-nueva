@@ -164,6 +164,18 @@ Lo que está arriba se ve completo. Lo de abajo se ve borroso, con la tarjeta «
 
 El texto completo queda igual en la página, para que Google y los asistentes de IA lo lean: el desenfoque solo pide los datos, no protege el contenido. No pongas detrás del corte nada que no pueda ser público.
 
+### Descargas: PDF y guía para tu IA
+
+Un tutorial puede ofrecer su contenido para bajar: un **PDF con las capturas** y un **`.md` para pasarle a ChatGPT, Claude o Gemini**. Los dos salen del mismo archivo del tutorial, así nunca dicen cosas distintas. Con el tutorial ya escrito:
+
+```bash
+npm run build
+node scripts/tutorial-downloads.mjs <slug> <nombre.pdf> <nombre.md>
+npm run build
+```
+
+Los archivos quedan en `public/tutoriales/<slug>/`. Enlázalos desde una sección `## Descarga…` del tutorial (por ejemplo, después del corte `<!-- gate -->`). Esa sección no se incluye ni en el PDF ni en el `.md`. **Cada vez que cambies el tutorial, vuelve a correr estos tres comandos** y sube los archivos nuevos. Ejemplo: `guia-completa-campanas.md`.
+
 ## 4. Revisa y publica
 
 1. Mientras `draft: true`, el tutorial se ve en `npm run dev` (con la etiqueta «Borrador») pero **no** se publica en www.valthor.app. Para verlo en un build local: `TUTORIALES_SHOW_DRAFTS=true npm run build && npm run preview`.
