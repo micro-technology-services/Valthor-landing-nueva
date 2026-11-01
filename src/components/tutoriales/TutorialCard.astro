@@ -1,0 +1,221 @@
+---
+// One tutorial card. The whole card is a single link; data-* attributes feed
+// the client-side filters of /tutoriales.
+import { CATEGORIES, tutorialPath, type Tutorial } from '../../lib/tutoriales';
+
+interface Props {
+  tutorial: Tutorial;
+  /** Larger horizontal layout for the featured tutorial. */
+  featured?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { tutorial, featured = false, headingLevel = 'h3' } = Astro.props;
+const d = tutorial.data;
+const Heading = headingLevel;
+const search = [d.title, d.description, ...d.tags].join(' ').toLowerCase();
+---
+
+<article
+  class:list={['tcard', featured && 'featured', `cat-${d.category}`]}
+  data-tutorial
+  data-cat={d.category}
+  data-search={search}
+>
+  <div class="cover" aria-hidden={d.cover ? undefined : 'true'}>
+    {
+      d.cover ? (
+        <img src={d.cover} alt={d.coverAlt ?? ''} width="1200" height="675" loading="lazy" decoding="async" />
+      ) : (
+        <span class="cover-mark">{CATEGORIES[d.category]}</span>
+      )
+    }
+  </div>
+  <div class="body">
+    <p class="badges">
+      <span class="badge">{CATEGORIES[d.category]}</span>
+      {featured && <span class="badge badge-featured">Destacado</span>}
+      {d.draft && <span class="badge badge-draft">Borrador</span>}
+    </p>
+    <Heading class="title">
+      <a href={tutorialPath(tutorial)} class="stretched">{d.title}</a>
+    </Heading>
+    <p class="desc">{d.description}</p>
+    <p class="meta">
+      <span>{d.level}</span>
+      <span aria-hidden="true">·</span>
+      <span><span class="sr-only">Duración: </span>{d.duration}</span>
+      {d.gated && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>Guía completa con registro</span>
+        </>
+      )}
+    </p>
+  </div>
+</article>
+
+<style>
+  .tcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    border: 1px solid var(--line-light);
+    background: #fff;
+    color: var(--ink);
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .tcard:hover,
+  .tcard:focus-within {
+    transform: translateY(-4px);
+    border-color: rgba(124, 58, 237, 0.35);
+    box-shadow: 0 14px 34px rgba(124, 58, 237, 0.12);
+  }
+  .tcard[hidden] {
+    display: none;
+  }
+  .cover {
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(420px 220px at 85% 0%, rgba(217, 70, 239, 0.55), transparent 65%),
+      radial-gradient(420px 260px at 0% 100%, rgba(139, 92, 246, 0.7), transparent 60%),
+      var(--bg-2);
+    display: flex;
+    align-items: flex-end;
+    padding: 18px 20px;
+  }
+  .cat-ia-para-tu-negocio .cover {
+    background:
+      radial-gradient(420px 220px at 15% 0%, rgba(139, 92, 246, 0.6), transparent 65%),
+      radial-gradient(420px 260px at 100% 100%, rgba(217, 70, 239, 0.6), transparent 60%),
+      var(--bg-2);
+  }
+  .cover {
+    position: relative;
+  }
+  .cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cover-mark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 22px 22px;
+    flex: 1;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--lavender);
+    color: var(--accent-ink);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .badge-featured {
+    background: var(--accent-ink);
+    color: #fff;
+  }
+  .badge-draft {
+    background: #fff3d6;
+    color: #8a5a00;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .stretched {
+    color: inherit;
+    text-decoration: none;
+  }
+  /* The link covers the whole card, so the card is one tab stop. */
+  .stretched::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+  }
+  .stretched:focus-visible {
+    outline: none;
+  }
+  .stretched:focus-visible::after {
+    outline: 3px solid var(--accent-ink);
+    outline-offset: 2px;
+  }
+  .desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .meta {
+    margin-top: auto;
+    padding-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted-light);
+  }
+  .featured {
+    flex-direction: row;
+  }
+  .featured .cover {
+    flex: 0 0 46%;
+    aspect-ratio: auto;
+    min-height: 280px;
+  }
+  .featured .body {
+    padding: 32px;
+    justify-content: center;
+  }
+  .featured .title {
+    font-size: 30px;
+  }
+  .featured .desc {
+    font-size: 17px;
+  }
+  @media (max-width: 760px) {
+    .featured {
+      flex-direction: column;
+    }
+    .featured .cover {
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+    }
+    .featured .body {
+      padding: 20px 22px 22px;
+    }
+    .featured .title {
+      font-size: 22px;
+    }
+    .featured .desc {
+      font-size: 15px;
+    }
+  }
+</style>

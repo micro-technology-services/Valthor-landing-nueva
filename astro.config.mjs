@@ -19,8 +19,19 @@ const PAGE_SOURCES = {
   '/privacidad': ['src/content/legal/privacidad.md'],
   '/terminos': ['src/content/legal/terminos.md'],
 };
+// Tutorials: the index changes with any tutorial; a tutorial page with its own
+// file (named like its slug, see src/content/tutoriales/README.md).
+/** @param {string} path */
+function tutorialSources(path) {
+  if (path === '/tutoriales') return ['src/content/tutoriales', 'src/pages/tutoriales/index.astro'];
+  const file = `src/content/tutoriales/${path.slice('/tutoriales/'.length)}.md`;
+  return [existsSync(file) ? file : 'src/content/tutoriales', 'src/pages/tutoriales/[slug].astro'];
+}
 const sourcesFor = (path) =>
-  PAGE_SOURCES[path] ?? [`src/content/landings${path}.md`, 'src/components/landing/LandingPage.astro'];
+  PAGE_SOURCES[path] ??
+  (path === '/tutoriales' || path.startsWith('/tutoriales/')
+    ? tutorialSources(path)
+    : [`src/content/landings${path}.md`, 'src/components/landing/LandingPage.astro']);
 
 // Commits at the edge of a shallow clone carry the date of the clone, not of
 // the change, so a page whose last change is one of them gets no lastmod.

@@ -249,4 +249,31 @@ const legal = defineCollection({
   }),
 });
 
-export const collections = { site, home, faq, legal, landings, plans, faqPage: faqPageContent };
+// Tutorials: one Markdown file per tutorial in src/content/tutoriales/.
+// How to write one: src/content/tutoriales/README.md (excluded from the collection).
+const tutoriales = defineCollection({
+  loader: glob({ pattern: ['*.md', '!README.md'], base: 'src/content/tutoriales' }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug: solo minúsculas, números y guiones'),
+    description: z.string(),
+    summary: z.string(),
+    category: z.enum(['valthor', 'ia-para-tu-negocio']),
+    level: z.enum(['Básico', 'Intermedio', 'Avanzado']),
+    duration: z.string(),
+    date: z.coerce.date(),
+    author: z.string().default('Equipo Valthor'),
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    video: z.string().url().optional(),
+    specs: z.record(z.string(), z.string()).optional(),
+    resourceUrl: z.string().url().optional(),
+    socialUrl: z.string().url().optional(),
+    gated: z.boolean().default(false),
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { site, home, faq, legal, landings, plans, faqPage: faqPageContent, tutoriales };

@@ -34,7 +34,8 @@
     { "label": "Funciones", "href": "/#funciones" },
     { "label": "Rubros", "href": "/#rubros" },
     { "label": "Alianzas", "href": "/alianzas" },
-    { "label": "Planes", "href": "/planes" }
+    { "label": "Planes", "href": "/planes" },
+    { "label": "Tutoriales", "href": "/tutoriales" }
   ],
   "footer": {
     "columns": [
@@ -58,6 +59,7 @@
         "links": [
           { "label": "Planes", "href": "/planes" },
           { "label": "Alianzas", "href": "/alianzas" },
+          { "label": "Tutoriales", "href": "/tutoriales" },
           { "label": "Preguntas frecuentes", "href": "/preguntas-frecuentes" }
         ]
       }
