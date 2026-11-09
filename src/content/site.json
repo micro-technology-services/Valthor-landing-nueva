@@ -43,7 +43,11 @@
         "title": "Funciones",
         "links": [
           { "label": "Agente IA para WhatsApp", "href": "/funciones/agente-ia-whatsapp" },
-          { "label": "Contactos y ventas por WhatsApp", "href": "/funciones/crm-whatsapp" }
+          { "label": "Contactos y ventas por WhatsApp", "href": "/funciones/crm-whatsapp" },
+          { "label": "Envíos masivos por WhatsApp", "href": "/funciones/difusion-whatsapp" },
+          { "label": "ROAS de anuncios de Meta", "href": "/funciones/roas-anuncios-meta" },
+          { "label": "Preguntas de Mercado Libre", "href": "/funciones/preguntas-mercado-libre" },
+          { "label": "Captura por QR", "href": "/funciones/captura-qr" }
         ]
       },
       {
@@ -51,7 +55,9 @@
         "links": [
           { "label": "Ecommerce", "href": "/rubros/ecommerce" },
           { "label": "Turnos", "href": "/rubros/turnos" },
-          { "label": "Gimnasios", "href": "/rubros/gimnasios" }
+          { "label": "Gimnasios", "href": "/rubros/gimnasios" },
+          { "label": "Cursos y eventos", "href": "/rubros/cursos-y-eventos" },
+          { "label": "Mayoristas", "href": "/rubros/mayoristas" }
         ]
       },
       {
@@ -59,6 +65,7 @@
         "links": [
           { "label": "Planes", "href": "/planes" },
           { "label": "Alianzas", "href": "/alianzas" },
+          { "label": "Agencias", "href": "/agencias" },
           { "label": "Tutoriales", "href": "/tutoriales" },
           { "label": "Preguntas frecuentes", "href": "/preguntas-frecuentes" }
         ]
