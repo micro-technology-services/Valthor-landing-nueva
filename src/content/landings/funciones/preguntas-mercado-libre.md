@@ -81,3 +81,5 @@ related:
 1. **Conectás Mercado Libre.** Desde Integraciones elegís tu país y autorizás tu cuenta.
 2. **Activás la IA por publicación.** Empezá por las que más preguntas reciben.
 3. **Revisás y publicás.** Cada pregunta llega con la respuesta redactada. La leés, la ajustás si hace falta y tocás «Publicar respuesta».
+
+¿Querés el paso a paso con ejemplos? Mirá el tutorial [Cómo responder las preguntas de Mercado Libre con IA](/tutoriales/responder-preguntas-mercado-libre-con-ia).
