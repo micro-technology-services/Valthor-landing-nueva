@@ -72,7 +72,7 @@ related:
   - title: "Gimnasios"
     text: "Socios en riesgo, check-in y rutinas con IA."
     href: /rubros/gimnasios
-  - title: "Contactos y ventas por WhatsApp"
-    text: "Contactos y ventas en un solo lugar."
-    href: /funciones/crm-whatsapp
+  - title: "Agencias"
+    text: "Valthor en marca blanca para tu agencia."
+    href: /agencias
 ---

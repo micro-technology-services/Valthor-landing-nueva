@@ -80,7 +80,7 @@ related:
   - title: "Alianzas"
     text: "Kuad System, GymFlow y ZEUS ERP."
     href: /alianzas
-  - title: "Contactos y ventas por WhatsApp"
-    text: "Contactos, ventas y seguimiento."
-    href: /funciones/crm-whatsapp
+  - title: "Preguntas de Mercado Libre"
+    text: "La IA redacta la respuesta, vos la publicás."
+    href: /funciones/preguntas-mercado-libre
 ---
