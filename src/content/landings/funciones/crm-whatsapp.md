@@ -79,7 +79,7 @@ related:
   - title: "Ecommerce"
     text: "Pedidos, envíos y catálogo conectado."
     href: /rubros/ecommerce
-  - title: "Planes"
-    text: "Qué incluye cada plan de Valthor."
-    href: /planes
+  - title: "Envíos masivos por WhatsApp"
+    text: "Promos personalizadas con la API oficial."
+    href: /funciones/difusion-whatsapp
 ---

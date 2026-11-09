@@ -81,8 +81,8 @@
       { "title": "Atiende y vende", "text": "Responde en WhatsApp, Instagram y Facebook con tu catálogo, tus precios y tu tono.", "href": "/funciones/agente-ia-whatsapp" },
       { "title": "Cobra", "text": "Envía el link de Mercado Pago y, cuando se aprueba el pago, cierra la venta sola.", "href": "/funciones/agente-ia-whatsapp" },
       { "title": "Agenda", "text": "Da turnos, reprograma, cobra la seña y los recuerda. Con Google y Outlook.", "href": "/rubros/turnos" },
-      { "title": "Recupera", "text": "Vuelve a escribirle a quien no respondió, invita a recomprar y reactiva ventas frías." },
-      { "title": "Mide", "text": "Te muestra cuánto vendió tu IA y qué anuncio de Meta trae ventas, no solo mensajes." }
+      { "title": "Recupera", "text": "Vuelve a escribirle a quien no respondió, invita a recomprar y reactiva ventas frías.", "href": "/funciones/crm-whatsapp" },
+      { "title": "Mide", "text": "Te muestra cuánto vendió tu IA y qué anuncio de Meta trae ventas, no solo mensajes.", "href": "/funciones/roas-anuncios-meta" }
     ]
   },
   "agent": {
@@ -146,8 +146,8 @@
       { "title": "Ecommerce", "text": "Stock, talles, envíos y \"¿dónde está mi pedido?\".", "href": "/rubros/ecommerce" },
       { "title": "Turnos", "text": "Agenda con seña para estética, salud y servicios.", "href": "/rubros/turnos" },
       { "title": "Gimnasios", "text": "Socios en riesgo, check-in por QR y rutinas con IA.", "href": "/rubros/gimnasios" },
-      { "title": "Cursos y eventos", "text": "Cupos, seña y lista de espera por chat." },
-      { "title": "Mayoristas", "text": "Una lista de precios por cliente, que la IA respeta." }
+      { "title": "Cursos y eventos", "text": "Cupos, seña y lista de espera por chat.", "href": "/rubros/cursos-y-eventos" },
+      { "title": "Mayoristas", "text": "Una lista de precios por cliente, que la IA respeta.", "href": "/rubros/mayoristas" }
     ],
     "linkLabel": "Ver más"
   },
